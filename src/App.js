@@ -1,18 +1,20 @@
 
+
+import HomePage from './Components/HomePage/HomePage';
 import './index.css';
 
 
 
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.bundle.min";
-import Header from './Components/Header/Header';
+
 
 
 function App() {
   return (
     <div>
   
-    <Header/>
+    <HomePage/>
       
     </div>
   );

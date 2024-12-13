@@ -8,7 +8,7 @@ module.exports = {
       colors: {
         'custom-color': '#e21b70', 
       },
-      
+     
     },
   },
   plugins: [],

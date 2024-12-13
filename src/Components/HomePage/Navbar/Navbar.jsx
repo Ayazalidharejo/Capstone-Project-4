@@ -190,7 +190,7 @@ function Navbar() {
 
       <Box className="flex" sx={{ flexGrow: 1 }}>
         <AppBar className="relative" position="static">
-          <Grid container sx={{ paddingLeft: "60px", paddingRight: "40px" }} className="bg-white flex items-center justify-between h-16">
+          <Grid container sx={{ paddingLeft: "200px", paddingRight: "200px" }} className="bg-white flex items-center justify-between h-16">
             <Grid item className="flex items-center justify-center">
               <img style={{ width: "35px" }} src={Logo} alt="" />
               <Typography className='px-1' sx={{ color: '#e21b70' }} variant='body1'> foodpanda</Typography>
@@ -222,7 +222,7 @@ function Navbar() {
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                   >
-                    <Box style={{ width: "120px", height: "80px", cursor: 'pointer' }} className="flex items-center bg-white justify-center absolute top-32 end-2 rounded-2xl">
+                    <Box style={{ width: "120px", height: "80px", cursor: 'pointer' }} className="flex items-center bg-white justify-center absolute top-32 end-64 rounded-2xl">
                       <Typography className='pe-1 py-5' variant='body2'>English</Typography>
                       <CheckCircleOutlineIcon sx={{ color: '#e21b70', '&:hover': { color: 'black' } }} style={{ width: "16px" }} />
                     </Box>
