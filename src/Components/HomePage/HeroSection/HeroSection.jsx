@@ -10,7 +10,7 @@ const HeroSection = () => {
   return (
     <Box style={{backgroundColor:"#f7f7f7"}}    sx={{ display: 'flex',paddingTop:"60px" }}>
       <Grid container spacing={2}>
-        <Grid sx={{marginTop:"200px" }}  item xs={12} md={6}   >
+        <Grid sx={{marginTop:"140px" }}  item xs={12} md={7}   >
           <Box
             sx={{
               padding: '20px',
@@ -20,20 +20,20 @@ const HeroSection = () => {
           >
             <Typography
               sx={{
-                fontSize: '38px',
+                fontSize: '26px',
                 fontWeight: 'bold',
                 color: '#333',
                 marginBottom: '20px',
-                marginLeft:"110px" 
+                marginLeft:"30px" 
               }}
             >
               It's the food and groceries you love, <br />
               delivered
             </Typography>
-            <Box sx={{ display: 'flex',  alignItems: 'center', marginLeft:"100px" }}>
+            <Box sx={{ display: 'flex',  alignItems: 'center', marginLeft:"10px" }}>
               <TextField  
                 sx={{
-                  width: '85%',
+                  width: '79%',
                 
               
               backgroundColor: '#fff',
@@ -85,17 +85,25 @@ const HeroSection = () => {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Box
-            sx={{
-              backgroundImage: `url(${hero})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              minHeight: '60vh',
-              maxHeight: '70vh',
-            }}
-          />
-        </Grid>
+        <Grid style={{}} item xs={12} md={5}>
+  <Box
+    sx={{
+      backgroundImage: `url(${hero})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+  
+      minHeight: '100%',
+      maxHeight: '100%',
+      minWidth: '100%',
+      maxWidth: '100%',
+ 
+     
+    
+    
+    
+    }}
+  />
+</Grid>
       </Grid>
     </Box>
   )

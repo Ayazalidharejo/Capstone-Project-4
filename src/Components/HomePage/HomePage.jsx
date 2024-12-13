@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './Navbar/Navbar'
 import HeroSection from './HeroSection/HeroSection'
 import PrepareFood from './PrepareFood/PrepareFood'
+import RestorentBranch from './HeroSection/RestorentBranch/RestorentBranch'
 
 const HomePage = () => {
   return (
@@ -9,6 +10,7 @@ const HomePage = () => {
   <Navbar/>
   <HeroSection/>
   <PrepareFood/>
+  {/* <RestorentBranch/> */}
   </>
   )
 }
