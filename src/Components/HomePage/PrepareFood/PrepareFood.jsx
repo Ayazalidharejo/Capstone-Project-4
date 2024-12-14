@@ -19,7 +19,7 @@ const PrepareFood = () => {
         </Typography>
 
         <Grid className='relative' item xs={12} md={12}>
-          <Box sx={{ height: '60vh', width: '100vw' }}>
+          <Box sx={{ height: '60vh', width: '99vw' }}>
             <Box
               sx={{
                 backgroundImage: `url(${HERO})`,
@@ -62,7 +62,7 @@ const PrepareFood = () => {
 
       </Grid>
 
-      <Typography style={{ paddingLeft: "120px", paddingTop: "30px" }} variant='h4'>  Find us in these cities and many more! </Typography>
+      
     </>
   )
 }

@@ -2,7 +2,9 @@ import React from 'react'
 import Navbar from './Navbar/Navbar'
 import HeroSection from './HeroSection/HeroSection'
 import PrepareFood from './PrepareFood/PrepareFood'
-import RestorentBranch from './HeroSection/RestorentBranch/RestorentBranch'
+import Card from './HeroSection/RestorentBranch/Card'
+import OnlineStore from './OnlineStore/OnlineStore'
+
 
 const HomePage = () => {
   return (
@@ -10,6 +12,8 @@ const HomePage = () => {
   <Navbar/>
   <HeroSection/>
   <PrepareFood/>
+  <Card/>
+  <OnlineStore/>
   {/* <RestorentBranch/> */}
   </>
   )
