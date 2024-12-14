@@ -1,137 +1,111 @@
-import React from "react";
-import { Box, Typography, Button, Grid } from "@mui/material";
-import { Icon } from "@iconify/react";
-import QR from "../../../images/QR.png"
-import  download from "../../../images/download.png"
-import  img from "../../../images/images.png"
-import  phone from "../../../images/phone.webp"
+import React from 'react';
+import { Container, Grid, Typography, Box, Button } from '@mui/material';
+import Mobile from '../../../images/phone.webp';
+import AppGallery from '../../../images/image.png';
+import AppStore from '../../../images/download.png';
+import PlayStore from '../../../images/download.pn.png';
+import Scanner from '../../../images/QR.png';
 
-
-const OnlineStore = () => {
+const OnlineOrder = () => {
   return (
-    <Box position="relative"  sx={{ paddingX:"100px" }}>
-      <Typography variant="h3" sx={{ marginLeft: 5, marginBottom: 3 }}>
+    <Box className="container">
+      <Typography
+        variant="h3"
+        className="text-start font-weight-bold"
+        style={{  }}
+      >
         Put us in your pocket
       </Typography>
-      <Box
-        className="home"
-        sx={{
-          borderRadius: 5,
-          padding: 5,
-          backgroundColor: "#e21b70",
-          color: "white",
-        }}
+      <Container
+        style={{ backgroundColor: '#c21760',  padding:" 100px" }}
+        maxWidth="lg"
+        className="py-5 rounded-lg position-relative"
       >
-        <Typography
-          variant="h5"
-          sx={{ marginLeft: 5, marginBottom: 3, fontSize: "1.5rem" }}
-        >
-          Download the food and groceries you love
-        </Typography>
-        <Box display="flex" alignItems="center" sx={{ marginBottom: 3 }}>
-          <img
-            width="70px"
-            height="80px"
-            src={QR}
-            alt="QR Code"
-            style={{ border: "1px solid white", padding: "5px" }}
-          />
-          <Typography variant="body1" sx={{ marginLeft: 3 }}>
-            It's all at your fingertips – the restaurants and shops you love.
-            Find the right food and groceries to suit your mood, and make the
-            first bite last. Go ahead, download us.
-          </Typography>
-        </Box>
+        <Grid container alignItems="center" spacing={4}>
+          {/* Text Section */}
+          <Grid item xs={12} md={6}>
+            <Typography
+              className="text-white mt-3 mb-2"
+              style={{ fontSize: '1.25rem' }}
+            >
+              Download the food and groceries you love
+            </Typography>
+            <Box className="d-flex  align-items-center justify-content-center mb-4 mt-5">
+              <img className="img-fluid" src={Scanner} alt="Scanner" style={{ maxWidth: '150px' }} />
+              <Typography
+                className="text-white mt-3"
+                style={{ fontSize: '1rem', textAlign: 'center' }}
+              >
+                It's all at your fingertips – the restaurants and shops you love. Find the right food and groceries to suit your mood, and make the first bite last. Go ahead, download us.
+              </Typography>
+            </Box>
 
-        <Grid container spacing={2}>
-          <Grid item>
-            <Button
-              variant="contained"
-              sx={{
-                display: "flex",
-                backgroundColor: "black",
-                borderRadius: 3,
-                padding: "10px 20px",
-                color: "white",
-                "&:hover": { backgroundColor: "#444" },
-              }}
-            >
-              <Icon icon="mdi:apple" style={{ fontSize: "24px", marginRight: 10 }} />
-              <Box textAlign="left">
-                <Typography>Download on the</Typography>
-                <Typography variant="h6" fontWeight="bold">
-                  App Store
-                </Typography>
-              </Box>
-            </Button>
+     {/* App Store Buttons */}
+            <Box className="d-flex ">
+              <Button variant="contained" color="primary" href="#" className="d-flex align-items-center  rounded-3" style={{ backgroundColor: 'black',  }} >
+
+                <Box component="img" src={AppStore} alt="App Store" width="30px" />
+                <Box>
+                  <Typography className="text-white" variant="body2">
+                    Download on the
+                  </Typography>
+                  <Typography className="text-white font-weight-bold">
+                    App Store
+                  </Typography>
+                </Box>
+              </Button>
+
+              <Button variant="contained" color="primary" href="#" className="d-flex align-items-center ms-1   rounded-3" style={{ backgroundColor: 'black' }}>
+                <Box component="img" src={PlayStore} alt="Google Play" width="30px" />
+                <Box>
+                  <Typography className="text-white" variant="body2">
+                    Get it on
+                  </Typography>
+                  <Typography className="text-white font-weight-bold">
+                    Google Play
+                  </Typography>
+                </Box>
+              </Button>
+
+              <Button variant="contained" color="primary" href="#" className="d-flex align-items-center ms-1  rounded-3" style={{ backgroundColor: 'black' }}>
+
+
+                <Box component="img" src={AppGallery} alt="AppGallery" width="30px" />
+                <Box>
+                  <Typography className="text-white" variant="body2">
+                    Explore it on
+                  </Typography>
+                  <Typography className="text-white font-weight-bold">
+                    AppGallery
+                  </Typography>
+                </Box>
+              </Button>
+            </Box>
           </Grid>
-          <Grid item>
-            <Button
-              variant="contained"
-              sx={{
-                display: "flex",
-                backgroundColor: "black",
-                borderRadius: 3,
-                padding: "10px 20px",
-                color: "white",
-                "&:hover": { backgroundColor: "#444" },
+
+          {/* Mobile Image Section */}
+          <Grid item xs={12} md={6} className="position-relative">
+            <Box
+              component="img"
+              src={Mobile}
+              alt="Mobile App"
+              className="position-absolute bottom-0 start-0 w-100"
+              style={{
+                objectFit: 'contain',
+                height: 'auto',
+                marginBottom: '-40%',
               }}
-            >
-              <img
-                src={download}
-                alt="Google Play"
-                width="40px"
-                style={{ marginRight: 10 }}
-              />
-              <Box textAlign="left">
-                <Typography>Get it on</Typography>
-                <Typography variant="h6" fontWeight="bold">
-                  Google Play
-                </Typography>
-              </Box>
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button
-              variant="contained"
-              sx={{
-                display: "flex",
-                backgroundColor: "black",
-                borderRadius: 3,
-                padding: "10px 20px",
-                color: "white",
-                "&:hover": { backgroundColor: "#444" },
-              }}
-            >
-              <img
-                src={img}
-                alt="AppGallery"
-                width="40px"
-                style={{ marginRight: 10 }}
-              />
-              <Box textAlign="left">
-                <Typography>Explore it on</Typography>
-                <Typography variant="h6" fontWeight="bold">
-                  AppGallery
-                </Typography>
-              </Box>
-            </Button>
+            />
           </Grid>
         </Grid>
-      </Box>
-      <img
-        width="650px"
-        src={phone}
-        alt="App Preview"
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-      />
+      </Container>
+
+
+
+
+
     </Box>
   );
 };
 
-export default OnlineStore;
+export default OnlineOrder;
