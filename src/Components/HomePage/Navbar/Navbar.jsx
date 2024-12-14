@@ -279,6 +279,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Headerimg from "../../../images/headericon.svg";
 import Logo from "../../../images/logo.png";
+import { Outlet } from 'react-router-dom';
 
 function Navbar() {
     const [open, setOpen] = React.useState(false);
@@ -331,10 +332,12 @@ function Navbar() {
                         <Grid container spacing={isMobile ? 1 : 2} alignItems="center">
                             <Grid item>
                                 <Button
+                                onClick={handleOpen}
                                     sx={{
                                         color: '#000',
                                         fontSize: isMobile ? '12px' : '14px',
-                                        borderRadius: '20px',
+                                        borderRadius: '10px',
+                                        border:"1px solid",
                                         '&:hover': { backgroundColor: '#f0f0f0' },
                                     }}
                                 >
@@ -347,7 +350,8 @@ function Navbar() {
                                         backgroundColor: '#e21b70',
                                         color: '#fff',
                                         fontSize: isMobile ? '12px' : '14px',
-                                        borderRadius: '20px',
+                                        borderRadius: '10px',
+                                        border:"1px solid",
                                         '&:hover': { backgroundColor: '#c2185b' },
                                     }}
                                 >
@@ -374,20 +378,24 @@ function Navbar() {
                                 >
                                     <Box
                                         sx={{
+                                            display:"flex",
+                                           
                                             position: 'absolute',
-                                            top: '50%',
-                                            left: '50%',
+                                            top: '25%',
+                                            left: '80%',
                                             transform: 'translate(-50%, -50%)',
-                                            width: 200,
+                                            width: 150,
+                                            height: 80,
                                             bgcolor: 'background.paper',
                                             boxShadow: 24,
                                             borderRadius: 2,
-                                            p: 2,
-                                            textAlign: 'center'
+                                            p: 3,
+                                            textAlign: 'center',
+                                            cursor:"pointer"
                                         }}
                                     >
-                                        <Typography variant="body2" sx={{ mb: 1 }}>English</Typography>
-                                        <CheckCircleOutlineIcon sx={{ color: '#e21b70' }} />
+                                        <Typography className='mt-1' variant="body2" sx={{ marginX:"10px",textAlign:"center" }}>English</Typography>
+                                        <CheckCircleOutlineIcon sx={{ color: '#e21b70'  , '&:hover': {color:"black"} }} />
                                     </Box>
                                 </Modal>
                             </Grid>
@@ -408,6 +416,7 @@ function Navbar() {
                     </Grid>
                 </Grid>
             </AppBar>
+            <Outlet/>
         </>
     );
 }

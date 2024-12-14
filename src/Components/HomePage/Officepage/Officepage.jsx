@@ -1,24 +1,24 @@
 import { Box, Button, Card, CardContent, Grid, Typography } from '@mui/material'
 import React from 'react'
-import HERO from "../../../images/chif.webp"
+import HERO from "../../../images/officeimg.webp"
 
-const PrepareFood = () => {
+const  Officepage = () => {
   return (
-    <>
-      <Grid
+    <div>
+      <Grid 
         container
         style={{
-       
+
           paddingTop: "50px",
          marginBottom:"200px"
          
         }}
       >
-        <Typography style={{ marginBottom: "30px", paddingLeft: "50px" }} variant="h4">
-          <b>You prepare the food, we handle the rest</b>
+        <Typography style={{ marginBottom: "30px", paddingLeft: "110px" }} variant="h4">
+          <b>Take your office out to lunch</b>
         </Typography>
 
-        <Grid className='relative' item xs={12} md={12}>
+        <Grid  item xs={12} md={12}>
           <Box sx={{ height: '60vh', width: '99vw' }}>
             <Box
               sx={{
@@ -29,26 +29,22 @@ const PrepareFood = () => {
                 maxHeight: '100%',
                 minWidth: '100%',
                 maxWidth: '100%',
+                 position:"relative"
               }}
             />
           </Box>
 
-          <Grid sx={{  position: 'absolute', top: '100%', left: '8%', marginTop:"18%"}} className='absolute top-48 start-16' item xs={12} md={6} style={{ display: "flex", alignItems: "center" }}>
+          <Grid  item xs={12} md={6} style={{ display: "flex", alignItems: "center"   }}>
             <div>
-              <Card style={{ marginTop: "20px", padding: "20px", borderRadius: "15px" }}>
+              <Card sx={{position: 'absolute',top:"4700px",  left: '8%' }} style={{ marginTop: "20px", padding: "20px", borderRadius: "15px",width:"600px",height:"280px" }}>
                 <CardContent>
                   <Typography sx={{ fontSize: "24px" }} variant="h5">
-                    List your restaurant or shop on foodpanda
+                  foodpanda for business
                   </Typography>
                   <Typography sx={{ paddingY: "10px", fontSize: "16px" }} variant="body1" m>
-                    Would you like millions of new customers to enjoy your amazing food and groceries? So would we!
+                  Order lunch or fuel for work-from-home, late nights in the office, corporate events, client meetings, and much more.
                   </Typography>
-                  <Typography style={{ fontSize: '16px' }} variant="body2">
-                    It's simple: we list your menu and product lists online, help you process orders, pick them up, and deliver them to hungry pandas – in a heartbeat!
-                  </Typography>
-                  <Typography sx={{ paddingY: "10px", fontSize: '16px' }} variant="body2" m>
-                    Interested? Let's start our partnership today!
-                  </Typography>
+                 
                   <Button sx={{ paddingY: "10px" }} variant="contained" style={{ marginTop: "10px", backgroundColor: '#e21b70' }}>
                     Get started
                   </Button>
@@ -63,8 +59,8 @@ const PrepareFood = () => {
       </Grid>
 
       
-    </>
+    </div>
   )
 }
 
-export default PrepareFood
+export default Officepage

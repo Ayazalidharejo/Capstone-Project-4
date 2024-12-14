@@ -30,6 +30,7 @@ import Sheikhupura from "../../../../images/city-tile-Sheikhupura.jpg.webp";
 import Sialkot from "../../../../images/Sialkot.webp";
 import Sukkur from "../../../../images/Sukkur.webp";
 import WahCantt from "../../../../images/city-tile-WahhCannt.webp";
+import { Scale } from '@mui/icons-material';
 
 const cities = [
     { id: 1, name: 'Islamabad', image: Islamabad },
@@ -64,6 +65,7 @@ const cities = [
     { id: 30, name: 'WahCantt', image: WahCantt },
 ];
 const Card = () => {
+    
     return (
         <Box sx={{paddingX:"100px"}} className=" py-5">
             <Typography variant="h4" align="start" gutterBottom>
@@ -84,18 +86,27 @@ const Card = () => {
                                 position: 'relative',
                             }}
                         >
-                            <img
-                                src={city.image}
-                                alt={city.name}
-                                style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    objectFit: 'cover',
-                                    position: 'absolute',
-                                    top: 0,
-                                    left: 0,
-                                }}
-                            />
+                          <img
+                         
+  src={city.image}
+  alt={city.name}
+  style={{
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    transition: 'transform 0.5s ease-in-out',
+    cursor:"pointer"
+  }}
+  onMouseOver={(e) => {
+    e.target.style.transform = 'scale(1.2)';
+  }}
+  onMouseOut={(e) => {
+    e.target.style.transform = 'scale(1)';
+  }}
+/>
                             <Button
                                 variant="contained"
                                 sx={{
@@ -117,6 +128,13 @@ const Card = () => {
                     </Grid>
                 ))}
             </Grid>
+            <Typography 
+    variant="h3"
+    className="text-start font-weight-bold pt-5 ms-3"
+   
+  >
+    Put us in your pocket
+  </Typography>
         </Box>
     );
 };

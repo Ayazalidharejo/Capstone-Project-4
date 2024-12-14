@@ -6,7 +6,8 @@ import hero from "../../../images/refresh.webp"
 
 
 
-const HeroSection = () => {
+
+const HeroSection = () => { 
   return (
     <Box style={{backgroundColor:"#f7f7f7"}}    sx={{ display: 'flex',paddingTop:"60px" }}>
       <Grid container spacing={2}>
@@ -105,6 +106,7 @@ const HeroSection = () => {
   />
 </Grid>
       </Grid>
+     
     </Box>
   )
 }
