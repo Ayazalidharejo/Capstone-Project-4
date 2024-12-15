@@ -1,5 +1,5 @@
 import { Box, Grid, Typography, Button } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import Islamabad from "../../../../images/Islamabad.webp";
 import Karachi from "../../../../images/Karachi.webp";
 import Lahore from "../../../../images/Lahore.webp";
@@ -65,9 +65,18 @@ const cities = [
     { id: 30, name: 'WahCantt', image: WahCantt },
 ];
 const Card = () => {
+    const [imageName, setImageName] = useState();
     
+    
+    const handleClick = (name) => {
+        setImageName(name);
+        console.log(name);
+        
+      };
     return (
+
         <Box sx={{paddingX:"100px"}} className=" py-5">
+             <h1>{imageName}</h1>
             <Typography variant="h4" align="start" gutterBottom>
                 Find us in these cities and many more!
             </Typography>
@@ -87,7 +96,7 @@ const Card = () => {
                             }}
                         >
                           <img
-                         
+                        
   src={city.image}
   alt={city.name}
   style={{
@@ -106,6 +115,11 @@ const Card = () => {
   onMouseOut={(e) => {
     e.target.style.transform = 'scale(1)';
   }}
+
+  onClick={() => handleClick(city.name)}
+   
+   
+  
 />
                             <Button
                                 variant="contained"

@@ -280,6 +280,11 @@ import { useTheme } from '@mui/material/styles';
 import Headerimg from "../../../images/headericon.svg";
 import Logo from "../../../images/logo.png";
 import { Outlet } from 'react-router-dom';
+import SignupModal from '../outh/Signup/Signup';
+import SigninModal from '../outh/Signin/Signin';
+import Drawerpage from '../DrowerPage/Drawerpage';
+
+
 
 function Navbar() {
     const [open, setOpen] = React.useState(false);
@@ -288,7 +293,25 @@ function Navbar() {
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [opeen, setOpeen] = React.useState(false);
+  const handlesOpen = () => setOpeen(true);
+  const handlesClose = () => setOpeen(false);
+  const [show, sethidden] = React.useState(false);
+  const handleerOpen = () => sethidden(true);
+  const handleClosee = () => sethidden(false);
 
+
+  const [opendraw, setOpendraw] = React.useState(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpendraw(newOpen);
+  };
+
+
+  //img work
+
+
+  ///end img work
     return (
         <>
             {/* Top Bar */}
@@ -332,7 +355,7 @@ function Navbar() {
                         <Grid container spacing={isMobile ? 1 : 2} alignItems="center">
                             <Grid item>
                                 <Button
-                                onClick={handleOpen}
+                             onClick={handleerOpen}
                                     sx={{
                                         color: '#000',
                                         fontSize: isMobile ? '12px' : '14px',
@@ -346,6 +369,7 @@ function Navbar() {
                             </Grid>
                             <Grid item>
                                 <Button
+                                onClick={ handlesOpen}
                                     sx={{
                                         backgroundColor: '#e21b70',
                                         color: '#fff',
@@ -400,7 +424,8 @@ function Navbar() {
                                 </Modal>
                             </Grid>
                             <Grid item>
-                                <Button
+                                <Button 
+                                onClick={ toggleDrawer(true)}
                                     sx={{
                                         color: '#000',
                                         '&:hover': {
@@ -416,6 +441,9 @@ function Navbar() {
                     </Grid>
                 </Grid>
             </AppBar>
+            {/* <SignupModal opeen={opeen} handlesClose={handlesClose    }  />
+            <SigninModal show={show} handleClosee ={handleClosee} />
+            <Drawerpage opendraw={opendraw} toggleDrawer ={toggleDrawer} /> */}
             <Outlet/>
         </>
     );

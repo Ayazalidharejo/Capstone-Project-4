@@ -11,6 +11,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Provider } from 'react-redux';
 import Navbar from './Components/HomePage/Navbar/Navbar';
 import Errorpage from './Components/Errorpage/Errorpage';
+import SignupModal from './Components/HomePage/outh/Signup/Signup';
 
 
 
@@ -27,6 +28,9 @@ element :< HomePage/>,
     }],
     errorElement: < Errorpage/>
   },
+  // {
+  //   path:  'SignupModal',element:  <SignupModal/>
+  // }
 //   {
 //     path: "/sign-up",
 //     element: <Signup />

@@ -1,9 +1,7 @@
 import * as React from 'react';
 
 
-
 import Modal from '@mui/material/Modal';
-
 import {
   Autocomplete,
   Box,
@@ -27,21 +25,15 @@ import { useForm } from "react-hook-form";
 import {  Controller } from "react-hook-form";
 import { json, Link } from "react-router-dom";
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+
+
+
+
 
 
 const schema = yup.object({
-
+  firstName: yup.string().min(3).max(10).required("First Name is requied"),
+  lastname: yup.string().required("second Name is requied"),
   email: yup.string().required("Email is requied"),
   Password: yup.string().required("Password is requied"),
   
@@ -50,31 +42,40 @@ const schema = yup.object({
 
 
 
+ 
 
- function SigninModal(props) {
-  const { handleClosee,show}=props
-    const [showPassword, setShowPassword] = useState(false);
-    const { control, handleSubmit, formState: { errors },reset } = useForm({
-     
-      defaultValues: {
-        email: "",
-        Password: "",
+
+  
+
+ function SignupModal(props) {
+ 
+ console.log("hello this is ayaz ali")
+  const { opeen,handlesClose }=props
+  const [showPassword, setShowPassword] = useState(false);
+  const { control, handleSubmit, formState: { errors },reset } = useForm({
    
-        
-      },
-      resolver :yupResolver(schema),
-    });
-    
+    defaultValues: {
+      firstName: "",
+      lastname: "",
+      email: "",
+      Password: "",
+ 
+      
+    },
+    resolver :yupResolver(schema),
+  });
+  
+
   return (
     <div>
-      
+              
       <Modal
-        open={show}
-        onClose={handleClosee}
+        open={opeen}
+        onClose={handlesClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div style={{position:"relative", }} className="mt-3 ">
+       <div style={{position:"relative", }} className="mt-3 ">
         <div >
       <Grid className='bg-white p-5 rounded-3'  style={{position:"absolute", marginTop:"8%",
   left: '35%',}} >
@@ -105,15 +106,43 @@ const schema = yup.object({
              alert('Registration successfully');
              
                   
-             handleClosee()
-              console.log("hello this is ayaz ali")
+             handlesClose()
               
             })}
           >
             <Box className=" ">
               <Grid >
-               
-              
+                <Grid >
+                  <Controller
+                    name="firstName"
+                    control={control}
+                    render={({ field }) => <TextField 
+                    error={errors?.firstName?.message || ""}
+                    type="text"
+                    size="small"
+                    {...field}
+                    fullWidth
+                    placeholder="First Name"
+                  />}
+                  />
+                 <p className="text-danger">{errors?. firstName?.message}</p>
+                </Grid>
+                <Grid className="mx-1 " >
+                <Controller 
+                    name="lastname"
+                    control={control}
+                    render={({ field }) => <TextField 
+                    error={errors?.lastname?.message || ""}
+                  
+                    type="text"
+                    size="small"
+                    {...field}
+                    fullWidth
+                    placeholder="Second  Name"
+                  />}
+                  />
+                    <p className="text-danger">{errors?.lastname?.message}</p>
+                </Grid>
                 <Grid className=" my-3" >
                 <Controller 
                     name="email"
@@ -175,10 +204,9 @@ const schema = yup.object({
       </Grid>
     </div>
     </div>
-
       </Modal>
      
     </div>
   );
 }
-export default SigninModal;
+export default SignupModal;
