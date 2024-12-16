@@ -1,0 +1,17 @@
+
+
+.image {
+min-width: 410px;
+max-width: 410px;
+min-height: 370px;
+max-height: 370px;
+transition: all 0.8s ease;
+cursor: pointer;
+}
+.image:hover {
+transform: scale(1.2);
+border: 1px solid;
+}
+.image-container {
+overflow: hidden;
+}

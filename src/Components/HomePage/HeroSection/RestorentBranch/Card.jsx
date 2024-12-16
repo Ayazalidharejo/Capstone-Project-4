@@ -33,6 +33,7 @@ import WahCantt from "../../../../images/city-tile-WahhCannt.webp";
 import { Scale } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { Addlocation } from '../../../../Slices/Imagevaluve';
+import { Link } from 'react-router-dom';
 
 const cities = [
     { id: 1, name: 'Islamabad', image: Islamabad },
@@ -98,6 +99,7 @@ const Card = () => {
                                 position: 'relative',
                             }}
                         >
+                          <Link to="/Restorentspage">
                           <img
                         
   src={city.image}
@@ -124,6 +126,7 @@ const Card = () => {
    
   
 />
+                          </Link>
                             <Button
                                 variant="contained"
                                 sx={{
