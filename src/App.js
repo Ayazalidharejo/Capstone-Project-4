@@ -11,7 +11,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Provider } from 'react-redux';
 import Navbar from './Components/HomePage/Navbar/Navbar';
 import Errorpage from './Components/Errorpage/Errorpage';
-import SignupModal from './Components/HomePage/outh/Signup/Signup';
+// import SignupModal from './Components/HomePage/outh/Signup/Signup';
+import { store } from './Store/Store';
 
 
 
@@ -52,8 +53,10 @@ element :< HomePage/>,
   return (
     <div className="App">
      
+     <Provider store={store}>
               <RouterProvider router={router} />
 
+      </Provider>
     
     </div>
   );

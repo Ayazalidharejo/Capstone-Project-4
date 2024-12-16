@@ -283,6 +283,7 @@ import { Outlet } from 'react-router-dom';
 import SignupModal from '../outh/Signup/Signup';
 import SigninModal from '../outh/Signin/Signin';
 import Drawerpage from '../DrowerPage/Drawerpage';
+import { useSelector } from 'react-redux';
 
 
 
@@ -299,7 +300,7 @@ function Navbar() {
   const [show, sethidden] = React.useState(false);
   const handleerOpen = () => sethidden(true);
   const handleClosee = () => sethidden(false);
-
+//   const { Value } = useSelector((state) => state.Lacation);
 
   const [opendraw, setOpendraw] = React.useState(false);
 
@@ -440,10 +441,11 @@ function Navbar() {
                         </Grid>
                     </Grid>
                 </Grid>
+                {/* <h1>{Value.name}</h1> */}
             </AppBar>
-            {/* <SignupModal opeen={opeen} handlesClose={handlesClose    }  />
+            <SignupModal opeen={opeen} handlesClose={handlesClose    }  />
             <SigninModal show={show} handleClosee ={handleClosee} />
-            <Drawerpage opendraw={opendraw} toggleDrawer ={toggleDrawer} /> */}
+            <Drawerpage opendraw={opendraw} toggleDrawer ={toggleDrawer} />
             <Outlet/>
         </>
     );

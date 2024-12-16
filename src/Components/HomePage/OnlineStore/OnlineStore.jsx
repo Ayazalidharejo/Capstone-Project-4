@@ -12,7 +12,7 @@ const OnlineOrder = () => {
   return (
     <>
  
-    <Box className="container">
+    <Box className="containr">
      
       <Container 
         style={{ backgroundColor: '#e21b70',height:"350px"   }}

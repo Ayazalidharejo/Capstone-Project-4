@@ -31,6 +31,8 @@ import Sialkot from "../../../../images/Sialkot.webp";
 import Sukkur from "../../../../images/Sukkur.webp";
 import WahCantt from "../../../../images/city-tile-WahhCannt.webp";
 import { Scale } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { Addlocation } from '../../../../Slices/Imagevaluve';
 
 const cities = [
     { id: 1, name: 'Islamabad', image: Islamabad },
@@ -65,18 +67,19 @@ const cities = [
     { id: 30, name: 'WahCantt', image: WahCantt },
 ];
 const Card = () => {
-    const [imageName, setImageName] = useState();
+    // const [imageName, setImageName] = useState();
+    const usedispach =useDispatch()
     
     
-    const handleClick = (name) => {
-        setImageName(name);
-        console.log(name);
+    // const handleClick = (name) => {
+    //     setImageName(name);
+    //     console.log(name);
         
-      };
+    //   };
     return (
 
         <Box sx={{paddingX:"100px"}} className=" py-5">
-             <h1>{imageName}</h1>
+             {/* <h1>{imageName}</h1> */}
             <Typography variant="h4" align="start" gutterBottom>
                 Find us in these cities and many more!
             </Typography>
@@ -116,7 +119,7 @@ const Card = () => {
     e.target.style.transform = 'scale(1)';
   }}
 
-  onClick={() => handleClick(city.name)}
+  onClick={() => usedispach(Addlocation(city))}
    
    
   
