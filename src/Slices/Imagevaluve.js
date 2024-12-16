@@ -11,9 +11,9 @@ export const counterSlice = createSlice({
     reducers:{
         Addlocation :(state,action)=>{
 
- state.Value.push({...action.payload})
-
-console.log(action,"action");
+            state.Value.push({...action.payload})
+            state.name = action.payload.name;
+            console.log(action,"action");
 
 
 

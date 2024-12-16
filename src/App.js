@@ -13,6 +13,7 @@ import Navbar from './Components/HomePage/Navbar/Navbar';
 import Errorpage from './Components/Errorpage/Errorpage';
 // import SignupModal from './Components/HomePage/outh/Signup/Signup';
 import { store } from './Store/Store';
+import Restorentspage from './Components/Restorentspage/Restorentspage';
 
 
 
@@ -29,9 +30,9 @@ element :< HomePage/>,
     }],
     errorElement: < Errorpage/>
   },
-  // {
-  //   path:  'SignupModal',element:  <SignupModal/>
-  // }
+  {
+    path:  '/Restorentspage',element:  <Restorentspage/>
+  }
 //   {
 //     path: "/sign-up",
 //     element: <Signup />

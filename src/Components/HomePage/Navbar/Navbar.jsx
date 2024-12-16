@@ -284,6 +284,7 @@ import SignupModal from '../outh/Signup/Signup';
 import SigninModal from '../outh/Signin/Signin';
 import Drawerpage from '../DrowerPage/Drawerpage';
 import { useSelector } from 'react-redux';
+import './index.css';
 
 
 
@@ -300,7 +301,9 @@ function Navbar() {
   const [show, sethidden] = React.useState(false);
   const handleerOpen = () => sethidden(true);
   const handleClosee = () => sethidden(false);
-//   const { Value } = useSelector((state) => state.Lacation);
+  const  location  = useSelector((state) => state.location);
+
+
 
   const [opendraw, setOpendraw] = React.useState(false);
 
@@ -350,8 +353,13 @@ function Navbar() {
                         <Typography variant="h6" sx={{ color: '#e21b70', ml: 1, fontWeight: 'bold', fontSize: isMobile ? '16px' : '20px' }}>
                             foodpanda
                         </Typography>
-                    </Grid>
+                      
+     
 
+     
+
+                    </Grid>
+                    {location?.name && <p className=' text-black d-flex align-items-center mt-3 fs-6 text-opacity-50 '> <b className='location'>  <Icon className='fs-5' icon="akar-icons:location" /> Location: {location.name} </b></p>}
                     <Grid item>
                         <Grid container spacing={isMobile ? 1 : 2} alignItems="center">
                             <Grid item>
@@ -367,6 +375,8 @@ function Navbar() {
                                 >
                                     Log In
                                 </Button>
+                                      
+             
                             </Grid>
                             <Grid item>
                                 <Button
@@ -441,7 +451,7 @@ function Navbar() {
                         </Grid>
                     </Grid>
                 </Grid>
-                {/* <h1>{Value.name}</h1> */}
+                
             </AppBar>
             <SignupModal opeen={opeen} handlesClose={handlesClose    }  />
             <SigninModal show={show} handleClosee ={handleClosee} />
