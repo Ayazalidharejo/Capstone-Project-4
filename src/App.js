@@ -10,25 +10,37 @@ import Errorpage from "./Components/Errorpage/Errorpage";
 // import SignupModal from './Components/HomePage/outh/Signup/Signup';
 import { store } from "./Store/Store";
 import Restorentspage from "./Components/Restorentspage/Restorentspage";
+import FilterProduct from "./Components/Filterproduct/FilterProduct";
 
 function App() {
   const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Navbar />,
-
-      children: [
+    { path: "/", element: <Navbar />, 
+      children:[{
+        path: "",
+        element: <HomePage />,
+      },
+        
         {
-          path: "",
-          element: <HomePage />,
-        },
-      ],
-      errorElement: <Errorpage />,
-    },
-    {
-      path: "/Restorentspage",
-      element: <Restorentspage />,
-    },
+        path:"",
+        element: <Errorpage />
+      },
+      
+      {
+        path: "/Restorentspage",
+        element: <Restorentspage />,
+      },
+      {
+        path: "/FilterProduct",
+        element: <FilterProduct />,
+      },
+     
+     
+
+    ],
+       },
+    
+    
+    
   ]);
 
   return (
