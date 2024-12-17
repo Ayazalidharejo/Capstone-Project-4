@@ -1,66 +1,71 @@
-import { Box, Button, Card, CardContent, Grid, Typography } from '@mui/material'
 import React from 'react'
-import HERO from "../../../images/officeimg.webp"
+import { Box, Button, Card, CardContent, Grid, Typography } from '@mui/material';
+import LunchImg from '../../../images/officeimg.webp';
 
-const  Officepage = () => {
-  return (
-    <div>
-      <Grid 
-        container
-        style={{
+const LunchPage = () => {
+    return (
 
-          paddingTop: "50px",
-         marginBottom:"200px"
-         
-        }}
-      >
-        <Typography style={{ marginBottom: "30px", paddingLeft: "110px" }} variant="h4">
-          <b>Take your office out to lunch</b>
-        </Typography>
+        <Box className=' mt-5 pt-5'>
 
-        <Grid  item xs={12} md={12}>
-          <Box sx={{ height: '60vh', width: '99vw' }}>
-            <Box
-              sx={{
-                backgroundImage: `url(${HERO})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                minHeight: '100%',
-                maxHeight: '100%',
-                minWidth: '100%',
-                maxWidth: '100%',
-                 position:"relative"
-              }}
-            />
-          </Box>
+            <Grid container sx={{ pt: 6, mb: 25, }}>
 
-          <Grid  item xs={12} md={6} style={{ display: "flex", alignItems: "center"   }}>
-            <div>
-              <Card sx={{position: 'absolute',top:"4700px",  left: '8%' }} style={{ marginTop: "20px", padding: "20px", borderRadius: "15px",width:"600px",height:"280px" }}>
-                <CardContent>
-                  <Typography sx={{ fontSize: "24px" }} variant="h5">
-                  foodpanda for business
-                  </Typography>
-                  <Typography sx={{ paddingY: "10px", fontSize: "16px" }} variant="body1" m>
-                  Order lunch or fuel for work-from-home, late nights in the office, corporate events, client meetings, and much more.
-                  </Typography>
-                 
-                  <Button sx={{ paddingY: "10px" }} variant="contained" style={{ marginTop: "10px", backgroundColor: '#e21b70' }}>
-                    Get started
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </Grid>
+                <Grid className=' container' item xs={12} sx={{ pl: { xs: 2, sm: 5 }, mb: 3 }}>
 
-        </Grid>
+                    <Typography  variant="h4" textAlign={{  xs: 'center', sm: 'left' }} >
+
+                        <b>Take your office out to lunch</b>
+
+                    </Typography>
+
+                </Grid>
+
+                <Grid item xs={12} sx={{ position: 'relative' }}>
+
+                    {/* Background Image Section */}
+
+                    <Box sx={{ height: { xs: '40vh', sm: '50vh', md: '50vh' }, width: '100%',  backgroundImage: `url(${LunchImg})`,  backgroundSize: 'cover', backgroundPosition: 'center', }} />
+
+                    {/* Card Section */}
+
+                    <Grid item xs={12} sm={8} md={6} sx={{ position: 'absolute', top: { xs: '52%', sm: '62%', md: '69%' }, left: { xs: '3%', sm: '10%', md: '15%' }, display: 'flex', alignItems: 'center', }} >
+
+                        <Card sx={{ mt: 1, p: 1, borderRadius: 2, width: { xs: '95%', sm: '80%', md: '70%' }, }}>
+
+                            <CardContent>
+
+                                <Typography variant="h5" fontSize={{ xs: '20px', md: '24px' }}>
+                                foodpanda for business
+                                </Typography>
+
+                                <Typography variant="body1" sx={{ py: 3, fontSize: { xs: '14px', sm: '16px' }, }}>
+
+                                Order lunch or fuel for work-from-home, late nights in the office, corporate events, client meetings, and much more.
+
+                                </Typography>
+
+            
+
+                                <Button
+
+                                    variant="contained" sx={{ py: 1, backgroundColor: '#e21b70', }} > Get started
+
+                                </Button>
+
+                            </CardContent>
+                        </Card>
+
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+
+        </Box>
 
 
-      </Grid>
 
-      
-    </div>
-  )
+
+    )
 }
 
-export default Officepage
+export default LunchPage

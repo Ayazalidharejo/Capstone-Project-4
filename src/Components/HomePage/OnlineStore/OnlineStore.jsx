@@ -1,112 +1,146 @@
+
+
+
+
 import React from 'react';
-import '../../../index.css';
 import { Container, Grid, Typography, Box, Button } from '@mui/material';
 import Mobile from '../../../images/mobile.webp';
 import AppGallery from '../../../images/image.png';
-
 import PlayStore from '../../../images/download.pn.png';
 import Scanner from '../../../images/QR.png';
 import AppleIcon from '@mui/icons-material/Apple';
 
 const OnlineOrder = () => {
   return (
-    <>
- 
-    <Box className="containr">
-     
-      <Container 
-        style={{ backgroundColor: '#e21b70',height:"350px"   }}
-        maxWidth="lg"
-        className=" rounded-4 position-relative"
+    <Box className="container">
+      <Typography
+        variant="h3"
+        className="text-start font-weight-bold mb-4"
+      >
+        Put us in your pocket
+      </Typography>
+
+      <Box
+        style={{ backgroundColor: '#c21760', width: '100%',  height: '70%' }}
+        className="position-relative rounded-5 p-4"
       >
         <Grid container alignItems="center" spacing={4}>
           {/* Text Section */}
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
             <Typography
-              className="text-white mt-3 mb-2"
-              style={{ fontSize: '1.36rem' }}
+              className="text-white py-2 fs-4"
             >
               Download the food and groceries you love
             </Typography>
-            <Box className="d-flex  align-items-center justify-content-center mb-2 mt-5">
-              <img className="img-fluid border border-white p-2 me-3" src={Scanner} alt="Scanner" style={{ maxWidth: '100px' }} />
+            <Box className="d-flex align-items-center mb-2 mt-3">
+              <Box className="border me-3">
+                <img className="p-2 d-none d-lg-block d-md-block" src={Scanner} alt="Scanner" style={{ maxWidth: '100px' }} />
+              </Box>
               <Typography
-                className="text-white mt-3"
-                style={{ fontSize: '1rem', textAlign: 'start ps-5' }}
+                className="text-white"
+      
               >
-                It's all at your fingertips – the restaurants and shops you love. Find the right food and groceries to suit your mood, and make the first bite last. Go ahead, download us.
+                It's all at your fingertips – the restaurants and <br /> shops you love. Find the right food and <br/> groceries to suit your mood, and make the <br /> first bite last. Go ahead, download us.
               </Typography>
             </Box>
 
-     {/* App Store Buttons */}
-            <Box  className="d-flex ">
-              <Button style={{height:"50px"}}  variant="contained" color="primary"  className="d-flex align-items-center  rounded-3 bg-black border " >
-<AppleIcon className='fs-1'/>
-                <Box />
-                <Box >
-                  <Typography style={{fontSize:"8px"}}   className="text-white   text-center " >
-                    Download on the
-                  </Typography>
-                  <Typography variant='body2'   className="text-white   ">
-                    App Store
-                  </Typography>
-                </Box>
-              </Button>
+            {/* Buttons */}
 
-              <Button   variant="contained" color="primary" href="#" className="d-flex align-items-center ms-1   rounded-3 bg-black border" style={{height:"50px" }}>
-                <Box component="img" src={PlayStore} alt="Google Play" width="50px" />
-                <Box >
-                  <Typography style={{fontSize:"8px"}} className="text-white" variant="body2">
-                    Get it on
-                  </Typography>
-                  <Typography style={{fontSize:"14px"}} className="text-white font-weight-bold fontsize">
-                    Google Play
-                  </Typography>
-                </Box>
-              </Button>
+            <Box className="py-4 mb-3">
 
-              <Button  variant="contained" color="primary" href="#" className="d-flex align-items-center ms-1  rounded-3 bg-black border" style={{height:"50px" }}>
+              <Grid container spacing={1} justify="center">
 
+                {/* App Store Button */}
+                <Grid item xs={12} sm={4} md={4}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                  
+                    className="d-flex align-items-center rounded-3 w-100"
+                    style={{ backgroundColor: 'black', padding: '5px 0px' }}
+                  >
+                    < AppleIcon />
+                    <Box ml={2}>
+                      <Typography style={{fontSize:"10px"}} className="text-white" variant="">
+                        Download on the
+                      </Typography>
+                      <Typography style={{fontSize:"15px"}} className="text-white font-weight-bold">
+                        App Store
+                      </Typography>
+                    </Box>
+                  </Button>
+                </Grid>
 
-                <Box style={{height:"50px"}} component="img" src={AppGallery} alt="AppGallery"  />
-                <Box>
-                  <Typography style={{fontSize:"8px"}} className="text-white" variant="body2">
-                    Explore it on
-                  </Typography>
-                  <Typography style={{fontSize:"14px"}} className="text-white font-weight-bold">
-                    AppGallery
-                  </Typography>
-                </Box>
-              </Button>
+                {/* Google Play Button */}
+                <Grid item xs={12} sm={4} md={4}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                 
+                    className="d-flex align-items-center rounded-3 w-100"
+                    style={{ backgroundColor: 'black', padding: '10px 0px' }}
+                  >
+                      <Box component="img" src={ PlayStore} alt="AppGallery" width="30px" />
+                  
+                    <Box ml={2}>
+                      <Typography style={{fontSize:"10px"}} className="text-white" variant="body2">
+                        Get it on
+                      </Typography>
+                      <Typography style={{fontSize:"15px"}} className="text-white font-weight-bold">
+                        Google Play
+                      </Typography>
+                    </Box>
+                  </Button>
+                </Grid>
+
+                {/* AppGallery Button */}
+                <Grid item xs={12} sm={4} md={4}>
+                  <Button 
+                    variant="contained"
+                    color="primary"
+                    className="d-flex align-items-center rounded-3 w-100 "
+                    style={{ backgroundColor: 'black', padding: '10px 0px' }}
+                  >
+                    <Box component="img" src={AppGallery} alt="AppGallery" width="30px" />
+                    <Box ml={2}>
+                      <Typography style={{fontSize:"10px"}} className="text-white" variant="body1">
+                        Explore it on
+                      </Typography>
+                      <Typography style={{fontSize:"15px"}} className="text-white font-weight-bold">
+                        AppGallery
+                      </Typography>
+                    </Box>
+                  </Button>
+                </Grid>
+              </Grid>
             </Box>
+
           </Grid>
 
           {/* Mobile Image Section */}
-          <Grid item xs={12} md={6} className="position-relative">
-            <Box s
+          <Grid
+            item
+            xs={12}
+            md={6}
+            order={{ xs: 2, md: 2 }}
+            className="position-relative"
+          >
+            <Box
+              className="position-absolute top-50 start-50 translate-middle mt-5 "
               component="img"
               src={Mobile}
               alt="Mobile App"
-              className="position-absolute bottom-0 start-0 w-100 ms-3"
               style={{
-              
-              
-                marginBottom: '-43%',
+                position: 'absolute',
+                width: '100%',
+                height:'auto',
                
-                height:"500px"
-                
               }}
             />
           </Grid>
         </Grid>
-      </Container>
-
-
-
-
-
+      </Box>
     </Box>
-    </>
   );
 };
 

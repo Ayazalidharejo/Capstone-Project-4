@@ -1,70 +1,97 @@
-import { Box, Button, Card, CardContent, Grid, Typography } from '@mui/material'
-import React from 'react'
-import HERO from "../../../images/chif.webp"
+import React from 'react';
+import { Box, Button, Card, CardContent, Grid, Typography } from '@mui/material';
+import Cooker from '../../../images/chif.webp';
 
 const PrepareFood = () => {
   return (
-    <>
-      <Grid
-        container
-        style={{
-       
-          paddingTop: "50px",
-         marginBottom:"200px"
-         
-        }}
-      >
-        <Typography style={{ marginBottom: "30px", paddingLeft: "50px" }} variant="h4">
-          <b>You prepare the food, we handle the rest</b>
-        </Typography>
+    <Box>
 
-        <Grid className='relative' item xs={12} md={12}>
-          <Box sx={{ height: '60vh', width: '99vw' }}>
-            <Box
-              sx={{
-                backgroundImage: `url(${HERO})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                minHeight: '100%',
-                maxHeight: '100%',
-                minWidth: '100%',
-                maxWidth: '100%',
-              }}
-            />
-          </Box>
+      <Grid container sx={{  pt: 6, mb: 25, }}>
 
-          <Grid sx={{  position: 'absolute', top: '100%', left: '8%', marginTop:"18%"}} className='absolute top-48 start-16' item xs={12} md={6} style={{ display: "flex", alignItems: "center" }}>
-            <div>
-              <Card style={{ marginTop: "20px", padding: "20px", borderRadius: "15px" }}>
-                <CardContent>
-                  <Typography sx={{ fontSize: "24px" }} variant="h5">
-                    List your restaurant or shop on foodpanda
-                  </Typography>
-                  <Typography sx={{ paddingY: "10px", fontSize: "16px" }} variant="body1" m>
-                    Would you like millions of new customers to enjoy your amazing food and groceries? So would we!
-                  </Typography>
-                  <Typography style={{ fontSize: '16px' }} variant="body2">
-                    It's simple: we list your menu and product lists online, help you process orders, pick them up, and deliver them to hungry pandas – in a heartbeat!
-                  </Typography>
-                  <Typography sx={{ paddingY: "10px", fontSize: '16px' }} variant="body2" m>
-                    Interested? Let's start our partnership today!
-                  </Typography>
-                  <Button sx={{ paddingY: "10px" }} variant="contained" style={{ marginTop: "10px", backgroundColor: '#e21b70' }}>
-                    Get started
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
+        <Grid item xs={12} sx={{ pl: { xs: 2, sm: 5 }, mb: 3 }}>
+
+          <Typography variant="h4" textAlign={{ xs: 'center', sm: 'left' }}>
+
+            <b>You prepare the food, we handle the rest</b>
+
+          </Typography>
+
+        </Grid>
+
+        <Grid item xs={12} sx={{ position: 'relative' }}>
+
+          {/* Background Image Section */}
+
+          <Box 
+            sx={{ 
+              height: { xs: '40vh', sm: '50vh', md: '60vh' }, 
+              width: '100%', 
+              backgroundImage: `url(${Cooker})`, 
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
+
+          {/* Card Section */}
+
+          <Grid item xs={12} sm={8} md={6} sx={{ 
+            position: 'absolute', 
+            top: { xs: '52%', sm: '62%', md: '69%' }, 
+            left: { xs: '3%', sm: '10%', md: '15%' }, 
+            display: 'flex', 
+            alignItems: 'center', 
+          }} >
+
+            <Card sx={{ 
+              mt: 1, 
+              p: 1, 
+              borderRadius: 2, 
+              width: { xs: '95%', sm: '80%', md: '70%' }, 
+            }}>
+
+              <CardContent>
+
+                <Typography variant="h5" fontSize={{ xs: '20px', md: '24px' }}>
+                  List your restaurant or shop on foodpanda
+                </Typography>
+
+                <Typography variant="body1" sx={{ py: 2,fontSize: { xs: '14px', sm: '16px' }, }}>
+
+                  Would you like millions of new customers to enjoy your amazing food and
+                  groceries? So would we!
+
+                </Typography>
+
+                <Typography variant="body2" sx={{ fontSize: { xs: '13px', sm: '14px', md: '16px' }, }}>
+
+                  It's simple: we list your menu and product lists online, help you process
+                  orders, pick them up, and deliver them to hungry pandas – in a heartbeat!
+
+                </Typography>
+                <Typography
+
+                  sx={{ py: 2, fontSize: { xs: '13px', sm: '14px', md: '16px' }, }} variant="body2" >
+                  Interested? Let's start our partnership today!
+
+                </Typography>
+
+                <Button
+
+                  variant="contained" sx={{ py: 1, backgroundColor: '#e21b70',}} > Get started
+
+                </Button>
+
+              </CardContent>
+            </Card>
+            
           </Grid>
 
         </Grid>
 
-
       </Grid>
 
-      
-    </>
-  )
-}
+    </Box>
+  );
+};
 
-export default PrepareFood
+export default PrepareFood;

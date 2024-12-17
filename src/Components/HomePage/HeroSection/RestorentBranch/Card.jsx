@@ -79,7 +79,7 @@ const Card = () => {
     //   };
     return (
 
-        <Box sx={{paddingX:"100px"}} className=" py-5">
+        <Box  className=" container py-5">
              {/* <h1>{imageName}</h1> */}
             <Typography variant="h4" align="start" gutterBottom>
                 Find us in these cities and many more!
