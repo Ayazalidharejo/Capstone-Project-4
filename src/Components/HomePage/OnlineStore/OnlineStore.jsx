@@ -13,12 +13,12 @@ import AppleIcon from '@mui/icons-material/Apple';
 const OnlineOrder = () => {
   return (
     <Box className="container">
-      <Typography
+      {/* <Typography
         variant="h3"
         className="text-start font-weight-bold mb-4"
       >
         Put us in your pocket
-      </Typography>
+      </Typography> */}
 
       <Box
         style={{ backgroundColor: '#c21760', width: '100%',  height: '70%' }}

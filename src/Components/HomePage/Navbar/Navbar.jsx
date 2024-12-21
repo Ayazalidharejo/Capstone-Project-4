@@ -279,16 +279,45 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Headerimg from "../../../images/headericon.svg";
 import Logo from "../../../images/logo.png";
-import { Outlet } from 'react-router-dom';
+import { json, Outlet } from 'react-router-dom';
 import SignupModal from '../outh/Signup/Signup';
 import SigninModal from '../outh/Signin/Signin';
 import Drawerpage from '../DrowerPage/Drawerpage';
 import { useSelector } from 'react-redux';
 import './index.css';
+import { Badge } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import BasicMenu from './Menu/Menu';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import TemporaryDrawer from '../../Favirate/Favirate';
 
 
 
 function Navbar() {
+// favirate start
+
+const [pen, setpen] = React.useState(false);
+
+  const toggleDrawe = (newOpen) => () => {
+    setpen(newOpen);
+  };
+
+    ////favirate end
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const oppen = Boolean(anchorEl);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleCloseer = () => {
+      setAnchorEl(null);
+    };
+
+
+
+
+    
     const [open, setOpen] = React.useState(false);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -302,8 +331,10 @@ function Navbar() {
   const handleerOpen = () => sethidden(true);
   const handleClosee = () => sethidden(false);
   const  location  = useSelector((state) => state.location);
-
-
+ const {cartitems} =useSelector((state)=>state.Cart)
+ const [isLoad, setIsLoad] = useState(false);
+ const Favirate =useSelector((state) => state.Favirate.Favitaes)
+ const [profilevalue,setprofilevalue]=useState()
 
   const [opendraw, setOpendraw] = React.useState(false);
 
@@ -311,11 +342,24 @@ function Navbar() {
     setOpendraw(newOpen);
   };
 
+  const local = localStorage.getItem("User");
+  const [user, setUser] = useState(JSON.parse(local));
+//   const [isLoad, setIsLoad] = useState(false);
+  const [profileValue, setProfileValue] = useState({});
 
-  //img work
-
-
-  ///end img work
+  
+  
+  useEffect(() => {
+    const obj = user && user.firstName !== "";
+    if (obj) {
+      setIsLoad(true);
+      setProfileValue(user.firstName);
+    } else {
+      setIsLoad(false);
+    }
+  }, [profileValue]);
+  
+  
     return (
         <>
             {/* Top Bar */}
@@ -362,7 +406,14 @@ function Navbar() {
                     {location?.name && <p className=' text-black d-flex align-items-center mt-3 fs-6 text-opacity-50 '> <b className='location'>  <Icon className='fs-5' icon="akar-icons:location" /> Location: {location.name} </b></p>}
                     <Grid item>
                         <Grid container spacing={isMobile ? 1 : 2} alignItems="center">
-                            <Grid item>
+
+
+
+
+
+                          {/* {isLoad? ( <Button className='mt-3'>hello</Button>:)
+
+                           ( <Grid item>
                                 <Button
                              onClick={handleerOpen}
                                     sx={{
@@ -392,7 +443,61 @@ function Navbar() {
                                 >
                                     Sign Up
                                 </Button>
-                            </Grid>
+                            </Grid>)
+} */}
+
+
+{isLoad ? (
+ <>
+    <Button   id="basic-button"
+    aria-controls={oppen ? 'basic-menu' : undefined}
+    aria-haspopup="true"
+    aria-expanded={oppen ? 'true' : undefined}
+    onClick={handleClick} className='mt-3'>{profileValue} </Button>
+    
+<Button  onClick={toggleDrawe(true)}   className='mt-3'>
+<Badge badgeContent={Favirate?.length} color="primary">
+     <FavoriteIcon   style={{color:"#c2185b"}}/>
+     
+     </Badge>
+      </Button> </>
+ 
+) : (
+<>
+    <Grid item>
+      <Button
+        onClick={handleerOpen}
+        sx={{
+          color: '#000',
+          fontSize: isMobile ? '12px' : '14px',
+          borderRadius: '10px',
+          border: "1px solid",
+          '&:hover': { backgroundColor: '#f0f0f0' },
+        }}
+      >
+        Log In
+      </Button>
+    </Grid>
+    <Grid item>
+      <Button
+        onClick={handlesOpen}
+        sx={{
+          backgroundColor: '#e21b70',
+          color: '#fff',
+          fontSize: isMobile ? '12px' : '14px',
+          borderRadius: '10px',
+          border: "1px solid",
+          '&:hover': { backgroundColor: '#c2185b' },
+        }}
+      >
+        Sign Up
+      </Button>
+    </Grid>
+    </>
+)}
+
+
+
                             <Grid item>
                                 <Button onClick={handleOpen} sx={{ color: '#000', fontSize: isMobile ? '12px' : '14px' }}>
                                     <LanguageIcon />
@@ -408,8 +513,8 @@ function Navbar() {
                                 <Modal
                                     open={open}
                                     onClose={handleClose}
-                                    aria-labelledby="language-selector"
-                                    aria-describedby="language-selector-description"
+                                    aria-labelledby="language-selectore"
+                                    aria-describedby="alanguage-selector-description"
                                 >
                                     <Box
                                         sx={{
@@ -445,7 +550,11 @@ function Navbar() {
                                         },
                                     }}
                                 >
-                                    <Icon icon="iconamoon:shopping-bag-thin" fontSize={isMobile ? 20 : 24} />
+
+<Badge badgeContent={cartitems?.length} color="primary">
+<Icon icon="iconamoon:shopping-bag-thin" fontSize={isMobile ? 20 : 24} />
+    </Badge>
+                             
                                 </Button>
                             </Grid>
                         </Grid>
@@ -456,6 +565,8 @@ function Navbar() {
             <SignupModal opeen={opeen} handlesClose={handlesClose    }  />
             <SigninModal show={show} handleClosee ={handleClosee} />
             <Drawerpage opendraw={opendraw} toggleDrawer ={toggleDrawer} />
+            <BasicMenu oppen ={oppen} handleCloseer ={handleCloseer} handleClick ={handleClick} anchorEl={anchorEl}  />
+<TemporaryDrawer pen={pen} toggleDrawe={toggleDrawe} />
             <Outlet/>
         </>
     );

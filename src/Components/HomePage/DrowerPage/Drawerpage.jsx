@@ -4,11 +4,18 @@ import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import { Grid, Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Delete, minus, Plus } from '../../../Slices/Addtocart/Addtocart';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function Drawerpage(props) {
   const { opendraw, toggleDrawer } = props;
   const { cartitems } = useSelector((state) => state.Cart);
+  console.log(cartitems);
+  
+  const Usedispach =useDispatch()
 
   const DrawerList = (
     <Box sx={{ width: 300 }} role="presentation">
@@ -62,7 +69,7 @@ function Drawerpage(props) {
 
               {/* Item Details */}
               <Grid item xs={3}>
-                <Typography
+                <Typography className='pe-5'
                   variant="h6"
                   sx={{ fontWeight: 500, color: '#333', mb: 1 }}
                 >
@@ -78,8 +85,8 @@ function Drawerpage(props) {
                     textOverflow: 'ellipsis',
                   }}
                 >
-                  {item?.strMeal || 'Meal Name'}
-                </Typography>
+                  {item?.strMeal || ''}
+               <span> {item?.quanitity} </span> </Typography>
               </Grid>
 
               {/* Action Buttons */}
@@ -94,27 +101,27 @@ function Drawerpage(props) {
                   gap: 1,
                 }}
               >
-                <Button
+                <Button className='ms-5' onClick={()=>(Usedispach((Plus(item))))}
                   variant="outlined"
                   size="small"
                   sx={{ minWidth: '30px', fontSize: '0.8rem' }}
                 >
-                  +
+                 <AddIcon/>
                 </Button>
-                <Button
+                <Button onClick={()=>(Usedispach((minus(item))))}
                   variant="outlined"
                   size="small"
                   sx={{ minWidth: '30px', fontSize: '0.8rem' }}
                 >
-                  -
+             <RemoveIcon/>
                 </Button>
-                <Button
+                <Button onClick={()=>(Usedispach((Delete(item))))}
                   variant="outlined"
                   size="small"
                   color="error"
                   sx={{ minWidth: '60px', fontSize: '0.8rem' }}
                 >
-                  Delete
+              <DeleteIcon/>
                 </Button>
               </Grid>
             </Grid>

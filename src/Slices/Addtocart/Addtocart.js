@@ -12,18 +12,51 @@ export const counterSlice = createSlice({
     reducers:{
         Addtocart :(state,action)=>{
 
-            state.cartitems.push({...action.payload,quantity:1})
-            state.name = action.payload;
-            console.log(action,"action");
 
 
+            const   IsExies =state.cartitems.find((item)=>item.
+            idCategory 
+             === action.payload.
+             idCategory
+             )
+            console.log(IsExies);
+            if (IsExies) {
+                IsExies.quanitity +=1
+                
+            }else{
+                state.cartitems.push({...action.payload,quanitity:1})
+                console.log(action,"action");
+            }
+        },
 
+        Plus:(state,action)=>{
+            const IsExies =state.cartitems.find((item)=>item.idCategory === action.payload.idCategory)
+            if (IsExies) {
+                IsExies.quanitity +=1
+            }
+        },
+        minus:(state,action)=>{
+            const IsExies =state.cartitems.find((item)=>item.idCategory === action.payload.idCategory)
+            if (IsExies && IsExies.quanitity> 1) {
+                IsExies.quanitity -=1
+            } else if(IsExies && IsExies.quanitity===1){
+        state.cartitems= state.cartitems.filter((item) => item.idCategory !== action.payload.idCategory)
+            }
+        },
+        Delete:(state,action)=>{
+            const IsExies =state.cartitems.find((item)=>item.idCategory === action.payload.idCategory)
+            if (IsExies ) {
+                state.cartitems= state.cartitems.filter((item) => item.idCategory !== action.payload.idCategory)
+            } 
+        
+            
         }
+
     },  
 } )
 
 
-export const {Addtocart} = counterSlice.actions;
+export const {Addtocart,Plus,minus,Delete} = counterSlice.actions;
 
 export default counterSlice.reducer;
 
