@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-export const FaviSlice = createSlice({
+export const ViewSlice = createSlice({
     name: "Watch",
     initialState: {
         View:[],
@@ -10,26 +10,25 @@ export const FaviSlice = createSlice({
     },
     
     reducers:{
-        Favi :(state,action)=>{
+        View :(state,action)=>{
 
 
 
-            const   have =state.Favitaes.find((item)=>item.
+            const   Views =state.View.find((item)=>item.
             idMeal
  
              === action.payload.
              idMeal
 
              )
-            console.log(have);
-            if (have) {
-              
-                
-            }else{
-                state.Favitaes.push({...action.payload,quatity:1})
-                console.log(action,"action");
-               
-            }
+            console.log(Views);
+            if (Views && Views !== "") {
+                state.View = [action.payload ];
+              } else {
+
+                state.View.shift(action.payload);
+                state.View.push(action.payload);
+              }
         },
 
      
@@ -39,7 +38,7 @@ export const FaviSlice = createSlice({
 } )
 
 
-export const {View} = FaviSlice.actions;
+export const {View} = ViewSlice.actions;
 
-export default FaviSlice.reducer;
+export default ViewSlice.reducer;
 

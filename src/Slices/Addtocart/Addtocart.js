@@ -13,8 +13,10 @@ export const counterSlice = createSlice({
      
     reducers: {
         Addtocart: (state, action) => {
+            console.log(action,"action");
+            
           const user = JSON.parse(localStorage.getItem("User"));
-          const IsExies = state.cartitems.find((item) => item.idMeal === action.payload.idMeal);
+          const IsExies = state.cartitems.find((item) => item.idMeal === action.payload.idMeal );
       
           if (IsExies && user) {
             IsExies.quanitity += 1;

@@ -11,6 +11,8 @@ import Errorpage from "./Components/Errorpage/Errorpage";
 import { store } from "./Store/Store";
 import Restorentspage from "./Components/Restorentspage/Restorentspage";
 import FilterProduct from "./Components/Filterproduct/FilterProduct";
+import ViewDetail from "./Components/ViewDetail/ViewDetail";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -32,6 +34,10 @@ function App() {
       {
         path: "/FilterProduct",
         element: <FilterProduct />,
+      },
+      {
+        path: "/ViewDetail",
+        element: <ViewDetail />,
       },
      
      

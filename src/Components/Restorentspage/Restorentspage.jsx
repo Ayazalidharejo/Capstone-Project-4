@@ -107,6 +107,7 @@ import { useDispatch } from "react-redux";
 import { Favi } from "../../Slices/Favirate";
 import { Link } from "react-router-dom";
 import RestorentModal from "./RestorentModal/RestorentModal";
+import { View } from "../../Slices/View";
 // import { useNavigate } from 'react-router-dom';
 
 
@@ -220,7 +221,7 @@ const Restaurant = () => {
           },
         }}
       >
-        {/* Card Image */}
+        Card Image
         <CardMedia 
           // component="img"
           // height="180"
@@ -230,14 +231,14 @@ const Restaurant = () => {
           //   borderRadius: "10px 10px 0 0",
           // }}
         />
-      <Link  to="/FilterProduct">
+    
       <img sx={{
           
             
           }}  
           style={{  borderRadius: "10px 10px 0 0",height:"360px"}}
-           src={product.strMealThumb} alt={product.strMeal} />
-      </Link>
+           src={product.strMealThumb} alt={product.strMealThumb} />
+     
 
         {/* Card Content */}
         <CardContent
@@ -277,30 +278,28 @@ const Restaurant = () => {
             padding: "16px",
           }}
         >
-          <Tooltip title="Details" placement="top">
-
-
-<Button 
-  sx={{
-    fontSize: "1.5rem",
-    cursor: "pointer",
-    color: "gray",
-    "&:hover": { color: "black" },
-  }} 
-  onClick={() => {
-    if (user) {
-      <Link to="/FilterProduct" />;
-    } else {
-      handleOpen();
-    }
-  }}
->
-<RemoveRedEyeIcon onClick={ ()=>(usedspch(View(product)))} />
-
+       <Tooltip title="Details" placement="top">
  
-</Button>
-          
-          </Tooltip>
+    <Button 
+      sx={{
+        fontSize: "1.5rem",
+        cursor: "pointer",
+        color: "gray",
+        "&:hover": { color: "black" },
+      }} 
+      onClick={() => {
+        if (!user) {
+          handleOpen();
+        } else {
+          usedspch(View(product));
+          <Link to="/ViewDetail" style={{ textDecoration: "none" }}> </Link>
+        }
+      }}
+    >
+      <RemoveRedEyeIcon />
+    </Button>
+ 
+</Tooltip>
           <Tooltip title="Favorite" placement="top">
             <Button onClick={()=> {
               

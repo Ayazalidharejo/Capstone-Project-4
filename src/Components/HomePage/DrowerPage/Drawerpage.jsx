@@ -9,11 +9,16 @@ import { Delete, minus, Plus } from '../../../Slices/Addtocart/Addtocart';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useState } from 'react';
 
 function Drawerpage(props) {
   const { opendraw, toggleDrawer } = props;
   const { cartitems } = useSelector((state) => state.Cart);
-  console.log(cartitems);
+  const { Cartitem } = useSelector((state) => state.Carttwo);
+  console.log(Cartitem);
+
+
+  const [selectedItem, setSelectedItem] = useState(null);
   
   const Usedispach =useDispatch()
 
@@ -56,8 +61,8 @@ function Drawerpage(props) {
               {/* Image Section */}
               <Grid item xs={3} sx={{ textAlign: 'center' }}>
                 <img
-                  src={item?.strCategoryThumb || item?.strMealThumb}
-                  alt={item?.strCategory || ''}
+                  src={item?.strMealThumb }
+                  alt={item?.strCategory }
                   style={{
                     width: '80px',
                     height: '80px',
@@ -73,7 +78,7 @@ function Drawerpage(props) {
                   variant="h6"
                   sx={{ fontWeight: 500, color: '#333', mb: 1 }}
                 >
-                  {item?.strCategory || ''}
+                  {item?.strCategory }
                 </Typography>
                 <Typography className='pe-5'
                   variant="body2"
@@ -85,7 +90,7 @@ function Drawerpage(props) {
                     textOverflow: 'ellipsis',
                   }}
                 >
-                  {item?.strMeal || ''}
+                  {item?.strMeal }
                <span> {item?.quanitity} </span> </Typography>
               </Grid>
 
@@ -139,6 +144,25 @@ function Drawerpage(props) {
           </Typography>
         )}
       </Drawer>
+
+
+
+
+     
+{/* 
+{Cartitem?.map((item, index)=>{
+  return(
+    <>
+    <img 
+      src={item?.strCategoryThumb} 
+      alt="" 
+      onClick={() => setSelectedItem(index)}
+      style={{ display: selectedItem === index ? 'block' : 'none' }}
+    />
+    </>
+  )
+})} */}
+
     </div>
   );
 }
