@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 export const FaviSlice = createSlice({
-    name: "Favirate",
+    name: "Watch",
     initialState: {
-        Favitaes:[],
+        View:[],
      
       
     },
@@ -39,7 +39,7 @@ export const FaviSlice = createSlice({
 } )
 
 
-export const {Favi} = FaviSlice.actions;
+export const {View} = FaviSlice.actions;
 
 export default FaviSlice.reducer;
 

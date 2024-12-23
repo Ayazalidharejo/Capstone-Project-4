@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
   position: 'absolute',
@@ -23,12 +24,13 @@ const style = {
 function RestorentModal(props) {
      const { cartitems } = useSelector((state) => state.Cart);
     console.log(cartitems,"something ghave ");
+   
     
     const { open, handleClose } = props;
   
     return (
       <div>
-        <Button>Open modal</Button>
+     
         <Modal
           open={open}
           onClose={handleClose}
@@ -37,28 +39,15 @@ function RestorentModal(props) {
         >
           <Box sx={style}>
           
-           
-           {cartitems?.map((item)=>{
-            return(
-                <Box className="d-flex flex-column" sx={{
-                
-                    width: '100%',
-                    height: '150px',
-                    marginBottom: '20px',
-                    borderRadius: '10px',
-                    overflow: 'hidden'
-                  }}>
-                    <img src={item?.strMealThumb} alt="" style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover'
-                    }} />
-                   
-                  </Box>
-            )
-           })}
-
-<Button className=' w-100 bg-success text-white'>Add to cart </Button>
+         <Box className="d-flex justify-content-between"> 
+          
+         <Typography> What's your Email address?</Typography>
+         
+         <Button  onClick={handleClose}>    <CloseIcon />     </Button>
+           </Box>
+          <Typography>Please Sign up frisrt</Typography>
+     
+ 
           </Box>
         </Modal>
       </div>

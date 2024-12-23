@@ -107,14 +107,20 @@ import { useDispatch } from "react-redux";
 import { Favi } from "../../Slices/Favirate";
 import { Link } from "react-router-dom";
 import RestorentModal from "./RestorentModal/RestorentModal";
+// import { useNavigate } from 'react-router-dom';
+
+
 const Restaurant = () => {
     const [products, setProducts] = useState([]);
     const usedspch =useDispatch()
+
+
+    // const navigate = useNavigate();
     //modal//
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-  
+    const user = JSON.parse(localStorage.getItem("User"));
     //modal  end//
 
     useEffect(() => {
@@ -272,17 +278,41 @@ const Restaurant = () => {
           }}
         >
           <Tooltip title="Details" placement="top">
-            <RemoveRedEyeIcon
-              sx={{
-                fontSize: "1.5rem",
-                cursor: "pointer",
-                color: "gray",
-                "&:hover": { color: "black" },
-              }}
-            />
+
+
+<Button 
+  sx={{
+    fontSize: "1.5rem",
+    cursor: "pointer",
+    color: "gray",
+    "&:hover": { color: "black" },
+  }} 
+  onClick={() => {
+    if (user) {
+      <Link to="/FilterProduct" />;
+    } else {
+      handleOpen();
+    }
+  }}
+>
+<RemoveRedEyeIcon onClick={ ()=>(usedspch(View(product)))} />
+
+ 
+</Button>
+          
           </Tooltip>
           <Tooltip title="Favorite" placement="top">
-            <Button onClick={()=>(usedspch(Favi(product)))}>
+            <Button onClick={()=> {
+              
+              if (usedspch(Favi(product)) && user) {
+    
+              } else{
+                handleOpen();
+              }
+            }}
+>
+              
+           
             <FavoriteBorderIcon 
               sx={{
                 fontSize: "1.5rem",
@@ -294,12 +324,17 @@ const Restaurant = () => {
             </Button>
           </Tooltip>
           <Tooltip title="Add to Cart" placement="top">
-            <Button 
-              onClick={() => {
-            
-                usedspch(Addtocart(product));  handleOpen();
-            }}
-             >
+          <Button 
+  onClick={() => {
+    if (usedspch(Addtocart(product)) && user) {
+    
+    } else{
+      handleOpen();
+    }
+     
+    
+  }}
+>
               
             <AddShoppingCartIcon
               sx={{
