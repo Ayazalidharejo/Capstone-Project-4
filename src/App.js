@@ -12,11 +12,13 @@ import { store } from "./Store/Store";
 import Restorentspage from "./Components/Restorentspage/Restorentspage";
 import FilterProduct from "./Components/Filterproduct/FilterProduct";
 import ViewDetail from "./Components/ViewDetail/ViewDetail";
+import DrawerAppBar from "./Components/Headeer/Header";
 
 
 function App() {
   const router = createBrowserRouter([
     { path: "/", element: <Navbar />, 
+     path: "/", element: <DrawerAppBar />, 
       children:[{
         path: "",
         element: <HomePage />,
