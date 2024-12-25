@@ -1,45 +1,43 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Breadcrumbs, Link, Grid, Stack, Button, Dialog, CardContent, Card, CardMedia, TextField, Tooltip, Tab, Tabs } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
-import QuettaFood from "../../images/hungry.svg";
-import InfoIcon from "@mui/icons-material/Info";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import QuettaMap from "../../images/hungry.svg";
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import CloseIcon from '@mui/icons-material/Close';
-import SearchIcon from '@mui/icons-material/Search';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import { useDispatch } from "react-redux";
-import axios from 'axios';
-import HungryPanda from "../../images/hungry.svg";
+import { Box, Typography, Grid, Button, TextField, Tabs, Tab, CircularProgress } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { useDispatch, useSelector } from "react-redux";
+import axios from 'axios';
 import { Addtocart } from "../../Slices/Addtocart/Addtocart";
+import { ToastContainer, toast } from 'react-toastify';  // Import Toastify
+import 'react-toastify/dist/ReactToastify.css';  // Import CSS for Toastify
 
 const DetailPage = () => {
-  const [openDeliveryModal, setOpenDeliveryModal] = useState(false);
   const [value, setValue] = useState(0);
   const [product, setProduct] = useState([]);
-  
+  const [loading, setLoading] = useState(true); // Loading state to show the loader
+  const dispatch = useDispatch();
+  const  location  = useSelector((state) => state.location);
 
-  const usedspch = useDispatch();
-
-  const handleOpenDeliveryModal = () => setOpenDeliveryModal(true);
-  const handleCloseDeliveryModal = () => setOpenDeliveryModal(false);
-  const user = JSON.parse(localStorage.getItem("User"));
+  // Fetching product data
+  useEffect(() => {
+    axios
+      .get("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
+      .then((response) => {
+        setProduct(response.data.meals);
+        setLoading(false);  // Data is fetched, stop loader
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);  // Stop loader even if error occurs
+      });
+  }, []);
 
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  useEffect(() => {
-    axios
-      .get("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
-      .then((response) => setProduct(response.data.meals))
-      .catch((error) => console.log(error));
-  }, []);
+  const handleAddToCart = (item) => {
+    // Dispatch the item to the Redux store
+    dispatch(Addtocart(item));
+    toast.success(`${item.strMeal} added to cart!`, { autoClose: 2000 }); // Show success toast
+  };
 
   return (
     <Box
@@ -52,27 +50,6 @@ const DetailPage = () => {
         pb: "20px",
       }}
     >
-      {/* Breadcrumb Navigation */}
-      <Grid
-        container
-        alignItems="center"
-        sx={{
-          borderRadius: "8px",
-          bgcolor: "#fff",
-          p: { xs: 1, sm: 2 },
-          flexDirection: { xs: "column", sm: "row" },
-        }}
-      >
-        {/* Your breadcrumb content goes here */}
-      </Grid>
-
-      {/* Delivery Modal */}
-      <Dialog open={openDeliveryModal} onClose={handleCloseDeliveryModal}>
-        <Box display="flex" justifyContent="center" p={2}>
-          {/* Modal content */}
-        </Box>
-      </Dialog>
-
       {/* Search and Tabs Section */}
       <Box
         sx={{
@@ -123,7 +100,7 @@ const DetailPage = () => {
         </Box>
       </Box>
 
-      {/* Products and Delivery Payment Section */}
+      {/* Products Section */}
       <Box
         sx={{
           display: "flex",
@@ -132,84 +109,94 @@ const DetailPage = () => {
           p: 2,
         }}
       >
-        {/* Products Section */}
         <Box sx={{ flex: 3 }}>
-          <Grid container spacing={2}>
-            {product?.map((item) => (
-              <Grid item xs={12} sm={6} md={4} key={item.idMeal}>
-                <Box className="position-relative"
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    border: "1px solid #ddd",
-                    borderRadius: 2,
-                    boxShadow: 2,
-                    p: 2,
-                  }}
-                >
-                  <Box sx={{ flex: 1, mr: 2 }}>
+          {loading ? (
+            <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
+              <CircularProgress />  {/* Show loader while loading */}
+            </Box>
+          ) : (
+            <Grid container spacing={2}>
+              {product?.map((item) => (
+                <Grid item xs={12} sm={6} md={4} key={item.idMeal}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      border: "1px solid #ddd",
+                      borderRadius: 2,
+                      boxShadow: 2,
+                      p: 2,
+                      position: "relative", // For absolute positioning of button
+                    }}
+                  >
                     <Typography
                       variant="subtitle1"
                       fontWeight="bold"
-                      sx={{ textTransform: "uppercase" }}
+                      sx={{ textTransform: "uppercase", mb: 1 }}
                     >
-                    {item?.strMeal.length > 10 ? (
-  <span>
-    {item?.strMeal.slice(0, 10)}...
-  </span>
-) : (
-  item?.strMeal
-)}
+                      {item?.strMeal.length > 10 ? (
+                        <span>{item?.strMeal.slice(0, 10)}...</span>
+                      ) : (
+                        item?.strMeal
+                      )}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.secondary" mb={2}>
                       Rs. {item?.price}
                     </Typography>
-                  </Box>
-                  <Box className="position-relative"
-                    component="img"
-                    src={item?.strMealThumb}
-                    alt={item?.strMeal}
-                    sx={{
-                      width: "250px",
-                      height: "100px",
-                      objectFit: "cover",
-                      borderRadius: 2,
-                    }}
-                    
-                  />
-                  <Button onClick={() => {
-    if (usedspch(Addtocart(product)) && user) {
-    
-    } 
-     
-    
-  }} className="position-absolute top-50 end-0 translate-middle-y  p-0"  style={{ fontSize:"29px"}} variant="text" color="black">
-           <AddCircleIcon className="bg-white text-black rounded-5"/>
-                  </Button>
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
 
-        {/* Delivery Section */}
-        <Box
-          sx={{
-            flex: 1,
-            border: "1px solid #ddd",
-            borderRadius: 2,
-            boxShadow: 2,
-            p: 2,
-            minHeight: { xs: "300px", md: "500px" },
-          }}
-        >
-           <Box style={{height:"50%"}} className="d-flex flex-column  align-items-center justify-content-center  ">  <img style={{width:"150px"}} src={HungryPanda} alt="" />
-            <Typography>Hungry?</Typography>
-            <Typography className="ps-5">You haven't added anything to your cart!</Typography> </Box>
-    
+                    {/* Image with Add to Cart button over it */}
+                    <Box
+                      sx={{
+                        position: "relative", // Ensure the button stays over the image
+                        width: "100%",
+                        height: "200px", // Fix the height for images
+                      }}
+                    >
+                      <Box
+                        component="img"
+                        src={item?.strMealThumb}
+                        alt={item?.strMeal}
+                        sx={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          borderRadius: 2,
+                        }}
+                      />
+                      {/* Add to Cart Button */}
+                      <Button
+                        onClick={() => handleAddToCart(item)} // Pass the specific item to the function
+                        sx={{
+                          position: "absolute",
+                          top: "50%",
+                          left: "50%",
+                          transform: "translate(-50%, -50%)",
+                          fontSize: "30px",
+                          bgcolor: "white",
+                          borderRadius: "50%",
+                          p: 2,
+                          "&:hover": {
+                            bgcolor: "#f1f1f1",
+                          },
+                        }}
+                        variant="text"
+                        color="black"
+                      >
+                        <AddCircleIcon />
+                      </Button>
+                    </Box>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          )}
         </Box>
       </Box>
+
+      {/* Toast Container for showing toast messages */}
+      <ToastContainer />
     </Box>
   );
 };

@@ -18,17 +18,27 @@ import {
   TextField,
   Menu,
   MenuItem,
+  Grid,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
 import { useForm } from "react-hook-form";
-import LogoImg from "../../images/refresher.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import LogoImg from "../../images/logo.png";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+
+// import { Box, Button, Grid, Modal, Typography } from "@mui/material";
+import LanguageIcon from "@mui/icons-material/Language";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useSelector } from "react-redux";
+
 
 const drawerWidth = 240;
-const navItems = ["Shops", "Offers", "Contact", "Pages"];
+// const navItems = ["Shops", "Offers", "Contact", "Pages/"];
 
-function DrawerAppBar(props) {
+function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
@@ -40,6 +50,32 @@ function DrawerAppBar(props) {
   const [profileUsername, setProfileUsername] = useState(username);
   const [profileEmail, setProfileEmail] = useState("");
   const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const  location  = useSelector((state) => state.location);
+
+  const { cartitems } = useSelector((state) => state.Cart);
+ console.log(cartitems);
+ 
+
+  /////English
+  const [open, setOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);  // Replace with actual logic for mobile detection.
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const toggleDrawer = (open) => () => {
+    setDrawerOpen(open);
+  };
+
+
+
+  /////
 
   const {
     register,
@@ -127,13 +163,13 @@ function DrawerAppBar(props) {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Divider />
       <List>
-        {navItems.map((item) => (
+        {/* {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
-        ))}
+        ))} */}
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: "center" }}>
             {isUserLoggedIn ? (
@@ -167,6 +203,7 @@ function DrawerAppBar(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
+    <>
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component="nav" sx={{ backgroundColor: "#fafafa", color: "black" }}>
@@ -180,7 +217,10 @@ function DrawerAppBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <img  src={LogoImg} alt="Logo" style={{ marginRight: "10px" ,width:"100px" }} />
+        <Box className="d-flex align-items-center ">
+        <img  src={LogoImg} alt="Logo" style={{ marginRight: "10px" ,width:"50px" }} />
+        <Typography variant="h5" style={{color:" #e21b70"}}>foodpanda</Typography>
+        </Box>
 
           <Box
             sx={{
@@ -190,30 +230,35 @@ function DrawerAppBar(props) {
               marginLeft: "auto",
             }}
           >
-            {navItems.map((item) => (
-              <Button
-                key={item}
-                sx={{
-                  color: "black",
-                  textTransform: "capitalize",
-                  "&:hover": {
-                    color: "green",
-                  },
-                }}
-              >
-                {item}
-              </Button>
-            ))}
+           
+            
+            {location?.name && (
+  <Typography
+    sx={{ 
+      paddingRight:"250px",
+      textAlign: "center",  // This centers the text
+       // Ensure it takes up the full width
+      marginTop: "12px",  // Equivalent to mt-3
+      fontSize: "14px",  // Equivalent to fs-6
+      color: "rgba(0, 0, 0, 0.5)",  // Equivalent to text-opacity-50
+    
+    }} 
+    className="location"
+  >
+    <b>Location: {location.name}</b>
+  </Typography>
+)}
+
             {isUserLoggedIn ? (
               <>
-                <Button
+                <Button 
                   onClick={handleMenuOpen}
                   startIcon={<PersonIcon color="primary" />}
                   sx={{ textTransform: "capitalize", color: "black" }}
                 >
                   {username}
                 </Button>
-                <Menu
+                <Menu 
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl)}
                   onClose={handleMenuClose}
@@ -226,38 +271,164 @@ function DrawerAppBar(props) {
               </>
             ) : (
               <>
-              <Button
+              <Button className="text-center"
                 variant="outlined"
                 onClick={handleLoginModalOpen}
                 sx={{
-                  textTransform: "capitalize",
-                  color: "green",
+                
+                  color: "black",
                   borderColor: "green",
-                  "&:hover": {
-                    backgroundColor: "green",
-                    color: "white",
-                  },
+                
                 }}
               >
-                Join
+                log in
               </Button>
-              <Button
+              <Button className="text-white"
+              style={{backgroundColor:"#e21b70"}}
                 variant="outlined"
                 onClick={handleRegisterModalOpen}
                 sx={{
-                  textTransform: "capitalize",
-                  color: "green",
-                  borderColor: "green",
+                  
+                 
+                  borderColor: "#e21b70",
                   "&:hover": {
-                    backgroundColor: "green",
+                   
                     color: "white",
                   },
                 }}
               >
-                Join
+                Sign up
               </Button>
               </>
             )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <Grid container spacing={2}>
+      {/* Language Selector Button */}
+      <Grid item>
+        <Button onClick={handleOpen} sx={{ color: '#000', fontSize: isMobile ? '12px' : '14px' }}>
+          <LanguageIcon />
+          <Typography variant="body2" sx={{ mx: 1 }}>
+            EN
+          </Typography>
+          {open ? (
+            <KeyboardArrowUpIcon sx={{ color: '#e21b70' }} />
+          ) : (
+            <KeyboardArrowDownIcon sx={{ color: '#e21b70' }} />
+          )}
+        </Button>
+        
+        {/* Language Selection Modal */}
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="language-selector"
+          aria-describedby="language-selector-description"
+        >
+          <Box
+            sx={{
+              display: "flex",
+              position: 'absolute',
+              top: '25%',
+              left: '80%',
+              transform: 'translate(-50%, -50%)',
+              width: 150,
+              height: 80,
+              bgcolor: 'background.paper',
+              boxShadow: 24,
+              borderRadius: 2,
+              p: 3,
+              textAlign: 'center',
+              cursor: "pointer"
+            }}
+          >
+            <Typography className='mt-1' variant="body2" sx={{ marginX:"10px", textAlign:"center" }}>English</Typography>
+            <CheckCircleOutlineIcon sx={{ color: '#e21b70', '&:hover': { color:"black" } }} />
+          </Box>
+        </Modal>
+      </Grid>
+
+      {/* Drawer Button */}
+      <Grid item>
+        <Button
+          onClick={toggleDrawer(true)} // Toggle drawer open/close
+          sx={{
+            color: '#000',
+            '&:hover': {
+              backgroundColor: '#f0f0f0',
+              borderRadius: '50%',
+            },
+          }}
+        >
+          {/* Replace with an icon or any content you want */}
+          {/* <Typography variant="body2">Open Drawer</Typography> */}
+          <ShoppingCartIcon/>
+        </Button>
+        
+        {/* Drawer Component */}
+        <Drawer
+          anchor="left"
+          open={drawerOpen}
+          onClose={toggleDrawer(false)}
+        >
+          <Box
+            sx={{
+              width: 380,
+              height: '100%',
+              bgcolor: '#f4f4f4',
+              padding: 2,
+            }}
+          >
+            {/* Drawer content goes here */}
+            <Typography variant="h6">Drawer Content </Typography>
+{cartitems?.map((item)=>{
+  return(
+
+    <Grid container className="d-flex align-items-center">
+      <Grid item sx={4} md={3} className="my-2">  <img style={{width:"60px",height:"50px"}} src={item?.strMealThumb} alt="" /> </Grid>
+   
+   
+ <Grid item sx={4} md={3}>    <Typography>
+  {item?.strMeal?.length > 8 ? `${item?.strMeal.slice(0, 8)}...` : item?.strMeal}
+</Typography> </Grid>
+
+   <Grid item sx={4} md={6}>  <Box className="d-flex">
+    <Button>-</Button>
+    <Button>+</Button>
+    <Button>delete</Button>
+    
+    </Box> </Grid>
+  
+    </Grid>
+  )
+})}
+              
+           
+          </Box>
+        </Drawer>
+      </Grid>
+    </Grid>
+  
+
+
+
+
+
+            
+           
           </Box>
         </Toolbar>
       </AppBar>
@@ -327,7 +498,7 @@ function DrawerAppBar(props) {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ marginTop: 4, backgroundColor: "green", color: "white" }}
+              sx={{ marginTop: 4 ,backgroundColor:"#e21b70", color: "white" }}
             >
               Log in
             </Button>
@@ -403,7 +574,7 @@ function DrawerAppBar(props) {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ marginTop: 4, backgroundColor: "blue", color: "white" }}
+              sx={{ marginTop: 4, backgroundColor:"#e21b70",  color: "white" }}
             >
               Registerforayazali
             </Button>
@@ -474,11 +645,13 @@ function DrawerAppBar(props) {
         </Box>
       </Modal>
     </Box>
+    <Outlet/>
+    </>
   );
 }
 
-DrawerAppBar.propTypes = {
+Navbar.propTypes = {
   window: PropTypes.func,
 };
 
-export default DrawerAppBar;
+export default Navbar;

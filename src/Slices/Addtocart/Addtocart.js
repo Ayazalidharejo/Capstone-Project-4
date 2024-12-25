@@ -13,18 +13,19 @@ export const counterSlice = createSlice({
      
     reducers: {
         Addtocart: (state, action) => {
-            console.log(action,"action");
-            
-          const user = JSON.parse(localStorage.getItem("User"));
-          const IsExies = state.cartitems.find((item) => item.idMeal === action.payload.idMeal );
+            console.log(action, "action");
       
-          if (IsExies && user) {
-            IsExies.quanitity += 1;
-          } else if (!IsExies && user) {
-            state.cartitems.push({ ...action.payload, quanitity: 1 });
-          } 
-        
-      },
+            const IsExies = state.cartitems.find((item) => item.idMeal === action.payload.idMeal);
+    
+            if (IsExies) {
+              IsExies.quantity += 1;
+            } 
+      
+            else {
+              state.cartitems.push({ ...action.payload, quantity: 1 });
+            }  
+          },
+
 
         Plus:(state,action)=>{
             const IsExies =state.cartitems.find((item)=>item.idMeal === action.payload.idMeal)

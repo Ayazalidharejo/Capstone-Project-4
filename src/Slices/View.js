@@ -15,10 +15,10 @@ export const ViewSlice = createSlice({
 
 
             const   Views =state.View.find((item)=>item.
-            idMeal
+            id
  
              === action.payload.
-             idMeal
+             id
 
              )
             console.log(Views);

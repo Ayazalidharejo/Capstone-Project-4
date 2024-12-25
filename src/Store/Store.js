@@ -4,6 +4,7 @@ import Addtocart from "../Slices/Addtocart/Addtocart"
 import Favirate from "../Slices/Favirate"
 import ViewSlicee from "../Slices/View"
 import slicetwo from "../Slices/SecondAddtocart"
+import profile from "../Slices/SigninAndsignup"
 
 export const store = configureStore ({
     reducer :{ 
@@ -12,5 +13,6 @@ export const store = configureStore ({
         Favirate:Favirate,
         Watch:ViewSlicee,
         Carttwo:slicetwo,
+        auth:profile,
     }
 })

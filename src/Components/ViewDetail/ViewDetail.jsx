@@ -43,7 +43,7 @@ const ViewDetail = () => {
      <Grid item>
        <Box
          component="img"
-         src={item?.strMealThumb}
+         src={item?.image}
          alt="Quetta Paratha"
          sx={{
            width: { xs: "150px", sm: "180px" },

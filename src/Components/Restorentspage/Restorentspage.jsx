@@ -1,143 +1,138 @@
-// import { Box, Button, Card, Grid, Tooltip, Typography } from '@mui/material';
-// import axios from 'axios';
-// import React, { useEffect, useState } from 'react';
-// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import FavoriteIcon from '@mui/icons-material/Favorite';
-// import VisibilityIcon from '@mui/icons-material/Visibility';
-// import "./index.css";
-// import { Link, NavLink } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { Addtocart } from '../../Slices/Addtocart/Addtocart';
+import React, { useState } from "react";
 
-// const Restorentspage = () => {
-//     const [product, setproduct] = useState([]);
-//     const dispach = useDispatch ()
-//     console.log(product);
+import {
+    Box,
+    Typography,
+    Container,
+    Grid,
+    Card,
+    CardMedia,
+    CardContent,
+    Divider,
+    Tooltip,
+    Modal,
+    Button
+} from "@mui/material";
 
-//     useEffect(() => {
-//         axios.get("https://www.themealdb.com/api/json/v1/1/categories.php")
-//             .then((response) => setproduct(response.data.categories))
+import { useNavigate } from "react-router-dom";
 
-            
-//             .catch((error) => console.log(error));
-//     }, []);
-
-//     return (
-//         <Grid className='ms-5 container pt-5' container spacing={4}>
-//             {product?.map((item) => {
-//                 return (
-//                     <Grid className='mb-3' item xs={12} md={3} lg={4} key={item.idCategory}>
-//                         <Card className='rounded-2 p-2' sx={{ height: "100%" }}>
-//                             <div className='image-container'>
-//                                <NavLink to="/FilterProduct">
-//                                <img className='image' src={item?.strCategoryThumb} alt={item.strCategory} />
-//                                </NavLink>
-//                             </div>
-//                             <Box className="d-flex align-items-center flex-column">
-                               
-//                                     <Typography variant='h6' className='text-truncate'>
-//                                         {item?.strCategory}
-//                                     </Typography>
-//                                     <Tooltip title={item?.strCategoryDescription} placement="top-start">
-//                                 <Typography variant='body2' className='text-truncate'>
-//                                     {item?.strCategoryDescription.length > 50 ? `${item.strCategoryDescription.slice(0, 50)}...` : item?.strCategoryDescription}
-//                                 </Typography>
-//                                 </Tooltip>
-//                                 <Box className="text-center mt-auto">
-//                                     <Tooltip title="Add to Cart" placement="top">
-//                                         <Button onClick={()=>(dispach(Addtocart(item)))}  sx={{
-//             '&:hover': {
-//                 borderColor: 'pink',
-//                 color: '#e21b70'
-//             }
-//         }} variant="outlined" color="primary">
-//                                             <ShoppingCartIcon />
-//                                         </Button>
-//                                     </Tooltip>
-//                                     <Tooltip className='mx-5'  title="Favorite" placement="top">
-//     <Button 
-//         variant="outlined" 
-//         color="primary" 
-//         sx={{
-//             '&:hover': {
-//                 borderColor: 'pink',
-//                 color: '#e21b70'
-//             }
-//         }}
-//     >
-//         <FavoriteIcon />
-//     </Button>
-// </Tooltip>
-//                                     <Tooltip title="View" placement="top">
-//                                         <Link to="/FilterProduct">
-//                                             <Button   sx={{
-//             '&:hover': {
-//                 borderColor: 'pink',
-//                 color: '#e21b70'
-//             }
-//         }} variant="outlined" color="primary">
-//                                                 <VisibilityIcon />
-//                                             </Button>
-//                                         </Link>
-//                                     </Tooltip>
-//                                 </Box>
-//                             </Box>
-//                         </Card>
-//                     </Grid>
-//                 );
-//             })}
-//         </Grid>
-//     );
-// };
-
-// export default Restorentspage;
-
-import axios from "axios";
-import "react-toastify/dist/ReactToastify.css";
-import heroImage from "../../images/refresher.jpg";
-import { Box, Typography, Container, Grid, Card, CardMedia, CardContent, Divider, Tooltip, Button, } from "@mui/material";
-import { useEffect, useState } from "react";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-
- import { Addtocart } from '../../Slices/Addtocart/Addtocart';
-import { useDispatch } from "react-redux";
-import { Favi } from "../../Slices/Favirate";
-import { Link } from "react-router-dom";
-import RestorentModal from "./RestorentModal/RestorentModal";
+import food1 from "../../images/food1.jpg";
+import food2 from "../../images/food30.jpg";
+import food3 from "../../images/food3.jpg";
+import food4 from "../../images/food4.jpg";
+import food5 from "../../images/food5.jpg";
+import food6 from "../../images/food6.jpg";
+import food7 from "../../images/food7.jpg";
+import food8 from "../../images/food8.jpg";
+import food9 from "../../images/food9.jpg";
+import food10 from "../../images/food10.jpg";
+import food11 from "../../images/food11.jpg";
+import food12 from "../../images/food12.jpg";
+import food13 from "../../images/food13.jpg";
+import food14 from "../../images/food14.jpg";
+import food15 from "../../images/food.jpg";
+import food16 from "../../images/food16.jpg";
+import food17 from "../../images/food17.jpg";
+import food18 from "../../images/food18.jpg";
+import food19 from "../../images/food19.jpg";
+import food20 from "../../images/food20.jpg";
+import food21 from "../../images/food21.jpg";
+import food22 from "../../images/food22.jpg";
+import food23 from "../../images/food23.jpg";
+import food24 from "../../images/food24.jpg";
+import food25 from "../../images/food25.jpg";
+import food26 from "../../images/food26.jpg";
+import food27 from "../../images/food27.jpg";
+import food28 from "../../images/food3.jpg";
+import food29 from "../../images/food29.jpg";
+import food30 from "../../images/food30.jpg";
+import Hero from "../../images/refresh.webp";
+import { useDispatch, useSelector } from "react-redux";
 import { View } from "../../Slices/View";
-// import { useNavigate } from 'react-router-dom';
+
 
 
 const Restaurant = () => {
-    const [products, setProducts] = useState([]);
-    const usedspch =useDispatch()
+
+    const navigate = useNavigate();
+    const [openModal, setOpenModal] = useState(false);
+    const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+
+    const handleClose = () => setOpenModal(false);
+
+    // Dummy data for restaurants
+   
+// Dummy data for restaurants with correct image paths and added 'isClosed' property where applicable
+const products = [
+  { id: 1, name: 'Spice Delight', image: food1, rating: "4.5", type: "Indian Cuisine", isClosed: false },
+  { id: 2, name: 'Burger Point', image: food2, rating: "4.2", type: "Burgers", isClosed: false },
+  { id: 3, name: 'Pasta Paradise', image: food3, rating: "4.3", type: "Italian", isClosed: false },
+  { id: 4, name: 'Sushi House', image: food4, rating: "4.8", type: "Japanese", isClosed: false },
+  { id: 5, name: 'Grill Master', image: food5, rating: "4.7", type: "BBQ", isClosed: false },
+  { id: 6, name: 'Vegan Bites', image: food6, rating: "4.6", type: "Vegan", isClosed: false },
+  { id: 7, name: 'Sweet Treats', image: food7, rating: "4.3", type: "Desserts", isClosed: false },
+  { id: 8, name: 'Taco Fiesta', image: food8, rating: "4.4", type: "Mexican", isClosed: false },
+  { id: 9, name: 'Pizza Place', image: food9, rating: "4.1", type: "Pizza", isClosed: false },
+  { id: 10, name: 'Steak House', image: food10, rating: "4.9", type: "Steak", isClosed: false },
+  { id: 11, name: 'Fish Fry', image: food11, rating: "4.3", type: "Seafood", isClosed: false },
+  { id: 12, name: 'Kebab Corner', image: food12, rating: "4.6", type: "Kebabs", isClosed: false },
+  { id: 13, name: 'Sushi Spot', image: food13, rating: "4.7", type: "Sushi", isClosed: false },
+  { id: 14, name: 'Noodle House', image: food14, rating: "4.4", type: "Chinese", isClosed: false },
+  { id: 15, name: 'Bakery Bliss', image: food15, rating: "4.2", type: "Bakery", isClosed: true },
+  { id: 16, name: 'Cafe Mocha', image: food16, rating: "4.8", type: "Café", isClosed: false },
+  { id: 17, name: 'Pasta Perfection', image: food17, rating: "4.5", type: "Italian", isClosed: false },
+  { id: 18, name: 'Fries Factory', image: food18, rating: "4.3", type: "Fries & Snacks", isClosed: false },
+  { id: 19, name: 'Smoothie Spot', image: food19, rating: "4.4", type: "Smoothies", isClosed: false },
+  { id: 20, name: 'Hot Dog Haven', image: food20, rating: "4.0", type: "Hot Dogs", isClosed: false },
+  { id: 21, name: 'Taco Fiesta', image: food21, rating: "4.4", type: "Mexican", isClosed: true },
+  { id: 22, name: 'Pasta House', image: food22, rating: "4.5", type: "Italian", isClosed: false },
+  { id: 23, name: 'Steak Retreat', image: food23, rating: "4.8", type: "Steakhouse", isClosed: false },
+  { id: 24, name: 'Sushi World', image: food24, rating: "4.9", type: "Japanese", isClosed: false },
+  { id: 25, name: 'BBQ Shack', image: food25, rating: "4.7", type: "BBQ", isClosed: false },
+  { id: 26, name: 'Dessert Haven', image: food26, rating: "4.6", type: "Desserts", isClosed: false },
+  { id: 27, name: 'Smoothie Blend', image: food27, rating: "4.4", type: "Smoothies", isClosed: true },
+  { id: 28, name: 'Baker’s Corner', image: food28, rating: "4.2", type: "Bakery", isClosed: true },
+  { id: 29, name: 'Fries and More', image: food29, rating: "4.3", type: "Fries & Snacks", isClosed: true },
+  { id: 30, name: 'Sushi Bar', image: food30, rating: "4.5", type: "Sushi", isClosed: true },
+
+]
+// Retrieve the 'user' value from localStorage
 
 
-    // const navigate = useNavigate();
-    //modal//
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    const user = JSON.parse(localStorage.getItem("User"));
-    //modal  end//
 
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood");
-                setProducts(response.data.meals);
-            } catch (error) {
-                console.error("Error fetching products:", error);
-            }
-        };
-        fetchProducts();
-    }, []);
+const storedUser = localStorage.getItem("user");
+const  location  = useSelector((state) => state.location);
 
+    const handleCardClick = (product) => {
+        if (product.isClosed ) {
+            setSelectedRestaurant(product.name);
+            setOpenModal(true);
+            
+        }else if (storedUser) {
+          try {
+            const user = JSON.parse(storedUser);
+            navigate("/ViewDetail");
+          } catch (error) {
+            alert("Invalid user data");
+          }
+        }else{
+          alert("no have assees")
+        }
+
+
+        
+        // else if(storedUser){
+        //   const user = JSON.parse(storedUser);
+        //   navigate("/ViewDetail");
+
+        // } else {
+         
+        // }
+    };
+
+
+    const dispach =useDispatch()
     return (
-      <>
         <Box>
             {/* Hero Section */}
             <Box
@@ -146,30 +141,28 @@ const Restaurant = () => {
                     alignItems: "center",
                     justifyContent: "center",
                     backgroundColor: "#f8f9fa",
-                    padding: "50px 20px",
+                    padding: "60px 20px",
                     minHeight: "300px",
                     position: "relative",
                     flexDirection: "column",
-
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
                 }}
             >
-                {/* Background Image */}
                 <Box
                     sx={{
                         position: "absolute",
                         top: 0,
                         right: 0,
-                        width: { xs: "100%", sm: "40%" },
+                        width: { xs: "100%", sm: "50%" },
                         height: "100%",
-                        backgroundImage:`url(${heroImage})`,
+                        backgroundImage: `url(${Hero})`,
+
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                         backgroundPosition: "right center",
                         zIndex: 0,
                     }}
                 />
-
-                {/* Text Section */}
                 <Container
                     sx={{
                         zIndex: 1,
@@ -186,6 +179,7 @@ const Restaurant = () => {
                             fontWeight: "bold",
                             fontSize: { xs: "24px", sm: "32px", md: "50px" },
                             lineHeight: 1.2,
+                            textShadow: "2px 2px 4px rgba(0,0,0,0.2)",
                         }}
                     >
                         Food and groceries delivery from <br />
@@ -194,168 +188,106 @@ const Restaurant = () => {
                 </Container>
             </Box>
 
-            {/* Products Section */}
+            {/* Restaurant Cards */}
             <Container sx={{ marginTop: "40px" }}>
                 <Typography
                     variant="h4"
                     component="h2"
-                    sx={{ marginBottom: "20px", fontWeight: "bold" }}
+                    sx={{
+                        marginBottom: "20px",
+                        fontWeight: "bold",
+                        color: "#333",
+                        fontSize: { xs: "28px", sm: "34px", md: "40px" },
+                    }}
                 >
-                    Restaurants
+                   All Restaurants
+                    {location?.name && (
+                     <Typography
+                       sx={{ 
+                         paddingRight:"250px",
+                         textAlign: "center",  // This centers the text
+                          // Ensure it takes up the full width
+                         marginTop: "12px",  // Equivalent to mt-3
+                         fontSize: "14px",  // Equivalent to fs-6
+                         color: "rgba(0, 0, 0, 0.5)",  // Equivalent to text-opacity-50
+                       
+                       }} 
+                       className="location"
+                     >
+                       <b>Location: {location.name}</b>
+                     </Typography>
+                   )}
+                   
                 </Typography>
-                <Grid  container spacing={4}>
-  {products.map((product) => (
-    <Grid item xs={12} sm={6} md={4} key={product.idMeal}>
-      <Card
-        sx={{
-          height: "100%", // Ensures all cards are equal in height
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          borderRadius: "10px",
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-          transition: "transform 0.3s, box-shadow 0.3s",
-          "&:hover": {
-            transform: "scale(1.05)",
-            boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.2)",
-          },
-        }}
-      >
-        Card Image
-        <CardMedia 
-          // component="img"
-          // height="180"
-          // image={product.strMealThumb}
-          // alt={product.strMeal}
-          // sx={{
-          //   borderRadius: "10px 10px 0 0",
-          // }}
-        />
-    
-      <img sx={{
-          
-            
-          }}  
-          style={{  borderRadius: "10px 10px 0 0",height:"360px"}}
-           src={product.strMealThumb} alt={product.strMealThumb} />
-     
 
-        {/* Card Content */}
-        <CardContent
-          sx={{
-            flexGrow: 1, // Ensures content expands to fill available space
-            textAlign: "center",
-          }}
-        >
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{
-              fontWeight: "bold",
-              marginBottom: "8px",
-              fontSize: "1.2rem",
-            }}
-          >
-            {product.strMeal}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ marginBottom: "8px" }}
-          >
-            A delicious seafood dish to try.
-          </Typography>
-        </CardContent>
-
-        {/* Divider */}
-        <Divider sx={{ margin: "0 16px" }} />
-
-        {/* Action Icons */}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-around",
-            padding: "16px",
-          }}
-        >
-       <Tooltip title="Details" placement="top">
- 
-    <Button 
-      sx={{
-        fontSize: "1.5rem",
-        cursor: "pointer",
-        color: "gray",
-        "&:hover": { color: "black" },
-      }} 
-      onClick={() => {
-        if (!user) {
-          handleOpen();
-        } else {
-          usedspch(View(product));
-          <Link to="/ViewDetail" style={{ textDecoration: "none" }}> </Link>
-        }
-      }}
-    >
-      <RemoveRedEyeIcon />
-    </Button>
- 
-</Tooltip>
-          <Tooltip title="Favorite" placement="top">
-            <Button onClick={()=> {
-              
-              if (usedspch(Favi(product)) && user) {
-    
-              } else{
-                handleOpen();
-              }
-            }}
->
-              
-           
-            <FavoriteBorderIcon 
-              sx={{
-                fontSize: "1.5rem",
-                cursor: "pointer",
-                color: "gray",
-                "&:hover": { color: "red" },
-              }}
-            />
-            </Button>
-          </Tooltip>
-          <Tooltip title="Add to Cart" placement="top">
-          <Button 
+                <Grid container spacing={4}>
+                    {products.map((product) => (
+                        <Grid item xs={12} sm={6} md={4} key={product.id}>
+                            <Card
+  sx={{
+    transition: "0.3s",
+    boxShadow: 3,
+    borderRadius: "12px",
+    overflow: "hidden",
+    '&:hover': {
+      boxShadow: 6,
+      transform: "scale(1.05)",
+      cursor: "pointer",
+    },
+    opacity: product.isClosed ? 0.5 : 1,
+    position: 'relative'
+  }}
   onClick={() => {
-    if (usedspch(Addtocart(product)) && user) {
-    
-    } else{
-      handleOpen();
-    }
-     
-    
+    handleCardClick(product);  // Trigger handleCardClick
+    dispach(View(product));   // Dispatch the Redux action
   }}
 >
-              
-            <AddShoppingCartIcon
-              sx={{
-                fontSize: "1.5rem",
-                cursor: "pointer",
-                color: "gray",
-                "&:hover": { color: "green" },
-              }}
-            />
-            </Button>
-          </Tooltip>
-        </Box>
-      </Card>
-    </Grid>
-  ))}
-</Grid>
-
-
+                                <CardMedia 
+                                    component="img" 
+                                    height="200"
+                                    image={product.image}
+                                    alt={product.name}
+                                />
+                                {product.isClosed && (
+                                    <Typography
+                                        variant="h6"
+                                        sx={{
+                                            position: 'absolute',
+                                            top: '50%',
+                                            left: '50%',
+                                            transform: 'translate(-50%, -50%)',
+                                            color: 'white',
+                                            fontWeight: 'bold',
+                                            background: 'rgba(0,0,0,0.5)',
+                                            padding: '5px 10px',
+                                            borderRadius: '4px'
+                                        }}
+                                    >
+                                        Closed
+                                    </Typography>
+                                )}
+                                <CardContent sx={{ padding: "16px", textAlign: "center" }}>
+                                    <Typography variant="h6">{product.name}</Typography>
+                                    <Typography>Rating: {product.rating}/5 ✨</Typography>
+                                    <Typography>{product.type}</Typography>
+                                </CardContent>
+                                <Divider />
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
             </Container>
+
+            {/* Modal */}
+            <Modal open={openModal} onClose={handleClose}>
+                <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 300, bgcolor: 'background.paper', boxShadow: 24, p: 4 }}>
+                    <Typography variant="h6" component="h2">
+                        {selectedRestaurant} is Closed
+                    </Typography>
+                    <Button onClick={handleClose} sx={{ marginTop: 2 }}>Close</Button>
+                </Box>
+            </Modal>
         </Box>
-        <RestorentModal open={open} handleOpen={handleOpen} handleClose={handleClose} />
-        </>
     );
 };
 

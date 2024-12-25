@@ -210,3 +210,8 @@ const schema = yup.object({
   );
 }
 export default SignupModal;
+
+
+
+
+// Corrected image imports
