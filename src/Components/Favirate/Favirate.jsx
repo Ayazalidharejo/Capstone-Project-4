@@ -11,16 +11,16 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
- function Favirate( props) {
-  const {toggleDrawer,open }=props
-  // const [open, setOpen] = React.useState(false);
+function TemporaryDrawer(props) {
+  const {handleDrawerTogglee,isDrawerOpen}=props
+  // const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
-  // const toggleDrawer = (newOpen) => () => {
-  //   setOpen(newOpen);
+  // const handleDrawerToggle = (newOpen) => () => {
+  //   setIsDrawerOpen(newOpen);
   // };
 
-  const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+  const drawerContent = (
+    <Box sx={{ width: 250 }} role="presentation" onClick={handleDrawerTogglee(false)}>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -51,13 +51,14 @@ import MailIcon from '@mui/icons-material/Mail';
 
   return (
     <div>
-      <Button >Open drawer</Button>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
-        {DrawerList}
+      <Button variant="contained" onClick={handleDrawerTogglee(true)}>
+        Open drawer
+      </Button>
+      <Drawer open={isDrawerOpen} onClose={handleDrawerTogglee(false)}>
+        {drawerContent}
       </Drawer>
     </div>
   );
 }
 
-
-export default Favirate;
+export default TemporaryDrawer;

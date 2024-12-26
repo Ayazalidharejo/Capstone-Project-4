@@ -287,6 +287,7 @@ const  location  = useSelector((state) => state.location);
                     <Button onClick={handleClose} sx={{ marginTop: 2 }}>Close</Button>
                 </Box>
             </Modal>
+            
         </Box>
     );
 };
