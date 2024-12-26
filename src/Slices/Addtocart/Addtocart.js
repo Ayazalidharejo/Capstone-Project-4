@@ -22,7 +22,7 @@ export const counterSlice = createSlice({
             } 
       
             else {
-              state.cartitems.push({ ...action.payload, quantity: 1 });
+              state.cartitems.push({ ...action.payload, quantity: 3 });
             }  
           },
 

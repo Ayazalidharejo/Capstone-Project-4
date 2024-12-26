@@ -686,6 +686,7 @@ import {
   Menu,
   MenuItem,
   Grid,
+  Badge,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
@@ -701,6 +702,8 @@ import { useDispatch, useSelector } from "react-redux";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Favirate from "../Favirate/Favirate";
 import Khan from "../Favirate/Favirate";
+import { Addtocart, minus, Plus } from "../../Slices/Addtocart/Addtocart";
+import { Delete } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
@@ -727,7 +730,7 @@ function Navbar(props) {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const location = useSelector((state) => state.location);
   const { cartitems } = useSelector((state) => state.Cart);
-  const dispach =useDispatch()
+  
 
   const [open, setOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -827,6 +830,8 @@ function Navbar(props) {
     }
   };
 
+ 
+const Dispach =useDispatch()
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Divider />
@@ -921,8 +926,16 @@ function Navbar(props) {
                       </MenuItem>
                       <MenuItem onClick={handleLogout}>Logout</MenuItem>
                     </Menu>
-                    <Button  onClick={handleDrawerTogglee(true)}>  <FavoriteIcon />  </Button>
+                 
                    
+                    <Button  onClick={handleDrawerTogglee(true)}>  
+                      
+                    <Badge badgeContent={Favirate?.length} color="primary">
+                      <FavoriteIcon /> 
+                      </Badge>
+                       </Button>
+     
+      
                   </>
                 ) : (
                   <>
@@ -975,7 +988,10 @@ function Navbar(props) {
 
                 {/* Cart Button */}
                 <Button onClick={toggleDrawer(true)} sx={{ color: '#000' }}>
-                  <ShoppingCartIcon />
+                <Badge badgeContent={Favirate?.length} color="primary">
+                <ShoppingCartIcon />
+                      </Badge>
+                
                 </Button>
                 <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
                   <Box sx={{ width: 380, height: '100%', bgcolor: '#f4f4f4', padding: 2 }}>
@@ -983,16 +999,17 @@ function Navbar(props) {
                     {cartitems?.map((item) => (
                       <Grid container className="d-flex align-items-center" key={item.id}>
                         <Grid item sx={4} md={3} className="my-2">
-                          <img style={{ width: "60px", height: "50px" }} src={item?.strMealThumb} alt="" />
+                          <img style={{ width: "60px", height: "50px" }} src={item?.strMealThumb} alt="" /> <span>QTY:{item?.quantity} </span>
                         </Grid>
                         <Grid item sx={4} md={3}>
                           <Typography>{item?.strMeal?.length > 8 ? `${item?.strMeal.slice(0, 8)}...` : item?.strMeal}</Typography>
                         </Grid>
                         <Grid item sx={4} md={6}>
                           <Box className="d-flex">
-                            <Button>-</Button>
-                            <Button>+</Button>
-                            <Button>delete</Button>
+                          <Button onClick={() => Dispach(minus(item))}>-</Button>
+<Button onClick={() => Dispach(Plus(item))}>+</Button>
+<Button onClick={() => Dispach(Delete(item))}>delete</Button>
+
                           </Box>
                         </Grid>
                       </Grid>
