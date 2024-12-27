@@ -946,7 +946,6 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
-import {Favi} from "../../Slices/Favirate"
 
 const CityFood = () => {
   const [openDeliveryModal, setOpenDeliveryModal] = useState(false);
@@ -978,28 +977,12 @@ const CityFood = () => {
   const handleConfirmAddToCart = () => {
     dispatch(Addtocart(selectedProduct));  
     setOpenConfirmModal(false);  
-    toast.success('Product Added Successfully in LIst!');
+    toast.success('Product added to cart!');
   };
 
   const handleCancelAddToCart = () => {
     setOpenConfirmModal(false);  
   };
-  /////for Favirate
-  const handleAddToFavi = (product) => {
-    setSelectedProduct(product);  
-    setOpenConfirmModal(true);  
-  };
-
-  const handleConfirmFavi = () => {
-    dispatch(Favi(selectedProduct));  
-    setOpenConfirmModal(false);  
-    toast.success('Product Added Successfully in LIst!');
-  };
-
-  const handleCancelFavi = () => {
-    setOpenConfirmModal(false);  
-  };
-  //Favirate//end
   const { cartitems } = useSelector((state) => state.Cart);
 
   return (
@@ -1100,7 +1083,7 @@ const CityFood = () => {
     >
       AddCart
     </Button>
-                  <Button   onClick={() => handleAddToFavi(item)}  sx={{
+                  <Button   onClick={() => handleAddToCartClick(item)}  sx={{
         color:"#e21b70",
       
         padding: '10px 20px',
@@ -1180,33 +1163,15 @@ const CityFood = () => {
           <CardContent>
             <Typography variant="h6">Are you sure you want to add this product to your cart?</Typography>
             <Box sx={{ display: "flex", justifyContent: "space-between", marginTop: "16px" }}>
-              <Button onClick={handleCancelFavi} variant="outlined" color="secondary">Cancel</Button>
+              <Button onClick={handleCancelAddToCart} variant="outlined" color="secondary">Cancel</Button>
               <Button onClick={handleConfirmAddToCart} variant="contained" color="primary">Confirm</Button>
             </Box>
           </CardContent>
         </Card>
       </Dialog>
+
+      {/* Toast Notification */}
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
-      {/* Toast Notification */}
-
-      
-      
-      {/* Confirmation Modal */}
-      {/* Favirate     Modal */}
-      <Dialog open={openConfirmModal} onClose={handleAddToFavi}>
-        <Card sx={{ maxWidth: 400 }}>
-          <CardContent>
-            <Typography variant="h6">Are you sure you want to add this product In Favirate LIst?</Typography>
-            <Box sx={{ display: "flex", justifyContent: "space-between", marginTop: "16px" }}>
-              <Button onClick={handleCancelAddToCart} variant="outlined" color="secondary">Cancel</Button>
-              <Button onClick={handleConfirmFavi} variant="contained" color="primary">Confirm</Button>
-            </Box>
-          </CardContent>
-        </Card>
-      </Dialog>
-
-      {/* Toast Notification */}
-    
     </Box>
   );
 };
