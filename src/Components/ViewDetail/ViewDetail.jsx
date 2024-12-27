@@ -20,12 +20,12 @@ const ViewDetail = () => {
 
 
   
-            <Box className="container">
+            <Box className="container  ">
    
 
-   <Breadcrumbs
+   <Breadcrumbs className='ms-5'
      aria-label="breadcrumb"
-     sx={{ marginBottom: "1rem", paddingLeft: "10px" }}
+     sx={{ marginBottom: "1rem", paddingLeft: "10px",paddingTop:"100px" }}
    >
      <Link underline="hover" color="inherit" href="#">
        Homepage
@@ -34,19 +34,19 @@ const ViewDetail = () => {
        Lahore
      </Link>
      <Typography color="text.primary">
-       Quetta Paratha - 111
+       {item?.name} Paratha - 111
      </Typography>
    </Breadcrumbs>
    
    {/* Main Card */}
-   <Grid container spacing={2} alignItems="center">
+   <Grid className='ms-5' container spacing={2} alignItems="center">
      <Grid item>
        <Box
          component="img"
          src={item?.image}
          alt="Quetta Paratha"
          sx={{
-           width: { xs: "150px", sm: "180px" },
+           width: { xs: "290px", sm: "280px" },
            height: { xs: "150px", sm: "180px" },
            borderRadius: "8px",
            objectFit: "cover",
@@ -70,7 +70,7 @@ const ViewDetail = () => {
            lineHeight: 1.2,
          }}
        >
-         {item?.strMeal} <span style={{ fontWeight: 700 }}>Paratha</span> —{" "}
+          <span style={{ fontWeight: 700 }}> {item?.name}</span> —{" "}
          <span style={{ fontWeight: 900 }}>111</span>
        </Typography>
        <Box
@@ -126,7 +126,7 @@ const ViewDetail = () => {
              width="20"
              height="20"
            />
-           Min. order Rs. 249
+           Min. order Rs. 350
          </Typography>
        </Box>
        <Stack direction="row" alignItems="center" spacing={0.5}>
@@ -135,7 +135,7 @@ const ViewDetail = () => {
            variant="body2"
            sx={{ fontWeight: "bold", fontSize: "0.9rem" }}
          >
-           3.7/5{" "}
+          {item?.rating}
            <span style={{ color: "#888", fontWeight: "normal" }}>
              (500+)
            </span>

@@ -928,7 +928,7 @@
 
 
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Grid, Button, Dialog, CardContent, Card, CardMedia, TextField, Tabs, Tab } from "@mui/material";
+import { Box, Typography, Grid, Button, Dialog, CardContent, Card, CardMedia, TextField, Tabs, Tab, Modal } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -947,6 +947,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { Favi } from "../../Slices/Favirate";
+import Footer from "../HomePage/Footer/Footer";
 
 const CityFood = () => {
   const [openDeliveryModal, setOpenDeliveryModal] = useState(false);
@@ -985,6 +986,46 @@ const CityFood = () => {
     setOpenConfirmModal(false);  
   };
   const { cartitems } = useSelector((state) => state.Cart);
+
+
+
+
+
+
+
+  //For favirate 
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  // Open the modal and set the item to be added
+  const initiateAddToFavorites = (item) => {
+    setSelectedItem(item);
+    setIsModalOpen(true);
+  };
+
+  // Close the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedItem(null);
+  };
+
+  // Handle the confirmation for adding the item
+  const confirmAddToFavorites = () => {
+    // Dispatch the action to add the item
+    dispatch(Favi(selectedItem));
+
+    // Close the modal
+    closeModal();
+
+    // Show a toast notification
+    toast.success('Product successfully added to favorites!', {
+      // position: toast.POSITION.TOP_CENTER,
+    });
+  };
+
+
+  //Favirate end 
 
   return (
     <Box sx={{ padding: { xs: "20px", sm: "50px", md: "120px" }, marginTop: "20px", backgroundColor: "#fff", maxWidth: "90%", margin: "0 auto", paddingBottom: "20px", width: "100%" }}>
@@ -1084,7 +1125,7 @@ const CityFood = () => {
     >
       AddCart
     </Button>
-                  <Button onClick={()=>(dispatch(Favi(item)))}    sx={{
+                  <Button onClick={() => initiateAddToFavorites(item)}    sx={{
         color:"#e21b70",
       
         padding: '10px 20px',
@@ -1114,7 +1155,7 @@ const CityFood = () => {
          {cartitems?.map((item) => (
                       <Grid container className="d-flex align-items-center" key={item.id}>
                         <Grid item sx={4} md={3} className="my-2">
-                          <img style={{ width: "60px", height: "50px" }} src={item?.strMealThumb} alt="" /> 
+                          <img style={{ width: "60px", height: "50px", maxWidth:"60px",maxWidth:"50px" }} src={item?.strMealThumb} alt="" /> 
                           
                          
                         </Grid>
@@ -1164,8 +1205,8 @@ const CityFood = () => {
           <CardContent>
             <Typography variant="h6">Are you sure you want to add this product to your cart?</Typography>
             <Box sx={{ display: "flex", justifyContent: "space-between", marginTop: "16px" }}>
-              <Button onClick={handleCancelAddToCart} variant="outlined" color="secondary">Cancel</Button>
-              <Button onClick={handleConfirmAddToCart} variant="contained" color="primary">Confirm</Button>
+              <Button onClick={handleCancelAddToCart} style={{backgroundColor:"#e21b70"}} variant="contained" color="secondary">Cancel</Button>
+              <Button onClick={handleConfirmAddToCart} style={{backgroundColor:"#e21b70"}} variant="contained" color="primary">Confirm</Button>
             </Box>
           </CardContent>
         </Card>
@@ -1173,6 +1214,42 @@ const CityFood = () => {
 
       {/* Toast Notification */}
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+      <Modal open={isModalOpen} onClose={closeModal}>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            bgcolor: 'background.paper',
+            boxShadow: 24,
+            p: 4,
+            textAlign: 'center',
+            borderRadius: '10px',
+          }}
+        >
+          <Typography variant="h6" mb={2}>
+            Are you sure you want to add this product to your favorites?
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={confirmAddToFavorites}
+            sx={{ mr: 2 }}
+          >
+            Yes, Add
+          </Button>
+          <Button variant="outlined" onClick={closeModal}>
+            Cancel
+          </Button>
+        </Box>
+      </Modal>
+
+      {/* Toast container for showing success message */}
+      <ToastContainer  position="top-right" autoClose={5000} hideProgressBar newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+   <Footer/>
+
     </Box>
   );
 };

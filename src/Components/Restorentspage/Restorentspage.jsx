@@ -49,6 +49,7 @@ import food30 from "../../images/food30.jpg";
 import Hero from "../../images/refresh.webp";
 import { useDispatch, useSelector } from "react-redux";
 import { View } from "../../Slices/View";
+import Footer from "../HomePage/Footer/Footer";
 
 
 
@@ -287,7 +288,7 @@ const  location  = useSelector((state) => state.location);
                     <Button onClick={handleClose} sx={{ marginTop: 2 }}>Close</Button>
                 </Box>
             </Modal>
-            
+            <Footer/>
         </Box>
     );
 };

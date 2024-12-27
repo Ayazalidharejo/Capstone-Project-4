@@ -11,9 +11,10 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Grid } from 'react-loader-spinner';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Addtocart } from '../../Slices/Addtocart/Addtocart';
 
 function TemporaryDrawer(props) {
   const {handleDrawerTogglee,isDrawerOpen}=props
@@ -24,6 +25,7 @@ function TemporaryDrawer(props) {
   // };
   const { Favitaes } = useSelector((state) => state.Favirate);
   console.log(Favitaes);
+  const usedispach =useDispatch()
   
 
   const drawerContent = (
@@ -55,7 +57,7 @@ function TemporaryDrawer(props) {
           {item?.strMeal?.length > 10 ? `${item?.strMeal.slice(0, 10)}...` : item?.strMeal}
 
           </Typography>
-          <ShoppingCartIcon/>
+          <ShoppingCartIcon onClick={()=>(usedispach(Addtocart(item)))} />
           </Box>
         )
       })}
