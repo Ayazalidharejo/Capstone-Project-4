@@ -739,6 +739,7 @@ function Navbar(props) {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const location = useSelector((state) => state.location);
   const { cartitems } = useSelector((state) => state.Cart);
+   const { Favitaes } = useSelector((state) => state.Favirate);
   
 
   const [open, setOpen] = useState(false);
@@ -938,7 +939,7 @@ function Navbar(props) {
                    
                     <Button  onClick={handleDrawerTogglee(true)}>  
                       
-                    <Badge badgeContent={Favirate?.length}  color="secondary">
+                    <Badge badgeContent={Favitaes?.length}  color="secondary">
                       <FavoriteIcon style={{color:"#e21b70"}} /> 
                       </Badge>
                        </Button>
