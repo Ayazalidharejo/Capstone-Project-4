@@ -702,8 +702,11 @@ import { useDispatch, useSelector } from "react-redux";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Favirate from "../Favirate/Favirate";
 import Khan from "../Favirate/Favirate";
-import { Addtocart, minus, Plus } from "../../Slices/Addtocart/Addtocart";
-import { Delete } from "@mui/icons-material";
+import { Addtocart, Minus, Delete, Plus } from "../../Slices/Addtocart/Addtocart"
+import DeleteIcon from '@mui/icons-material/Delete';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+
 
 const drawerWidth = 240;
 
@@ -716,6 +719,12 @@ function Navbar(props) {
     setIsDrawerOpen(newOpen);
   };
 //favirate
+  
+
+
+
+
+
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -735,6 +744,7 @@ function Navbar(props) {
   const [open, setOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const dispatch =useDispatch()
 
   const handleOpen = () => {
     setOpen(true);
@@ -831,7 +841,7 @@ function Navbar(props) {
   };
 
  
-const Dispach =useDispatch()
+
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Divider />
@@ -921,17 +931,15 @@ const Dispach =useDispatch()
                       {username}
                     </Button>
                     <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-                      <MenuItem>
-                        <Link to="/profile">Profile</Link>
-                      </MenuItem>
+                    
                       <MenuItem onClick={handleLogout}>Logout</MenuItem>
                     </Menu>
                  
                    
                     <Button  onClick={handleDrawerTogglee(true)}>  
                       
-                    <Badge badgeContent={Favirate?.length} color="primary">
-                      <FavoriteIcon /> 
+                    <Badge badgeContent={Favirate?.length}  color="secondary">
+                      <FavoriteIcon style={{color:"#e21b70"}} /> 
                       </Badge>
                        </Button>
      
@@ -988,7 +996,7 @@ const Dispach =useDispatch()
 
                 {/* Cart Button */}
                 <Button onClick={toggleDrawer(true)} sx={{ color: '#000' }}>
-                <Badge badgeContent={Favirate?.length} color="primary">
+                <Badge badgeContent={cartitems?.length}  color="secondary">
                 <ShoppingCartIcon />
                       </Badge>
                 
@@ -999,22 +1007,33 @@ const Dispach =useDispatch()
                     {cartitems?.map((item) => (
                       <Grid container className="d-flex align-items-center" key={item.id}>
                         <Grid item sx={4} md={3} className="my-2">
-                          <img style={{ width: "60px", height: "50px" }} src={item?.strMealThumb} alt="" /> <span>QTY:{item?.quantity} </span>
+                          <img style={{ width: "60px", height: "50px" }} src={item?.strMealThumb} alt="" /> 
                         </Grid>
                         <Grid item sx={4} md={3}>
                           <Typography>{item?.strMeal?.length > 8 ? `${item?.strMeal.slice(0, 8)}...` : item?.strMeal}</Typography>
                         </Grid>
-                        <Grid item sx={4} md={6}>
+                          <Grid item sx={4} md={3}>    <Typography> Price:{item?.Price} </Typography>    <span>QTY:{item?.quantity}  </span></Grid>
+                        <Grid item sx={4} md={3}>
                           <Box className="d-flex">
-                          <Button onClick={() => Dispach(minus(item))}>-</Button>
-<Button onClick={() => Dispach(Plus(item))}>+</Button>
-<Button onClick={() => Dispach(Delete(item))}>delete</Button>
+                        <RemoveIcon style={{cursor:"pointer"}} onClick={() => dispatch(Minus(item))}/>
+<AddIcon  onClick={() => dispatch(Plus(item))} /> 
+<DeleteIcon style={{cursor:"pointer"}}  onClick={() => dispatch(Delete(item))}/>
+
 
                           </Box>
                         </Grid>
                       </Grid>
                     ))}
                   </Box>
+                       <Box>
+                              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                                <Typography variant="h6" fontWeight="bold">Total</Typography>
+                                <Typography variant="subtitle1" color="text.secondary"> Rs. {cartitems?.reduce((total, item) => total + item.Price * item.quantity, 0)}</Typography>
+                              </Box>
+                              <Button variant="contained" sx={{ marginTop: 2, backgroundColor: "#e21b70", cursor: "pointer", width: "100%" }}>
+                                Review payment and address
+                              </Button>
+                            </Box>
                 </Drawer>
               </Grid>
             </Grid>

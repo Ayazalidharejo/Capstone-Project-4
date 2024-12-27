@@ -10,6 +10,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { Typography } from '@mui/material';
 
 function TemporaryDrawer(props) {
   const {handleDrawerTogglee,isDrawerOpen}=props
@@ -21,41 +22,20 @@ function TemporaryDrawer(props) {
 
   const drawerContent = (
     <Box sx={{ width: 250 }} role="presentation" onClick={handleDrawerTogglee(false)}>
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+     
       <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+    
     </Box>
   );
 
   return (
     <div>
-      <Button variant="contained" onClick={handleDrawerTogglee(true)}>
+      {/* <Button variant="contained" onClick={handleDrawerTogglee(true)}>
         Open drawer
-      </Button>
+      </Button> */}
       <Drawer open={isDrawerOpen} onClose={handleDrawerTogglee(false)}>
         {drawerContent}
+        <Typography className='text-center mt-3'> Favirate </Typography>
       </Drawer>
     </div>
   );
