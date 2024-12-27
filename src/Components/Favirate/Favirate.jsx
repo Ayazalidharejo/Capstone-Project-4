@@ -11,6 +11,9 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { Grid } from 'react-loader-spinner';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 function TemporaryDrawer(props) {
   const {handleDrawerTogglee,isDrawerOpen}=props
@@ -19,6 +22,9 @@ function TemporaryDrawer(props) {
   // const handleDrawerToggle = (newOpen) => () => {
   //   setIsDrawerOpen(newOpen);
   // };
+  const { Favitaes } = useSelector((state) => state.Favirate);
+  console.log(Favitaes);
+  
 
   const drawerContent = (
     <Box sx={{ width: 250 }} role="presentation" onClick={handleDrawerTogglee(false)}>
@@ -30,13 +36,32 @@ function TemporaryDrawer(props) {
 
   return (
     <div>
-      {/* <Button variant="contained" onClick={handleDrawerTogglee(true)}>
-        Open drawer
-      </Button> */}
+    
+   
       <Drawer open={isDrawerOpen} onClose={handleDrawerTogglee(false)}>
         {drawerContent}
         <Typography className='text-center mt-3'> Favirate </Typography>
+
+
+
+      {Favitaes?.map((item)=>{
+        return(
+          <Box className="d-flex align-items-center">
+            
+          <img className='my-2 mx-2' style={{width:"80px"}} src={item?.strMealThumb
+} alt="" />
+          
+          <Typography>
+          {item?.strMeal?.length > 10 ? `${item?.strMeal.slice(0, 10)}...` : item?.strMeal}
+
+          </Typography>
+          <ShoppingCartIcon/>
+          </Box>
+        )
+      })}
       </Drawer>
+     
+      
     </div>
   );
 }

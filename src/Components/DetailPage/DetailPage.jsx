@@ -946,6 +946,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import { Favi } from "../../Slices/Favirate";
 
 const CityFood = () => {
   const [openDeliveryModal, setOpenDeliveryModal] = useState(false);
@@ -1083,7 +1084,7 @@ const CityFood = () => {
     >
       AddCart
     </Button>
-                  <Button   onClick={() => handleAddToCartClick(item)}  sx={{
+                  <Button onClick={()=>(dispatch(Favi(item)))}    sx={{
         color:"#e21b70",
       
         padding: '10px 20px',
