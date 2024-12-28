@@ -41,6 +41,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import TemporaryDrawer from "../Favirate/Favirate";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const drawerWidth = 240;
 
@@ -253,7 +254,7 @@ function Navbar(props) {
                       color: "rgba(0, 0, 0, 0.5)",
                     }}
                   >
-                    <b >Location: {location.name}</b>
+                    <b  className="d-flex align-items-center"><LocationOnIcon style={{color:"#e21b70"}} /> Location: {location.name}</b>
                   </Typography>
                 )}
               </Grid>

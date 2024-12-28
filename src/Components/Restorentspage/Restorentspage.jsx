@@ -191,7 +191,7 @@ const  location  = useSelector((state) => state.location);
 
             {/* Restaurant Cards */}
             <Container sx={{ marginTop: "40px" }}>
-                <Typography
+                <Typography className="d-flex "
                     variant="h4"
                     component="h2"
                     sx={{
@@ -215,7 +215,7 @@ const  location  = useSelector((state) => state.location);
                        }} 
                        className="location"
                      >
-                       <b>Location: {location.name}</b>
+                       <b className="ps-3 fs-5">Location: {location.name}</b>
                      </Typography>
                    )}
                    
