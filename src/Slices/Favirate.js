@@ -31,6 +31,13 @@ export const FaviSlice = createSlice({
                
             }
         },
+        Delete: (state, action) => {
+            const IsExies = state.Favitaes.find((item) => item.idMeal === action.payload.idMeal);
+            if (IsExies) {
+              // Remove the item completely from the cart
+              state.Favitaes = state.Favitaes.filter((item) => item.idMeal !== action.payload.idMeal);
+            }
+          }
 
      
      
@@ -39,7 +46,7 @@ export const FaviSlice = createSlice({
 } )
 
 
-export const {Favi} = FaviSlice.actions;
+export const {Favi,Delete} = FaviSlice.actions;
 
 export default FaviSlice.reducer;
 

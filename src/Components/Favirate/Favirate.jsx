@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Grid } from 'react-loader-spinner';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Addtocart } from '../../Slices/Addtocart/Addtocart';
+import { Delete } from '../../Slices/Favirate';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function TemporaryDrawer(props) {
   const {handleDrawerTogglee,isDrawerOpen}=props
@@ -51,13 +53,15 @@ function TemporaryDrawer(props) {
           <Box className="d-flex align-items-center">
             
           <img className='my-2 mx-2' style={{width:"80px"}} src={item?.strMealThumb
-} alt="" />
+} alt={item?.strMeal} />
           
           <Typography>
           {item?.strMeal?.length > 10 ? `${item?.strMeal.slice(0, 10)}...` : item?.strMeal}
 
           </Typography>
           <ShoppingCartIcon onClick={()=>(usedispach(Addtocart(item)))} />
+
+          <DeleteIcon style={{cursor:"pointer"}}  onClick={() => usedispach(Delete(item))}/>
           </Box>
         )
       })}

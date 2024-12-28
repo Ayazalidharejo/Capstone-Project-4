@@ -948,8 +948,10 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { Favi } from "../../Slices/Favirate";
 import Footer from "../HomePage/Footer/Footer";
-
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css'
 const CityFood = () => {
+  const { cartitems } = useSelector((state) => state.Cart);
   const [openDeliveryModal, setOpenDeliveryModal] = useState(false);
   const [openConfirmModal, setOpenConfirmModal] = useState(false);
   const [value, setValue] = useState(0);
@@ -979,13 +981,21 @@ const CityFood = () => {
   const handleConfirmAddToCart = () => {
     dispatch(Addtocart(selectedProduct));  
     setOpenConfirmModal(false);  
-    toast.success('Product added to cart!');
+    Swal.fire({
+      title: 'Success!',
+      text: 'Product successfully added to Add to cart!',
+      icon: 'success',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#e21b70',
+    });
+
+    
   };
 
   const handleCancelAddToCart = () => {
     setOpenConfirmModal(false);  
   };
-  const { cartitems } = useSelector((state) => state.Cart);
+  
 
 
 
@@ -1014,14 +1024,16 @@ const CityFood = () => {
   const confirmAddToFavorites = () => {
     // Dispatch the action to add the item
     dispatch(Favi(selectedItem));
+    Swal.fire({
+      title: 'Success!',
+      text: 'Product successfully added to favorites!',
+      icon: 'success',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#e21b70',
+    });
 
     // Close the modal
     closeModal();
-
-    // Show a toast notification
-    toast.success('Product successfully added to favorites!', {
-      // position: toast.POSITION.TOP_CENTER,
-    });
   };
 
 
@@ -1213,7 +1225,7 @@ const CityFood = () => {
       </Dialog>
 
       {/* Toast Notification */}
-      <ToastContainer position="top-right" autoClose={5000} hideProgressBar newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+      <ToastContainer />
       <Modal open={isModalOpen} onClose={closeModal}>
         <Box
           sx={{
@@ -1232,7 +1244,7 @@ const CityFood = () => {
           <Typography variant="h6" mb={2}>
             Are you sure you want to add this product to your favorites?
           </Typography>
-          <Button
+          <Button style={{backgroundColor:"#e21b70"}}
             variant="contained"
             color="primary"
             onClick={confirmAddToFavorites}
@@ -1240,14 +1252,24 @@ const CityFood = () => {
           >
             Yes, Add
           </Button>
-          <Button variant="outlined" onClick={closeModal}>
+          <Button className="text-white" style={{backgroundColor:"#e21b70",}} variant="outlined" onClick={closeModal}>
             Cancel
           </Button>
         </Box>
       </Modal>
 
       {/* Toast container for showing success message */}
-      <ToastContainer  position="top-right" autoClose={5000} hideProgressBar newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
    <Footer/>
 
     </Box>

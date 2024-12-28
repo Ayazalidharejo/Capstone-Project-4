@@ -13,6 +13,7 @@ import Restorentspage from "./Components/Restorentspage/Restorentspage";
 import FilterProduct from "./Components/Filterproduct/FilterProduct";
 import ViewDetail from "./Components/ViewDetail/ViewDetail";
 import DrawerAppBar from "./Components/Headeer/Header";
+import Test from "./Test";
 
 
 function App() {
@@ -33,10 +34,7 @@ function App() {
         path: "/Restorentspage",
         element: <Restorentspage />,
       },
-      {
-        path: "/FilterProduct",
-        element: <FilterProduct />,
-      },
+      
       {
         path: "/ViewDetail",
         element: <ViewDetail />,
