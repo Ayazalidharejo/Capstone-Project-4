@@ -134,7 +134,7 @@ const  location  = useSelector((state) => state.location);
 
     const dispach =useDispatch()
     return (
-        <Box>
+        <Box style={{paddingTop:"123px"}}>
             {/* Hero Section */}
             <Box
                 sx={{
@@ -178,7 +178,7 @@ const  location  = useSelector((state) => state.location);
                         component="h1"
                         sx={{
                             fontWeight: "bold",
-                            fontSize: { xs: "24px", sm: "32px", md: "50px" },
+                            fontSize: { xs: "24px", sm: "32px", md: "40px" },
                             lineHeight: 1.2,
                             textShadow: "2px 2px 4px rgba(0,0,0,0.2)",
                         }}

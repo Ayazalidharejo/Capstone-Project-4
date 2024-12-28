@@ -20,12 +20,12 @@ const ViewDetail = () => {
 
 
   
-            <Box className="container  ">
+            <Box  className="container  ">
    
 
    <Breadcrumbs className='ms-5'
      aria-label="breadcrumb"
-     sx={{ marginBottom: "1rem", paddingLeft: "10px",paddingTop:"100px" }}
+     sx={{ marginBottom: "1rem", paddingLeft: "10px",paddingTop:"150px" }}
    >
      <Link underline="hover" color="inherit" href="#">
        Homepage

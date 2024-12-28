@@ -1,30 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {
-  AppBar,
-  Box,
-  CssBaseline,
-  Divider,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Toolbar,
-  Button,
-  Modal,
-  Typography,
-  TextField,
-  Menu,
-  MenuItem,
-  Grid,
-  Badge,
+  AppBar,Box,
+  CssBaseline,Divider,Drawer,IconButton,List,ListItem,ListItemButton,ListItemText,Toolbar,Button,Modal,Typography,TextField,Menu,MenuItem,Grid,Badge,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import PersonIcon from "@mui/icons-material/Person";
 import { useForm } from "react-hook-form";
 import LogoImg from "../../images/logo.png";
+import LogoImg2 from "../../images/hlogo.svg";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import LanguageIcon from "@mui/icons-material/Language";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -46,6 +30,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import TemporaryDrawer from "../Favirate/Favirate";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import Showoff from "../HomePage/DrowerPage/Drawerpage";
 
 const drawerWidth = 240;
 
@@ -260,7 +245,7 @@ function Navbar(props) {
     >
       <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
         <img
-          src={LogoImg}
+          src={LogoImg2}
           alt="Business Icon"
           width="30"
           height="30"
@@ -332,7 +317,7 @@ function Navbar(props) {
                 {location?.name && (
                   <Typography
                     sx={{
-                      marginTop: "12px",
+                      marginTop: "0px",
                       fontSize: "14px",
                       color: "rgba(0, 0, 0, 0.5)",
                     }}

@@ -1040,7 +1040,7 @@ const CityFood = () => {
   //Favirate end 
 
   return (
-    <Box sx={{ padding: { xs: "20px", sm: "50px", md: "120px" }, marginTop: "20px", backgroundColor: "#fff", maxWidth: "90%", margin: "0 auto", paddingBottom: "20px", width: "100%" }}>
+    <Box sx={{ padding: { xs: "20px", sm: "50px", md: "20px" }, marginTop: "20px", backgroundColor: "#fff", maxWidth: "90%", margin: "0 auto", paddingBottom: "20px", width: "100%" }}>
       
       {/* Delivery Modal */}
       <Dialog open={openDeliveryModal} onClose={handleCloseDeliveryModal}>
