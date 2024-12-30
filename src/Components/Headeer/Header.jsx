@@ -210,26 +210,6 @@ function Navbar(props) {
           sx={{ backgroundColor: "#fafafa", color: "black" }}
         >
 
-{/*           
-<Box className="d-flex justify-content-center align-items-center p-3 " style={{ backgroundColor: "#e81d72", color: "#fff" }}>
-      <div className="d-flex align-items-center">
-        <img
-          src={LogoImg}
-          alt="Business Icon"
-          width="30"
-          height="30"
-          className="me-2"
-        />
-        <span>Do you need a business account?</span>
-      </div>
-      <a 
-        href="#"
-        className="btn btn-outline-light fw-bold mx-2"
-        style={{ borderRadius: "5px" }}
-      >
-        SIGN UP NOW
-      </a>
-    </Box> */}
 
 
 <Box
@@ -263,7 +243,7 @@ function Navbar(props) {
           borderRadius: "5px",
           marginLeft:"10px",
           "&:hover": {
-            backgroundColor: "#ffc0d3", // Light pink hover effect
+            backgroundColor: "#ffc0d3", 
             borderColor: "#ffc0d3",
             color: "#e81d72",
           },
@@ -276,15 +256,7 @@ function Navbar(props) {
             <Grid container spacing={2}>
               {/* Left Section */}
               <Grid item xs={4}>
-                {/* <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  edge="start"
-                  onClick={handleDrawerToggle}
-                  sx={{ mr: 2, display: { sm: "none" } }}
-                >
-                  <MenuIcon />
-                </IconButton> */}
+               
                 <Box className="d-flex align-items-center">
                   <img
                     src={LogoImg}
@@ -294,7 +266,7 @@ function Navbar(props) {
                   <Typography
                     variant="h5"
                     style={{ color: "#e21b70" }}
-                    sx={{ display: { xs: "none", sm: "block" } }} // This will hide it on mobile screens
+                    sx={{ display: { xs: "none", sm: "block" } }} 
                   >
                     foodpanda
                   </Typography>
@@ -304,7 +276,7 @@ function Navbar(props) {
               {/* Center Section */}
               <Grid
                 sx={{
-                  paddingLeft: { xs: "60px", sm: "0" }, // 100px padding-left for mobile, 0 for larger screens
+                  paddingLeft: { xs: "60px", sm: "0" }, 
                   fontSize: "14px",
                   color: "rgba(0, 0, 0, 0.5)",
                   marginTop: "12px",
@@ -501,13 +473,7 @@ function Navbar(props) {
                         </Grid>
                       </Grid>
                     ))}
-                    {/* <Button
-                      className="btn-light"
-                      sx={{ backgroundColor: "#e21b70", color: "white", borderRadius: "5px", marginTop: "20px" }}
-                      onClick={() => navigate("/cart")}
-                    >
-                      View Cart
-                    </Button> */}
+                   
                   </Box>
                 </Drawer>
               </Grid>

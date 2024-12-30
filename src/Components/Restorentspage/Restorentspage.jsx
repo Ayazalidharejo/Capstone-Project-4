@@ -122,13 +122,7 @@ const  location  = useSelector((state) => state.location);
 
 
         
-        // else if(storedUser){
-        //   const user = JSON.parse(storedUser);
-        //   navigate("/ViewDetail");
-
-        // } else {
-         
-        // }
+      
     };
 
 
@@ -206,11 +200,11 @@ const  location  = useSelector((state) => state.location);
                      <Typography
                        sx={{ 
                          paddingRight:"250px",
-                         textAlign: "center",  // This centers the text
-                          // Ensure it takes up the full width
-                         marginTop: "12px",  // Equivalent to mt-3
-                         fontSize: "14px",  // Equivalent to fs-6
-                         color: "rgba(0, 0, 0, 0.5)",  // Equivalent to text-opacity-50
+                         textAlign: "center",  
+                       
+                         marginTop: "12px",  
+                         fontSize: "14px",  
+                         color: "rgba(0, 0, 0, 0.5)",  
                        
                        }} 
                        className="location"
@@ -239,8 +233,8 @@ const  location  = useSelector((state) => state.location);
     position: 'relative'
   }}
   onClick={() => {
-    handleCardClick(product);  // Trigger handleCardClick
-    dispach(View(product));   // Dispatch the Redux action
+    handleCardClick(product);  
+    dispach(View(product));   
   }}
 >
                                 <CardMedia 
