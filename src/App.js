@@ -1,52 +1,38 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./Components/HomePage/HomePage";
-import "./index.css";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import Homepage from "./Components/Home_Page/home-page";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Navbar from "./Components/Home_Page/Navbar/navbar";
 import { Provider } from "react-redux";
-import Navbar from "./Components/Headeer/Header";
-import Errorpage from "./Components/Errorpage/Errorpage";
-// import SignupModal from './Components/HomePage/outh/Signup/Signup';
 import { store } from "./Store/Store";
-import Restorentspage from "./Components/Restorentspage/Restorentspage";
-import FilterProduct from "./Components/Filterproduct/FilterProduct";
-import ViewDetail from "./Components/ViewDetail/ViewDetail";
-import DrawerAppBar from "./Components/Headeer/Header";
-import Test from "./Test";
+import Resturant from "./Components/Resturant/Resturant";
+import ErrorPage from "./Components/ErrorPage/ErrorPage";
+import "react-toastify/dist/ReactToastify.css";
+import ProductDetails from "./Components/Resturant/ProductDetails/ProductDetails";
+
 
 
 function App() {
   const router = createBrowserRouter([
-    { path: "/", element: <Navbar />, 
-    
-      children:[{
-        path: "",
-        element: <HomePage />,
-      },
-        
+    {
+      path: "/",
+      element: < Navbar />,
+      errorElement: <ErrorPage />,
+      children: [
         {
-        path:"",
-        element: <Errorpage />
-      },
-      
-      {
-        path: "/Restorentspage",
-        element: <Restorentspage />,
-      },
-      
-      {
-        path: "/ViewDetail",
-        element: <ViewDetail />,
-      },
-     
-     
-
-    ],
-       },
-    
-    
-    
+          path: "/",
+          element: <Homepage />,
+        },
+        {
+          path: "ProductDetails/:product_id",
+          element: <ProductDetails />,
+        },
+        {
+          path: "/Resturant",
+          element: <Resturant />,
+        },
+      ],
+    },
   ]);
 
   return (
