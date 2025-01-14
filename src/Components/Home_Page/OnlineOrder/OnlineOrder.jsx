@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Grid, Typography, Box, Button } from '@mui/material';
-import Mobile from '../../../Images/home-foodpanda-apps.webp';
-import AppGallery from '../../../Images/appgalarey.png';
-import PlayStore from '../../../Images/playstore.png';
-import Scanner from '../../../Images/scanner.png';
+import Mobile from '../../../images/home-foodpanda-apps.webp';
+import AppGallery from '../../../images/appgalarey.png';
+import PlayStore from '../../../images/playstore.png';
+import Scanner from '../../../images/scanner.png';
 import AppleIcon from '@mui/icons-material/Apple';
 
 const OnlineOrder = () => {

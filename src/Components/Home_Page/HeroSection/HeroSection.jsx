@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, Grid, InputAdornment, TextField, Typography } from "@mui/material";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
-import HeroImg from "../../../Images/hero-img.webp";
+import HeroImg from "../../../images/hero-img.webp";
 
 const HeroSection = () => {
   return (

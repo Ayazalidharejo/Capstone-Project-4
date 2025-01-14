@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import heroImage from "../../Images/hero-img.webp";
+import heroImage from "../../images/hero-img.webp";
 import {
     Box,
     Typography,
@@ -14,16 +14,16 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
-import Resturant1 from '../../Images/Resturant 01.webp';
-import Resturant2 from '../../Images/Resturant 02.webp';
-import Resturant3 from '../../Images/resturant 03.webp';
-import Resturant4 from '../../Images/Resturant 04.webp';
-import Resturant5 from '../../Images/Resturant 05.webp';
-import Resturant6 from '../../Images/Resturant 06.webp';
-import Resturant7 from '../../Images/Restuant 07.webp';
-import Resturant8 from '../../Images/Resturant 08.webp';
-import Resturant9 from '../../Images/Resturant 09.webp';
-import Resturant10 from '../../Images/Resturant 10.webp';
+import Resturant1 from '../../images/Resturant1.webp';
+import Resturant2 from '../../images/Resturant2.webp';
+import Resturant3 from '../../images/resturant3.webp';
+import Resturant4 from '../../images/Resturant04.webp';
+import Resturant5 from '../../images/Resturant05.webp';
+import Resturant6 from '../../images/Resturant06.webp';
+import Resturant7 from '../../images/Restuant7.webp';
+import Resturant8 from '../../images/Resturant08.webp';
+import Resturant9 from '../../images/Resturant09.webp';
+import Resturant10 from '../../images/Resturant10.webp';
 import Navbar from "../Home_Page/Navbar/navbar";
 import Footer from "../Home_Page/Footer/Footer";
 

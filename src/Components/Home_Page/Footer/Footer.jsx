@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Box, Button, Grid, Link, List, ListItem, Typography } from '@mui/material'
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import Logo from "../../../Images/Logo.jpeg";
-import DeliveryImg from "../../../Images/DeliveryHero.jpeg";
+import Logo from "../../../images/Logo.jpeg";
+import DeliveryImg from "../../../images/DeliveryHero.jpeg";
 import './index.css'
 
 

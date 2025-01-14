@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import Error from '../../Images/ErrorImg.jpg'
+import Error from '../../images/ErrorImg.jpg'
 
 import React from "react";
 import { Link } from "react-router-dom";

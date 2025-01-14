@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, Card, CardContent, Grid, Typography } from '@mui/material';
-import Cooker from '../../../Images/Cooker.webp';
+import Cooker from '../../../images/Cooker.webp';
 
 const CookerPage = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Button, Card, CardContent, Grid, Typography } from '@mui/material';
-import LunchImg from '../../../Images/Lunch.webp';
+import LunchImg from '../../../images/Lunch.webp';
 
 const LunchPage = () => {
     return (
