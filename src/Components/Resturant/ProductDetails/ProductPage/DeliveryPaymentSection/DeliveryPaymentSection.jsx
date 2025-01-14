@@ -108,17 +108,17 @@ const DeliveryPaymentSection = () => {
                 <Avatar src={item.strMealThumb} alt={item.strMeal} />
               </ListItemAvatar>
               <ListItemText
-                primary={item.strMeal}
+                primary={item.strMeal?.length >4? `${item.strMeal?.slice(0,4)}.`:item.strMeal}
                 sx={{
                   color: "#333",
                   fontWeight: "bold",
-                  maxWidth: "50%", 
+                  maxWidth: "60%", 
                 }}
               />
               <ButtonGroup
                 variant="text"
                 aria-label="Quantity button group"
-                sx={{ alignItems: "center", flexWrap: "wrap" }}
+                sx={{ alignItems: "center", flexWrap: "wrap",border:"1px solid red" }}
               >
                 <Button
                   onClick={() => dispatch(decreaseQuantity(item))}

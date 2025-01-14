@@ -35,7 +35,7 @@ function CartList({ open, handleClose }) {
                 <ListItemAvatar>
                   <Avatar src={item.strMealThumb} alt={item.strMeal} />
                 </ListItemAvatar>
-                <ListItemText primary={item.strMeal}  sx={{ maxWidth: '150px' }} />
+                <ListItemText primary={item.strMeal.length>10? `${item.strMeal.slice(0,10)}...`:item.strMeal }  sx={{ maxWidth: '150px' }} />
                 
                 <ButtonGroup variant="outlined" aria-label="quantity buttons">
                   <Button onClick={() => dispatch(decreaseQuantity(item))} sx={{ minWidth: '30px' }}>

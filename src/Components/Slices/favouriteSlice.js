@@ -20,9 +20,12 @@ export const favoriteSlice = createSlice({
         state.favoriteToastMessage = 'Product added to favorites successfully!';
       }
     },
+    removeProduct: (state, action) => {
+      state.items = state.items.filter((item) => item.idMeal !== action.payload.idMeal);
+    },
   },
 });
 
-export const { addFavorite } = favoriteSlice.actions;
+export const { addFavorite,removeProduct } = favoriteSlice.actions;
 
 export default favoriteSlice.reducer;

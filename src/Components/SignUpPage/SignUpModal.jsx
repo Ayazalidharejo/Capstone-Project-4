@@ -149,6 +149,8 @@ import LoginModal from '../Resturant/LoginModal/LoginModal';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
+
+
 const SignUpModal = ({ open, handleClose }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [openLogin, setOpenLogin] = useState(false);
@@ -161,7 +163,8 @@ const SignUpModal = ({ open, handleClose }) => {
         localStorage.setItem('user', JSON.stringify(data));
         
         // Show success alert
-        alert('Sign up successful! Please log in.');
+        // alert('Sign up successful! Please log in.');
+      
 
         // Open the login modal
         setOpenLogin(true);
@@ -171,6 +174,8 @@ const SignUpModal = ({ open, handleClose }) => {
     };
 
     return (
+        <>
+        
         <Modal
             open={open}
             onClose={handleClose}
@@ -180,6 +185,7 @@ const SignUpModal = ({ open, handleClose }) => {
                 justifyContent: 'center',
             }}
         >
+          
             <Box
                 sx={{
                     width: '100%',
@@ -284,6 +290,7 @@ const SignUpModal = ({ open, handleClose }) => {
                 </form>
             </Box>
         </Modal>
+        </>
     );
 };
 

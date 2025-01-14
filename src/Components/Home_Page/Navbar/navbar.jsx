@@ -24,6 +24,11 @@ import CartDrawer from '../../Resturant/CartList/CartList';
 import FavoriteCart from '../../FavoriteCart/FavoriteCart';
 import TransitionsModal from '../../UserNamemodal/Usermodal';
 
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+
+
+
 function Navbar() {
 
   const location = useLocation();
@@ -55,6 +60,7 @@ const [open, setOpen] = React.useState(false);
         setIsLoggedIn(true);
         setUserName(user.name);
       
+      
       } else {
         setIsLoggedIn(false);
         setUserName('');
@@ -67,9 +73,24 @@ const [open, setOpen] = React.useState(false);
     return () => window.removeEventListener('storage', handleStorageChange);
   }, [user]);
 
+  // for toast
+  useEffect(()=>{
+    if (userName!=="") {
+      Swal.fire({
+        title: 'Registration Successful!',
+        text: 'You have registered successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#ec008c' // Change the color to any hex or color code
+      });
+      
+    }
+  
+  },[userName])
+// for toast end
   const handleLogout = () => {
     localStorage.removeItem('user');
-    window.dispatchEvent(new Event('storage')); // Trigger storage event
+    window.dispatchEvent(new Event('storage')); 
   };
 
   const handleLogin = (user) => {

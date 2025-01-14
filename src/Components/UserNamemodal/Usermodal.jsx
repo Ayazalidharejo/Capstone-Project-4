@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
+import { TextField, Typography } from '@mui/material';
 
 
 const style = {
@@ -13,18 +14,22 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
+    borderRadius: 2,
+    
+    // boxShadow: 24,
+
     p: 4,
 };
 
  function TransitionsModal(props) {
  const { open,handleClose,inputValue,handleClick,handleInputChange} =props   
 
+
+ 
     return (
         <div>
            
-            <Modal
+            <Modal className='Rounded-2'
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
                 open={open}
@@ -40,9 +45,11 @@ const style = {
                 <Fade in={open}>
                     <Box sx={style}>
                      
-                     <div>
-                        
-                           <input
+                     <Box>
+                     <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>
+   Change UserName
+  </Typography>
+                           <TextField className='my-3' size='small' fullWidth
                              type="text"
                              value={inputValue} 
                              onChange={handleInputChange}
@@ -50,18 +57,29 @@ const style = {
                            />
                      
                          
-                     <button onClick={() => { handleClick(); handleClose(); }}>Save Name</button>
+                     <Button className='text-white'  
+    
+    fullWidth
+    sx={{
+      bgcolor: "#ff009d", 
+      "&:hover": {
+        bgcolor: "#ff009d",
+      },
+    }} onClick={() => { handleClick(); handleClose(); }} disabled={inputValue.trim() === ""}>
+  Save Name
+</Button>
+
 
                      
                       
                            
-                         </div>
+                         </Box>
                     </Box>
                 </Fade>
+                
             </Modal>
         </div>
     );
 }
-
 
 export default TransitionsModal;

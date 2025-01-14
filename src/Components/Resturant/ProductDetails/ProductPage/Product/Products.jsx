@@ -21,9 +21,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../../../Slices/productSlice";
 import { addFavorite } from "../../../../Slices/favouriteSlice";
-import { toast, ToastContainer } from "react-toastify";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
+import Footer from "../../../../Home_Page/Footer/Footer";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -70,13 +71,13 @@ const Product = () => {
 
   useEffect(() => {
     if (cartToastMessage) {
-      toast.success(cartToastMessage);
+      toast.info(cartToastMessage);
     }
   }, [cartToastMessage]);
 
   useEffect(() => {
     if (favoriteToastMessage) {
-      toast.success(favoriteToastMessage);
+      toast.info(favoriteToastMessage);
     }
   }, [favoriteToastMessage]);
 
@@ -93,18 +94,19 @@ const Product = () => {
 
   const handleFavoriteConfirmation = () => {
     dispatch(addFavorite(favoriteProduct));
-    toast.success("Product added to favorites successfully!");
+    // toast.success("Product added to favorites successfully!");
     setFavoriteModalOpen(false);
   };
 
   const onSubmit = (data) => {
     dispatch(addProduct(selectedProduct));
-    toast.success("Product added to cart successfully!");
+    // toast.info("Product added to cart successfully!");
     setModalOpen(false);
     reset();
   };
 
   return (
+    <>
     <Box sx={{ paddingLeft: { xs: "10px", sm: "120px" }, backgroundColor: "#fff", width: "100%" }}>
       <Typography className="ps-2"
         variant="h4"
@@ -120,7 +122,17 @@ const Product = () => {
         Most ordered right now.
       </Typography>
 
-      <ToastContainer />
+      <ToastContainer  position="top-right"
+autoClose={2000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+transition={Bounce} />
 
       {isLoading ? (
         <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
@@ -164,7 +176,7 @@ const Product = () => {
                 <CardContent
                   sx={{
                     flex: "1",
-                    marginLeft: "16px",
+                    // marginLeft: "16px",
                   }}
                 >
                   {/* Tooltip for Product Name */}
@@ -179,8 +191,8 @@ const Product = () => {
                         maxWidth: "200px",
                       }}
                     >
-                      {product.strMeal.length > 8
-                        ? product.strMeal.slice(0, 8) + "..."
+                      {product.strMeal.length > 7
+                        ? product.strMeal.slice(0, 7) + "."
                         : product.strMeal}
                     </Typography>
                   </Tooltip>
@@ -348,8 +360,10 @@ const Product = () => {
         </Box>
       </Modal>
 
-      
+     
     </Box>
+   
+    </>
   );
 };
 
