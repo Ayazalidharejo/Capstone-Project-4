@@ -244,16 +244,21 @@ const handleClick = () => {
 
 
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <LocationOnIcon sx={{ color: "#ec008c", mr: 1 }} />
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "#000",
-                  fontWeight: "bold",
-                }}
-              >
-                Location: {Value}
-              </Typography>
+            {Value && (
+  <>
+    <LocationOnIcon sx={{ color: "#ec008c", mr: 1 }} />
+    <Typography
+      variant="body1"
+      sx={{
+        color: "#000",
+        fontWeight: "bold",
+      }}
+    >
+      Location: {Value}
+    </Typography>
+  </>
+)}
+
             </Box>
 
 

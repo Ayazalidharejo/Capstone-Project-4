@@ -10,13 +10,13 @@ const HeroSection = () => {
         backgroundColor: "#f7f7f7",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        paddingY: { xs: "20px", sm: "40px", md: "60px" },
+        // alignItems: "center",
+        // paddingY: { xs: "20px", sm: "40px", md: "60px" },
       }}
     >
-      <Grid container spacing={4} alignItems="center" justifyContent="center">
+      <Grid container spacing={0} alignItems="center" justifyContent="space-between">
         {/* Left Section */}
-        <Grid item xs={12} md={6} lg={6}>
+        <Grid item xs={12} md={6} lg={7}>
           <Box
             sx={{
               paddingX: { xs: "10px", sm: "20px", md: "40px" },
@@ -26,6 +26,7 @@ const HeroSection = () => {
           >
             <Typography
               sx={{
+                
                 fontSize: { xs: "20px", sm: "26px", md: "27px" },
                 fontWeight: "bold",
                 color: "#333",
@@ -41,6 +42,7 @@ const HeroSection = () => {
                 display: "flex",
                 flexDirection: { xs: "column", sm: "row" },
                 alignItems: "center",
+              
                 justifyContent: { xs: "center", sm: "flex-start" },
                 backgroundColor: "#fff",
                 borderRadius: "10px",
@@ -53,6 +55,7 @@ const HeroSection = () => {
                 <TextField
                   sx={{
                     width: "100%",
+                    
                     backgroundColor: "#fff",
                     borderRadius: "5px",
                   }}
@@ -93,15 +96,30 @@ const HeroSection = () => {
 
         {/* Right Section */}
         <Grid item xs={12} md={6} lg={5}>
-          <Box
-            sx={{
-              backgroundImage: `url(${HeroImg})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              height: { xs: "250px", sm: "350px", md: "500px" },
-              width: "100%",
-            }}
+          <Box className="border"
+            // sx={{
+            //   backgroundImage: `url(${HeroImg})`,
+            //   backgroundSize: "contain",
+            //   backgroundRepeat:"no-repeat",
+            //   backgroundPosition: "center",
+            //   height: { xs: "250px", sm: "350px", md: "500px" },
+            //   width: "100%",
+            // }}
+            
           />
+         <img
+  style={{
+ display:"flex",
+ width:"100%", // Ensures the image takes the full width of the container
+    maxWidth: "1000px",    // Prevents the image from being larger than 700px
+    height: "500px",       // Maintains aspect ratio
+    display: "block",     // Prevents inline block behavior, eliminating extra space below the image
+    margin: "0 auto",     // Centers the image horizontally if needed
+  }}
+  src={HeroImg}
+  alt="Hero"
+/>
+
         </Grid>
       </Grid>
     </Box>

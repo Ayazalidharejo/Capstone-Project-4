@@ -28,6 +28,8 @@ import Resturant10 from '../../images/Resturant10.webp';
 import Navbar from "../Home_Page/Navbar/navbar";
 import Footer from "../Home_Page/Footer/Footer";
 import { useSelector } from "react-redux";
+import Swal from 'sweetalert2'
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 
 const Restaurant = () => {
     const Value = useSelector((state) => state.Location.Value);
@@ -37,6 +39,7 @@ const Restaurant = () => {
     const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
     const handleClose = () => setOpenModal(false);
+    const Userdata =localStorage.getItem("user")
 
     const products = [
         {
@@ -138,16 +141,48 @@ const Restaurant = () => {
         if (product.isClosed) {
             setSelectedRestaurant(product.name);
             setOpenModal(true);
-        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "This restaurant is closed at the moment!",
+                footer: '<a href="/">Why do I have this issue?</a>'
+              });
+            return
+        }
+        if (Userdata) {
             navigate(`/ProductDetails/${product.id}`, {
                 state: { image: product.image, name: product.name }
             });
+        }
+         else {
+            toast.error(' Please Registration first!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
         }
     };
 
     return (
         <Box>
-
+ <ToastContainer 
+ position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+ />
 
             <Box
                 sx={{

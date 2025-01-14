@@ -50,7 +50,7 @@ const cities = [
     { id: 8, name: 'Dera Ghazi Khan', image: DeraGhaziKhan ,latter:"D" },
     { id: 9, name: 'Gujranwala', image: Gujranwala ,latter:"G"},
     { id: 10, name: 'Gujrat', image: Gujrat  ,latter:"G"},
-    { id: 11, name: 'Hyderabad', image: Hyderabad ,latter:"h"},
+    { id: 11, name: 'Hyderabad', image: Hyderabad ,latter:"H"},
     { id: 12, name: 'Jhelum', image: Jhelum ,latter:"J"},
     { id: 13, name: 'Kamoke', image: Kamoke ,latter:"k"},
     { id: 14, name: 'Larkana', image: Larkana ,latter:"L"},
@@ -74,7 +74,7 @@ const cities = [
 
 const Card = () => {
     const dispatch = useDispatch();
-
+    const userData =localStorage.getItem("user")
  
 
     return (
@@ -85,7 +85,7 @@ const Card = () => {
             <Grid container spacing={2}>
                 {cities.map((city) => (
                     <Grid item xs={6} sm={6} md={4} lg={3} key={city.id}>
-                        <Link to={`/Resturant?city?city=${city.name}`} style={{ textDecoration: 'none' }}>
+                        <Link to={`/Resturant?city=${city.name}&user=${userData}`} style={{ textDecoration: 'none' }}>
                             <Box 
                                 sx={{
                                     height: 180,
