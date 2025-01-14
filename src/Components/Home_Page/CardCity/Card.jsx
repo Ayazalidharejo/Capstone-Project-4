@@ -1,6 +1,7 @@
 import { Box, Grid, Typography, Button, } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./Cardsimages.css"
 
 // Import city images
 import Islamabad from '../../../images/Islamabad.webp';
@@ -39,36 +40,36 @@ import { Addlocation } from '../../Slices/Location';
 
 // // City data array
 const cities = [
-    { id: 1, name: 'Islamabad', image: Islamabad },
-    { id: 2, name: 'Karachi', image: Karachi },
-    { id: 3, name: 'Lahore', image: Lahore },
-    { id: 4, name: 'Faisalabad', image: Faisalabad },
-    { id: 5, name: 'Rawalpindi', image: Rawalpindi },
-    { id: 6, name: 'Abbottabad', image: Abbottabad },
-    { id: 7, name: 'Bahawalpur', image: Bahawalpur },
-    { id: 8, name: 'Dera Ghazi Khan', image: DeraGhaziKhan },
-    { id: 9, name: 'Gujranwala', image: Gujranwala },
-    { id: 10, name: 'Gujrat', image: Gujrat },
-    { id: 11, name: 'Hyderabad', image: Hyderabad },
-    { id: 12, name: 'Jhelum', image: Jhelum },
-    { id: 13, name: 'Kamoke', image: Kamoke },
-    { id: 14, name: 'Larkana', image: Larkana },
-    { id: 15, name: 'Mangla', image: Mangla },
-    { id: 16, name: 'Mardan', image: Mardan },
-    { id: 17, name: 'Multan', image: Multan },
-    { id: 18, name: 'Murree', image: Murree },
-    { id: 19, name: 'Okara', image: Okara },
-    { id: 20, name: 'PanoAqil', image: PanoAqil },
-    { id: 21, name: 'Peshawar', image: Peshawar },
-    { id: 22, name: 'Quetta', image: Quetta },
-    { id: 23, name: 'RahimYarKhan', image: RahimYarKhan },
-    { id: 24, name: 'Sadiqabad', image: Sadiqabad },
-    { id: 25, name: 'Sahiwal', image: Sahiwal },
-    { id: 26, name: 'Sargodha', image: Sargodha },
-    { id: 27, name: 'Sheikhupura', image: Sheikhupura },
-    { id: 28, name: 'Sialkot', image: Sialkot },
-    { id: 29, name: 'Sukkur', image: Sukkur },
-    { id: 30, name: 'WahCantt', image: WahCantt },
+    { id: 1, name: 'Islamabad', image: Islamabad,latter:"I" },
+    { id: 2, name: 'Karachi', image: Karachi ,latter:"k"},
+    { id: 3, name: 'Lahore', image: Lahore  ,latter:"L"},
+    { id: 4, name: 'Faisalabad', image: Faisalabad  ,latter:"F"},
+    { id: 5, name: 'Rawalpindi', image: Rawalpindi ,latter:"R" },
+    { id: 6, name: 'Abbottabad', image: Abbottabad  ,latter:"A"},
+    { id: 7, name: 'Bahawalpur', image: Bahawalpur ,latter:"B"},
+    { id: 8, name: 'Dera Ghazi Khan', image: DeraGhaziKhan ,latter:"d" },
+    { id: 9, name: 'Gujranwala', image: Gujranwala ,latter:"G"},
+    { id: 10, name: 'Gujrat', image: Gujrat  ,latter:"G"},
+    { id: 11, name: 'Hyderabad', image: Hyderabad ,latter:"h"},
+    { id: 12, name: 'Jhelum', image: Jhelum ,latter:"J"},
+    { id: 13, name: 'Kamoke', image: Kamoke ,latter:"k"},
+    { id: 14, name: 'Larkana', image: Larkana ,latter:"L"},
+    { id: 15, name: 'Mangla', image: Mangla ,latter:"M"},
+    { id: 16, name: 'Mardan', image: Mardan  ,latter:"M"},
+    { id: 17, name: 'Multan', image: Multan  ,latter:"M"},
+    { id: 18, name: 'Murree', image: Murree  ,latter:"M"},
+    { id: 19, name: 'Okara', image: Okara ,latter:"O"},
+    { id: 20, name: 'PanoAqil', image: PanoAqil ,latter:"P"},
+    { id: 21, name: 'Peshawar', image: Peshawar ,latter:"P"},
+    { id: 22, name: 'Quetta', image: Quetta ,latter:"Q"},
+    { id: 23, name: 'RahimYarKhan', image: RahimYarKhan ,latter:"R" },
+    { id: 24, name: 'Sadiqabad', image: Sadiqabad ,latter:"S"},
+    { id: 25, name: 'Sahiwal', image: Sahiwal ,latter:"S"},
+    { id: 26, name: 'Sargodha', image: Sargodha ,latter:"S"},
+    { id: 27, name: 'Sheikhupura', image: Sheikhupura ,latter:"S"},
+    { id: 28, name: 'Sialkot', image: Sialkot ,latter:"S"},
+    { id: 29, name: 'Sukkur', image: Sukkur  ,latter:"S"},
+    { id: 30, name: 'WahCantt', image: WahCantt ,latter:"W"},
 ];
 
 const Card = () => {
@@ -85,7 +86,7 @@ const Card = () => {
                 {cities.map((city) => (
                     <Grid item xs={6} sm={6} md={4} lg={3} key={city.id}>
                         <Link to={`/Resturant?city?city=${city.name}`} style={{ textDecoration: 'none' }}>
-                            <Box
+                            <Box 
                                 sx={{
                                     height: 180,
                                     display: 'flex',
@@ -95,10 +96,16 @@ const Card = () => {
                                     overflow: 'hidden',
                                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                                     position: 'relative',
+
+                                    
+                                    
+                                
                                 }}
                                 onClick={() => dispatch(Addlocation(city))}
                             >
+                                   <Typography variant='h1'> {city.name} </Typography>
                                 <img 
+                                 className='imgs'
                                     src={city.image}
                                     alt={city.name}
                                     style={{
@@ -108,8 +115,16 @@ const Card = () => {
                                         position: 'absolute',
                                         top: 0,
                                         left: 0,
+                                       
                                     }}
                                 />
+                                                <Typography
+        className="latter"
+        variant="h1"
+       
+      >
+        {city?.latter} 
+      </Typography>
 
                                 <Button
                                    
@@ -129,7 +144,9 @@ const Card = () => {
                                 >
                                     {city.name}
                                 </Button>
+                              
                             </Box>
+       
                         </Link>
                     </Grid>
                 ))}

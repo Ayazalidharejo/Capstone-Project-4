@@ -1,0 +1,26 @@
+.imgs:hover{
+    transition: 1s;
+scale: 1.2;
+}
+/* Ensure the text is hidden initially */
+.latter {
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Ensure it's hidden from the layout */
+  position: absolute;
+  top: 0;
+  left:0;
+  color: #e21b70; /* Optional, change according to your design */
+  font-size: 2rem; /* Adjust based on your design */
+  transition: opacity 0.3s ease, visibility 0s 0.3s; /* Smooth transition for opacity */
+}
+
+/* When hovering over .imgs, make .latter visible */
+.imgs:hover + .latter {
+  opacity: 1; /* Show text */
+  visibility: visible; /* Make text visible */
+  transition: opacity 0.3s ease, visibility 0s; /* Smooth transition */
+}
+
+
+   
+  
