@@ -52,7 +52,8 @@ const FavoriteCart = ({ open, handleClose }) => {
       title: 'success!',
      
       icon: 'success',
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#ec008c' 
     });
   };
 

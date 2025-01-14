@@ -84,6 +84,7 @@ const [open, setOpen] = React.useState(false);
         confirmButtonColor: '#ec008c' // Change the color to any hex or color code
       });
       
+      
     }
   
   },[userName])
@@ -161,6 +162,12 @@ const handleClick = () => {
   const user = { name: inputValue }; 
   localStorage.setItem('user', JSON.stringify(user)); 
 };
+
+
+
+
+
+
   return (
     <Box>
 

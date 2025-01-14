@@ -9,6 +9,8 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link, useLocation } from 'react-router-dom';
+import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
+
 
 
 const ProductHeader = () => {
@@ -71,28 +73,38 @@ const ProductHeader = () => {
         padding: '0.5rem',
         flexDirection: { xs: 'row', sm: 'row' }
       }}>
-        <Grid item xs="auto">
+        <Grid className='d-flex' item xs="auto">
           <Box component="img" src={restaurant.image} alt={restaurant.name} sx={{
             width: { xs: '150px', sm: '180px' },
             height: { xs: '150px', sm: '180px' },
             borderRadius: '8px',
             objectFit: 'cover'
           }} />
+           <div className="restaurant-info ms-3">
+      {/* <div className="breadcrumbs">Nice Foods</div> */}
+      <div className="tags">Sandwiches • Pizza • Chinese • Thai • Cakes & Bakery</div>
+      <h1 className="restaurant-name"> {restaurant.name}</h1>
+      <div className="details">
+        <span className="free-delivery"> <DeliveryDiningIcon/> Free delivery</span>
+        <span className="old-price">Rs. 79</span>
+        <span className="min-order">Min. order Rs. 199</span>
+      </div>
+      <div className="rating-and-links">
+        <span className="rating">
+          <span className="star">  <StarIcon sx={{ color: 'orange', fontSize: '1rem' }} /></span> 4.6/5 (100+)
+        </span>
+        <Link className='text-decoration-none text-black mx-2' to="/">See reviews </Link>
+        <a to="/"> <InfoIcon/> More info</a>
+      </div>
+    </div>
         </Grid>
         <Grid item xs>
           <Stack spacing={0.5} sx={{ paddingLeft: { xs: '0', sm: '1rem' } }}>
-            <Typography variant="h2" fontWeight="bold" sx={{ color: '#000', fontSize: { xs: '1.5rem', sm: '2rem' }, lineHeight: 1.2 }}>
-              {restaurant.name}
-            </Typography>
+          
             <Box sx={{
               display: 'flex', flexDirection: { xs: 'row', sm: 'row' }, gap: { xs: '5px', sm: '15px' }, alignItems: 'center'
             }}>
-              <Stack direction="row" alignItems="center" spacing={0.5}>
-                <StarIcon sx={{ color: 'orange', fontSize: '1rem' }} />
-                <Typography variant="body2" sx={{ fontWeight: 'bold', fontSize: '0.9rem' }}>
-                  4.5/5 <span style={{ color: '#888', fontWeight: 'normal' }}>(200+)</span>
-                </Typography>
-              </Stack>
+             
             </Box>
           </Stack>
         </Grid>

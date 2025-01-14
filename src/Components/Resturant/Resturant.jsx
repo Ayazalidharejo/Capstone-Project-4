@@ -145,7 +145,8 @@ const Restaurant = () => {
                 icon: "error",
                 title: "Oops...",
                 text: "This restaurant is closed at the moment!",
-                footer: '<a href="/">Why do I have this issue?</a>'
+                footer: '<a href="/">Why do I have this issue?</a>',
+                confirmButtonColor: '#ec008c' 
               });
             return
         }
