@@ -33,7 +33,7 @@ const DeliveryPaymentSection = () => {
         boxShadow: 3,
         padding: 3,
         textAlign: "center",
-        minHeight: "750px",
+        minHeight: "1000px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -50,7 +50,7 @@ const DeliveryPaymentSection = () => {
           borderRadius: 2,
           justifyContent: "center",
           boxShadow: 1,
-          flexWrap: "wrap", // Enables wrapping for smaller screens
+          flexWrap: "wrap", 
         }}
       >
         <Button
@@ -59,13 +59,13 @@ const DeliveryPaymentSection = () => {
             fontWeight: "bold",
             border: "1px solid #ddd",
             borderRadius: 2,
-            padding: "15px 40px", // Adjust padding for responsiveness
+            padding: "15px 40px", 
             backgroundColor: "#4CAF50",
             color: "white",
             "&:hover": {
               backgroundColor: "#45a049",
             },
-            width: { xs: "100%", sm: "auto" }, // Full width on small screens
+            width: { xs: "100%", sm: "auto" },
           }}
         >
           Delivery
@@ -77,20 +77,20 @@ const DeliveryPaymentSection = () => {
             fontWeight: "bold",
             border: "1px solid #ddd",
             borderRadius: 2,
-            padding: "15px 40px", // Adjust padding for responsiveness
+            padding: "15px 40px", 
             backgroundColor: "#ff9800",
             color: "white",
             "&:hover": {
               backgroundColor: "#fb8c00",
             },
-            width: { xs: "100%", sm: "auto" }, // Full width on small screens
+            width: { xs: "100%", sm: "auto" }, 
           }}
         >
           Pick-up
         </Button>
       </Box>
 
-      {/* Cart Items Section */}
+     
       <List sx={{ marginTop: 2 }}>
         {items && items.length > 0 ? (
           items.map((item, index) => (
@@ -99,7 +99,7 @@ const DeliveryPaymentSection = () => {
               sx={{
                 paddingY: 1,
                 borderBottom: "1px solid #f0f0f0",
-                flexWrap: "wrap", // Ensures content wraps on smaller screens
+                flexWrap: "wrap", 
               }}
             >
               <ListItemAvatar>
@@ -110,7 +110,7 @@ const DeliveryPaymentSection = () => {
                 sx={{
                   color: "#333",
                   fontWeight: "bold",
-                  maxWidth: "60%", // Restricts width for text overflow
+                  maxWidth: "60%", 
                 }}
               />
               <ButtonGroup
@@ -200,13 +200,13 @@ const DeliveryPaymentSection = () => {
           variant="contained"
           sx={{
             marginTop: 2,
-            backgroundColor: "#1976d2",
+            backgroundColor: "#e21b70",
             color: "white",
             cursor: "pointer",
             width: "100%",
             padding: "16px",
             "&:hover": {
-              backgroundColor: "#1565c0",
+              backgroundColor: "#f40468",
             },
           }}
         >

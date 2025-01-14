@@ -43,8 +43,10 @@ const ProductHeader = () => {
       width: '100%',
     }}>
   <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: '1rem', paddingLeft: '10px' }}>
-  <Link to='/'>Home</Link>
-  <Link 
+  <Link className="text-decoration-none text-black" to="/">
+      Home
+    </Link>
+  <Link className="text-decoration-none text-black"
     to="/Restaurant" 
     underline="hover" 
     color="primary" 

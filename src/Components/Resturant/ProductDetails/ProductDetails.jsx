@@ -20,11 +20,11 @@ const ProductDetails = () => {
           padding: { xs: 0, md: 2 },
         }}
       >
-        <Box sx={{ flex: 1, minWidth: { xs: '100%', md: '60%' } }}>
+        <Box sx={{ flex: 1, minWidth: { xs: '100%', md: '70%' } }}>
           <Product />
         </Box>
 
-        <Box className=' d-none d-lg-block d-md-block' sx={{ flex: 1, minWidth: { xs: '100%', md: '35%' } }}>
+        <Box className=' d-none d-lg-block d-md-block' sx={{ flex: 1, minWidth: { xs: '100%', md: '25%' } }}>
           <DeliveryPaymentSection />
         </Box>
 

@@ -220,7 +220,7 @@ const Restaurant = () => {
                                 }}
                                 onClick={() => handleCardClick(product)}
                             >
-                                <CardMedia style={product.isClosed ? { filter: "brightness(70%)" } : {}}  component="img" height="200" image={product.image} alt={product.name} />
+                                <CardMedia sx={{cursor:"pointer"}} style={product.isClosed ? { filter: "brightness(70%)" } : {}}  component="img" height="200" image={product.image} alt={product.name} />
                                 <CardContent >
                                    <Box className="d-flex justify-content-between align-items-center">  <Typography className="fw-bold" variant="body1">{product.name.length>10 ?`${product.name.slice(0,15)}...`:product.name}</Typography>
                                    <Typography variant="body1">Rating: {product.rating}/5 ✨</Typography>  </Box>

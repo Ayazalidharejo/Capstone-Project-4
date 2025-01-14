@@ -105,8 +105,8 @@ const Product = () => {
   };
 
   return (
-    <Box sx={{ padding: { xs: "10px", sm: "20px" }, backgroundColor: "#fff", width: "100%" }}>
-      <Typography
+    <Box sx={{ paddingLeft: { xs: "10px", sm: "120px" }, backgroundColor: "#fff", width: "100%" }}>
+      <Typography className="ps-2"
         variant="h4"
         component="h2"
         sx={{
@@ -179,8 +179,8 @@ const Product = () => {
                         maxWidth: "200px",
                       }}
                     >
-                      {product.strMeal.length > 12
-                        ? product.strMeal.slice(0, 12) + "..."
+                      {product.strMeal.length > 8
+                        ? product.strMeal.slice(0, 8) + "..."
                         : product.strMeal}
                     </Typography>
                   </Tooltip>
