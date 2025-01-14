@@ -16,6 +16,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import { decreaseQuantity, increaseQuantity, removeProduct } from "../../../../Slices/productSlice";
+import img from "../../../../../images/card.svg"
 
 const DeliveryPaymentSection = () => {
   const items = useSelector((state) => state.products.items);
@@ -35,7 +36,7 @@ const DeliveryPaymentSection = () => {
         marginTop:"96px",
         textAlign: "center",
         minHeight: "1000px",
-        display: "flex",
+        // display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         backgroundColor: "#fafafa",
@@ -111,7 +112,7 @@ const DeliveryPaymentSection = () => {
                 sx={{
                   color: "#333",
                   fontWeight: "bold",
-                  maxWidth: "60%", 
+                  maxWidth: "50%", 
                 }}
               />
               <ButtonGroup
@@ -144,11 +145,13 @@ const DeliveryPaymentSection = () => {
             </ListItem>
           ))
         ) : (
-          <Typography
+          <Typography className="mt-5"
             sx={{ padding: 2, textAlign: "center", color: "#888" }}
           >
+            <img style={{width:"100px"}} src={img} alt="" />
             Your cart is empty.
           </Typography>
+          
         )}
       </List>
 
