@@ -47,7 +47,7 @@ const cities = [
     { id: 5, name: 'Rawalpindi', image: Rawalpindi ,latter:"R" },
     { id: 6, name: 'Abbottabad', image: Abbottabad  ,latter:"A"},
     { id: 7, name: 'Bahawalpur', image: Bahawalpur ,latter:"B"},
-    { id: 8, name: 'Dera Ghazi Khan', image: DeraGhaziKhan ,latter:"d" },
+    { id: 8, name: 'Dera Ghazi Khan', image: DeraGhaziKhan ,latter:"D" },
     { id: 9, name: 'Gujranwala', image: Gujranwala ,latter:"G"},
     { id: 10, name: 'Gujrat', image: Gujrat  ,latter:"G"},
     { id: 11, name: 'Hyderabad', image: Hyderabad ,latter:"h"},

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Grid, Stack, Button, Dialog, Card, CardContent, CardMedia, TextField, Tabs, Tab } from '@mui/material';
+import { Box, Typography, Grid, Stack, Button, Dialog, Card, CardContent, CardMedia, TextField, Tabs, Tab, InputAdornment } from '@mui/material';
 import { Breadcrumbs, } from '@mui/material';
 import { Icon } from '@iconify/react';
 import StarIcon from '@mui/icons-material/Star';
@@ -9,6 +9,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link, useLocation } from 'react-router-dom';
+
 
 const ProductHeader = () => {
   const [openDeliveryModal, setOpenDeliveryModal] = useState(false);
@@ -99,7 +100,19 @@ const ProductHeader = () => {
 
       {/* Tabs Section */}
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row', sm: 'row' }, gap: 6, mt: 4, width: '100%' }}>
+      <TextField className='mt-2' style={{borderRadius:"10px"}}
+      size="small"
+      placeholder="Search in menu"
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
+        ),
+      }}
+    />
         <Tabs value={value} onChange={handleTabChange} textColor="inherit" variant="scrollable" scrollButtons="auto" sx={{ width: '100%' }}>
+       
           <Tab label="Popular (6)" />
           <Tab label="Deals (2)" />
           <Tab label="Paratha (10)" />
