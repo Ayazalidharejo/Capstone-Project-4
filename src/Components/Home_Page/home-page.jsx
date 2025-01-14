@@ -6,6 +6,7 @@ import OnlineOrder from './OnlineOrder/OnlineOrder'
 import CookerPage from './CookerPage/CookerPage'
 import LunchPage from './LunchPage/LunchPage'
 import AboutPage from './AboutPage/AboutPage'
+import ResponsiveCards from '../Extrawork/Extra'
 
 const Homepage = () => {
   return (
@@ -18,9 +19,11 @@ const Homepage = () => {
       <LunchPage />
       <AboutPage />
       <Footer />
+      {/* <ResponsiveCards/> */}
 
     </>
   )
 }
 
 export default Homepage;
+

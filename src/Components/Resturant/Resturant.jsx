@@ -38,47 +38,59 @@ const Restaurant = () => {
     const products = [
         {
             id: 'SpiceDelight',
-            name: 'Spice Delight',
+            name: 'Karachi Al Nazz Biryani (supply)',
             image: Resturant1,
             rating: "4.5",
-            type: "Indian Cuisine"
+            type: "Indian Cuisine",
+            heading:"Welcome gift: free de...",
+            heading2:"20% off: mc20"
         },
         {
             id: 'BurgerPoint',
-            name: 'Burger Point',
+            name: 'SAIF BAKERS & SWEET (branch 2)',
             image: Resturant2,
             rating: "4.2",
-            type: "Burgers"
+            type: "Burgers",
+             heading:"Welcome gift: free de...",
+            heading2:"20% off: mc20"
         },
         {
             id: 'PastaParadise',
-            name: 'Pasta Paradise',
+            name: 'Bangladeshi Samosa Center and Fast Food',
             image: Resturant3,
             rating: "4.3",
             type: "Italian",
-            isClosed: true
+            isClosed: true,
+            order:  "Closed until Sat 11:30"  
+            
         },
         {
             id: 'SushiHouse',
-            name: 'Sushi House',
+            name: 'Jannu Butt-Khoye wale Mutton Channay',
             image: Resturant4,
             rating: "4.8",
             type: "Japanese",
-            isClosed: true
+            isClosed: true,
+            order:  "Closed until Sat 1:42"  
+            
         },
         {
             id: 'GrillMaster',
             name: 'Grill Master',
             image: Resturant5,
             rating: "4.7",
-            type: "BBQ"
+            type: "BBQ",
+             heading:"Welcome gift: free de...",
+            heading2:"20% off: mc20"
         },
         {
             id: 'VeganBites',
             name: 'Vegan Bites',
             image: Resturant6,
             rating: "4.6",
-            type: "Vegan"
+            type: "Vegan",
+             heading:"Welcome gift: free de...",
+            heading2:"20% off: mc20"
         },
         {
             id: 'SweetTreats',
@@ -86,7 +98,9 @@ const Restaurant = () => {
             image: Resturant7,
             rating: "4.3",
             type: "Desserts",
-            isClosed: true
+            isClosed: true,
+            order:  "Closed until Sat 10:42"  
+           
         },
         {
             id: 'TacoFiesta',
@@ -94,21 +108,26 @@ const Restaurant = () => {
             image: Resturant8,
             rating: "4.4",
             type: "Mexican",
-            isClosed: true
+            isClosed: true,
+          order:  "Closed until Sat 12:42"           
         },
         {
             id: 'PizzaWorld',
             name: 'Pizza World',
             image: Resturant9,
             rating: "4.5",
-            type: "Pizza"
+            type: "Pizza",
+             heading:"Welcome gift: free de...",
+            heading2:"20% off: mc20"
         },
         {
             id: 'SeafoodBay',
             name: 'Seafood Bay',
             image: Resturant10,
             rating: "4.6",
-            type: "Seafood"
+            type: "Seafood",
+             heading:"Welcome gift: free de...",
+            heading2:"20% off: mc20"
         }
     ];
 
@@ -184,7 +203,7 @@ const Restaurant = () => {
                 <Grid container spacing={4}>
                     {products.map((product) => (
                         <Grid item xs={12} sm={6} md={4} key={product.id}>
-                            <Card
+                            <Card className=" position-relative"
                                 sx={{
                                     transition: "0.3s",
                                     boxShadow: 3,
@@ -194,12 +213,20 @@ const Restaurant = () => {
                                 }}
                                 onClick={() => handleCardClick(product)}
                             >
-                                <CardMedia component="img" height="200" image={product.image} alt={product.name} />
-                                <CardContent>
-                                    <Typography variant="h6">{product.name}</Typography>
-                                    <Typography>Rating: {product.rating}/5 ✨</Typography>
+                                <CardMedia style={product.isClosed ? { filter: "brightness(70%)" } : {}}  component="img" height="200" image={product.image} alt={product.name} />
+                                <CardContent >
+                                   <Box className="d-flex justify-content-between align-items-center">  <Typography className="fw-bold" variant="body1">{product.name.length>10 ?`${product.name.slice(0,15)}...`:product.name}</Typography>
+                                   <Typography variant="body1">Rating: {product.rating}/5 ✨</Typography>  </Box>
+
+                                    <Typography  style={{backgroundColor:"#e21b70"}} className="px-1 position-absolute top-0 start-0 mt-2 ms-2 text-white rounded-2 fs-6" variant="body1">{product.heading}</Typography>
+                                    <Typography  style={{backgroundColor:"#e21b70"}} className="px-1 position-absolute top-0 start-0 ms-2 mt-5 text-white rounded-2 fs-6" variant="body1">{product.heading2}</Typography>
+                                 
                                     <Typography>{product.type}</Typography>
-                                    {product.isClosed && <Typography color="error">Closed</Typography>}
+                                  { product.isClosed && <Button style={{color:"#e21b70"}} className="px-1   bg-white position-absolute top-50 start-50 translate-middle mb-5 ms-2   ">
+  Order for later
+</Button>}
+
+                                    {product.isClosed && <Typography className="px-1 pt-5 fw-bold position-absolute top-0 start-50 translate-middle-x mt-5 ms-2 text-white  fs-6">{product.order} </Typography>}
                                 </CardContent>
                             </Card>
                         </Grid>
