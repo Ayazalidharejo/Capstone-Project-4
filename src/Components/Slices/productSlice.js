@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import Swal from 'sweetalert2';
 
 const initialState = {
   name: 'products',
@@ -23,6 +24,13 @@ export const productSlice = createSlice({
           price: 450 // Fixed price for all products
         });
         state.cartToastMessage = 'Product added to cart successfully!';
+          Swal.fire({
+       title: 'success!',
+     
+       icon: 'success',
+       confirmButtonText: 'OK',
+       confirmButtonColor: '#ec008c' 
+     });
       }
     },
 

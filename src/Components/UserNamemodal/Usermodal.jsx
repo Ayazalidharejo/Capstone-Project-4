@@ -6,6 +6,11 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import { TextField, Typography } from '@mui/material';
 
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
+
+
+
 
 const style = {
     position: 'absolute',
@@ -23,12 +28,33 @@ const style = {
 
  function TransitionsModal(props) {
  const { open,handleClose,inputValue,handleClick,handleInputChange} =props   
-
-
- 
+ const notyf = new Notyf({
+    duration: 1000,
+    position: {
+      x: 'center',
+      y: 'top',
+    },
+    types: [
+      {
+        type: 'warning',
+        background: 'blue',
+        icon: {
+          className: 'material-icons',
+          tagName: 'i',
+          text: 'warning'
+        }
+      },
+      {
+        type: 'error',
+        background: 'blue',
+        duration: 2000,
+        dismissible: true
+      }
+    ]
+  });
     return (
         <div>
-           
+        
             <Modal className='Rounded-2'
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
@@ -65,7 +91,14 @@ const style = {
       "&:hover": {
         bgcolor: "#ff009d",
       },
-    }} onClick={() => { handleClick(); handleClose(); }} disabled={inputValue.trim() === ""}>
+    }} 
+    onClick={() => {
+        handleClick();
+        handleClose();
+        notyf.error('UserName Change Successfully'); // Show toast after button click
+      }}
+      disabled={inputValue.trim() === ""}
+    >
   Save Name
 </Button>
 

@@ -122,8 +122,8 @@ const Product = () => {
         Most ordered right now.
       </Typography>
 
-      <ToastContainer  position="top-right"
-autoClose={2000}
+      {/* <ToastContainer  position="top-right"
+autoClose={1000}
 hideProgressBar={false}
 newestOnTop={false}
 closeOnClick={false}
@@ -132,7 +132,7 @@ pauseOnFocusLoss
 draggable
 pauseOnHover
 theme="dark"
-transition={Bounce} />
+transition={Bounce} /> */}
 
       {isLoading ? (
         <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>

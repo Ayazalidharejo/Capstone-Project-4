@@ -48,13 +48,13 @@ const FavoriteCart = ({ open, handleClose }) => {
   const onSubmit = (data) => {
     console.log("Form submitted with data:", { ...data, product: selectedItem });
     setModalOpen(false);
-    Swal.fire({
-      title: 'success!',
+    // Swal.fire({
+    //   title: 'success!',
      
-      icon: 'success',
-      confirmButtonText: 'OK',
-      confirmButtonColor: '#ec008c' 
-    });
+    //   icon: 'success',
+    //   confirmButtonText: 'OK',
+    //   confirmButtonColor: '#ec008c' 
+    // });
   };
 
   return (

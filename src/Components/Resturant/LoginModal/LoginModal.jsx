@@ -5,22 +5,26 @@ import SignUpModal from '../../SignUpPage/SignUpModal';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-const LoginModal = ({ open, handleClose }) => {
+const LoginModal = ({ open, handleClose,onSubmit,openSignUpModal }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [openSignUp, setOpenSignUp] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-
+  
+ 
     const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const user = JSON.parse(localStorage.getItem('user'));
+    // const onSubmit = (data) => {
+    //     setdata(data)
+      
+    //     alert("Login successful!"); 
+    // };
 
-    const onSubmit = (data) => {
-       
-        console.log(data);
-        alert("Login successful!"); 
-    };
+    // const openSignUpModal = () => {
+    //     setOpenSignUp(true);
+    // };
 
-    const openSignUpModal = () => {
-        setOpenSignUp(true);
-    };
+
+    
 
     return (
         <>
@@ -34,7 +38,7 @@ const LoginModal = ({ open, handleClose }) => {
                     padding: 4,
                     boxShadow: 24,
                     borderRadius: 2,
-                    width: "20%"
+                    width: "40%"
                 }}>
                     <Typography sx={{  color: '#e21b70',
                         fontWeight: 'bold',

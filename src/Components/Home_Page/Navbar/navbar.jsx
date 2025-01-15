@@ -53,41 +53,91 @@ const [open, setOpen] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState('');
   const user = JSON.parse(localStorage.getItem('user'));
+  const [Data ,SetData]=useState("")
+
+
+  const [Stage ,Setstage]=useState("")
+  // useEffect(() => {
+  //   const handleStorageChange = () => {
+  //     const user = JSON.parse(localStorage.getItem('user'));
+  //     if (user) {
+  //       setIsLoggedIn(true);
+  //       setUserName(user.name);
+      
+      
+  //     } else {
+  //       setIsLoggedIn(false);
+  //       setUserName('');
+  //     }
+  //   };
+
+  //   handleStorageChange();
+
+  //   window.addEventListener('storage', handleStorageChange);
+  //   return () => window.removeEventListener('storage', handleStorageChange);
+  // }, [user]);
+
   useEffect(() => {
     const handleStorageChange = () => {
       const user = JSON.parse(localStorage.getItem('user'));
+      
       if (user) {
-        setIsLoggedIn(true);
-        setUserName(user.name);
-      
-      
+        // Check if both email and password match
+        if (user.email === Data.email && user.password === Data.password) {
+          Swal.fire({
+            title: 'Registration Successful!',
+            text: 'You have registered successfully.',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#ec008c' // Change the color to any hex or color code
+          });
+          setIsLoggedIn(true);
+          setUserName(user.name);
+           setOpenLogin(false)
+          
+        } else if (user.email === Data.email || user.password === Data.password) {
+          // Show alert if either the email OR the password is wrong, but not both
+          setUserName('');
+          setOpenLogin(false)
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something Wrong  !",
+            // footer: '<a href="#">Why do I have this issue?</a>'
+          });
+        
+        }
+        //  else {
+        //   // If neither match, show an error
+        //   alert('Email and password are both incorrect.');
+        // }
       } else {
         setIsLoggedIn(false);
         setUserName('');
+        setOpenLogin(false)
       }
     };
 
-    handleStorageChange();
+    handleStorageChange(); // Check immediately on mount
 
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
-  }, [user]);
+  }, [user&&Data]); // Dependency array should include 'data' to watch for changes
+
+
+
+
+
 
   // for toast
-  useEffect(()=>{
-    if (userName!=="") {
-      Swal.fire({
-        title: 'Registration Successful!',
-        text: 'You have registered successfully.',
-        icon: 'success',
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#ec008c' // Change the color to any hex or color code
-      });
+  // useEffect(()=>{
+  //   if (userName!=="") {
+    
       
       
-    }
+  //   }
   
-  },[userName])
+  // },[userName])
 // for toast end
   const handleLogout = () => {
     localStorage.removeItem('user');
@@ -95,8 +145,8 @@ const [open, setOpen] = React.useState(false);
   };
 
   const handleLogin = (user) => {
-    localStorage.setItem('user', JSON.stringify(user));
-    window.dispatchEvent(new Event('storage')); // Trigger storage event
+    // localStorage.setItem('user', JSON.stringify(user));
+    // window.dispatchEvent(new Event('storage')); // Trigger storage event
   };
 
   const theme = useTheme();
@@ -166,7 +216,27 @@ const handleClick = () => {
 
 
 
+     const onSubmit = (data) => {
+      SetData(data)
+      
+       
+     };
 
+     const openSignUpModal = () => {
+         setOpenSignUp(true);
+        
+     };
+
+
+//      useEffect(()=>{
+// if (userName!==""&& isLoggedIn===true) {
+//   const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+//     const storedUserName = localStorage.getItem('userName');
+//     Setstage(storedIsLoggedIn)
+// }
+
+
+//      },[userName&&isLoggedIn])
 
   return (
     <Box>
@@ -174,7 +244,19 @@ const handleClick = () => {
 
 
 
-<h1>hello ayaz aaj aap ke as py kam karna hai</h1>
+<ToastContainer
+position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+transition={Bounce}
+/>
 
 
 
@@ -282,7 +364,7 @@ const handleClick = () => {
                   <>
                     <Grid item>
                       <Typography className='text-dark' variant="body1">
-                        <AccountCircleIcon style={{cursor:"pointer"}} onClick={handleOpen}  />  {userName}
+                        <AccountCircleIcon style={{cursor:"pointer"}} onClick={handleOpen}  /> Welcome  {userName}
                       </Typography>
                     </Grid>
                     <Grid item>
@@ -324,7 +406,7 @@ const handleClick = () => {
       </AppBar>
 
       <SignUpModal open={openSignUp} handleClose={() => setOpenSignUp(false)} handleLogin={handleLogin} />
-      <LoginModal open={openLogin} handleClose={() => setOpenLogin(false)} handleLogin={handleLogin} />
+      <LoginModal open={openLogin} handleClose={() => setOpenLogin(false)} handleLogin={handleLogin}onSubmit={onSubmit} openSignUpModal={openSignUpModal} />
       <CartDrawer open={shoppingCartOpen} handleClose={handleShoppingCartClose} />
       <FavoriteCart open={favoriteCartOpen} handleClose={handleFavoriteCartClose} />
       <TransitionsModal open={open}  handleClose={handleClose} handleInputChange={handleInputChange}
