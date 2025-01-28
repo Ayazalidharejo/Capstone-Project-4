@@ -84,13 +84,7 @@ const [open, setOpen] = React.useState(false);
       if (user) {
         // Check if both email and password match
         if (user.email === Data.email && user.password === Data.password) {
-          Swal.fire({
-            title: 'Registration Successful!',
-            text: 'You have registered successfully.',
-            icon: 'success',
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#ec008c' // Change the color to any hex or color code
-          });
+        
           setIsLoggedIn(true);
           setUserName(user.name);
            setOpenLogin(false)
@@ -368,7 +362,7 @@ transition={Bounce}
                       </Typography>
                     </Grid>
                     <Grid item>
-                      <Button className='bg-dark' color="inherit" onClick={handleLogout}>Logout</Button>
+                      <Button style={{backgroundColor:"#c2185b"}} color="inherit" onClick={handleLogout}>Logout</Button>
                     </Grid>
                   </>
                 ) : (
